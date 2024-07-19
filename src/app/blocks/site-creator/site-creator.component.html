@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <app-tabs [activeTab]="currentPageNumber" (tabChange)="setCurrentPageNumber($event)" />
+  <div class="page">
+    {{currentPageNumber == 0 ? "Тут оформление сайта" : "А тут контент"}}
+  </div>
+</div>

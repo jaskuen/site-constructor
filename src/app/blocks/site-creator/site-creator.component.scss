@@ -1,0 +1,15 @@
+@import "../../../colors";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.page {
+  margin-inline-start: -1px;
+  flex-grow: 1;
+  background: $LIGHT;
+  border: 1px solid $PRIMARY_LIGHT_7;
+  z-index: -1;
+  padding: 18px;
+}

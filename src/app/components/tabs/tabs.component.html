@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let tab of tabsArray; let i = index">
+    <button class="{{i == activeTab ? 'active' : ''}}" (click)="changeTab(i)">{{tab}}</button>
+  </li>
+</ul>

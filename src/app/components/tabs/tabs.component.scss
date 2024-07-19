@@ -1,0 +1,32 @@
+@import "../../../colors";
+@import "../../../fonts";
+
+ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: none;
+}
+
+li {
+  width: 242px;
+  height: 48px;
+  list-style-type: none;
+}
+
+button {
+  border: none;
+  border-inline-end: 1px solid $PRIMARY_LIGHT_7;
+  height: 100%;
+  width: 100%;
+  background: $PRIMARY_LIGHT_8;
+  color: $PRIMARY;
+}
+
+.active {
+  background: $LIGHT;
+  border-inline-start: 2px solid $ACCENT2_CALL_TO_ACTION;
+  border-inline-end: none;
+  border-block: 1px solid $PRIMARY_LIGHT_7;
+}
+
