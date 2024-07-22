@@ -1,0 +1,25 @@
+@import "../../../colors";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  margin-block-end: 10px;
+}
+
+.circle {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-inline-end: 2px;
+}
+
+.fill {
+  width: 17px;
+  height: 17px;
+  margin: auto;
+  background-image: url("../../../../public/icons/fill.svg");
+  background-color: rgba(0, 0, 0, 0);
+}

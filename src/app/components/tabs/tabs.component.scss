@@ -1,6 +1,11 @@
 @import "../../../colors";
 @import "../../../fonts";
 
+.wrapper {
+  display: block;
+  z-index: 100;
+}
+
 ul {
   display: flex;
   flex-direction: column;

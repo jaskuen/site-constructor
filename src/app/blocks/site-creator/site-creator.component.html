@@ -1,6 +1,11 @@
 <div class="wrapper">
-  <app-tabs [activeTab]="currentPageNumber" (tabChange)="setCurrentPageNumber($event)" />
+  <app-tabs class="tabs" [activeTab]="currentPageNumber" (tabChange)="setCurrentPageNumber($event)" />
   <div class="page">
-    {{currentPageNumber == 0 ? "Тут оформление сайта" : "А тут контент"}}
+    <ng-container *ngIf="currentPageNumber == 0; else contentRef">
+      <app-design />
+    </ng-container>
+    <ng-template #contentRef>
+      <app-content />
+    </ng-template>
   </div>
 </div>

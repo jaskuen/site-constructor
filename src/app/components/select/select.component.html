@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <ng-container *ngIf="placeholder!=null">
+    <p>{{placeholder}}</p>
+  </ng-container>
+  <select class="block" name="select">
+    <option class="block" *ngFor="let option of options" value="{{option.text}}">
+      <p>{{option.text}}</p>
+    </option>
+  </select>
+</div>
+
+

@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <div class="tile tile-first">
+    <h3>Оформление сайта</h3>
+    <hr />
+    <div class="wrapper-row">
+      <div class="wrapper-column">
+        <div class="color-scheme">
+          <app-select
+            type='select'
+            [options]="selectThemeOptions"
+            placeholder="Цветовая схема"
+          />
+        </div>
+        <hr />
+        <div class="color-picker-group">
+          <p>Цвет фона</p>
+          <app-color-picker [bgColor]="Colors.LIGHT" text="Основной"/>
+          <app-color-picker [bgColor]="Colors.DARK" text="Дополнительный"/>
+          <app-color-picker [bgColor]="Colors.DARK_LIGHT_3" text="Полупрозрачный"/>
+          <app-color-picker [bgColor]="Colors.ACCENT12_LIGHT_2" text="Навигация и декор"/>
+        </div>
+        <hr />
+        <div class="color-picker-group">
+          <p>Цвет текстов</p>
+          <app-color-picker [bgColor]="Colors.DARK" text="На основном фоне"/>
+          <app-color-picker [bgColor]="Colors.LIGHT" text="На дополнительном"/>
+          <app-color-picker [bgColor]="Colors.LIGHT" text="На полупрозрачном"/>
+          <app-color-picker [bgColor]="Colors.LIGHT" text="На акцентном фоне"/>
+        </div>
+        <hr />
+        <app-select
+          type="select"
+          placeholder="Шрифт заголовков"
+          [options]="selectFontOptions"
+        />
+        <app-select
+          type="select"
+          placeholder="Шрифт основного текста"
+          [options]="selectFontOptions"
+        />
+      </div>
+      <div class="preview">
+        <div class="icon64">
+          <svg class="preview-img" />
+        </div>
+        <h4>Template preview</h4>
+      </div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="wrapper-column">
+      <h3>Логотип</h3>
+      <hr />
+      <app-alert
+        text="Рекомендовано загружать логотип на прозрачном фоне. Максимальный размер изображения 2 МБ. Поддерживаются форматы изображений JPG, PNG и GIF."
+      />
+    </div>
+  </div>
+</div>
+

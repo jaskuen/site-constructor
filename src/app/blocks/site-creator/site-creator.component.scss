@@ -5,11 +5,14 @@
   flex-direction: row;
 }
 
+.tabs {
+  z-index: 1;
+}
+
 .page {
-  margin-inline-start: -1px;
-  flex-grow: 1;
-  background: $LIGHT;
-  border: 1px solid $PRIMARY_LIGHT_7;
-  z-index: -1;
-  padding: 18px;
+  width: 100%;
+}
+
+.page-first {
+  border-top-left-radius: 0;
 }
