@@ -1,0 +1,48 @@
+@import "../../../colors";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+}
+
+.placeholder {
+  margin-inline-start: 8px;
+}
+
+input {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid $PRIMARY_LIGHT_6;
+  border-radius: 4px;
+}
+
+input:checked {
+  background-color: $ACCENT2_CALL_TO_ACTION;
+  border-color: $ACCENT2_CALL_TO_ACTION;
+  background-image: url("../../../../public/icons/check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input:disabled {
+  background-color: $PRIMARY_LIGHT_7;
+  border-color: $PRIMARY_LIGHT_7;
+  background-image: url("../../../../public/icons/check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.top-align {
+  justify-content: flex-start;
+  align-items: start;
+  margin-block-start: 2px;
+}

@@ -1,0 +1,55 @@
+@import "../../../colors";
+
+textarea {
+  background: none;
+  border: none;
+  width: 480px;
+  resize: none;
+  white-space: pre-wrap;
+  outline: none;
+  padding: 7px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 4px;
+  margin-block-end: 2px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: none;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: $PRIMARY_LIGHT_5;
+  border-radius: 2px;
+
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
+
+.height32 {
+  height: 32px;
+  white-space: none;
+  overflow: hidden;
+}
+
+.height110 {
+  height: 110px;
+}
+
+.height32, .height110 {
+  text-align: start;
+  padding: 0;
+}
+
+.textarea-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.globe-icon {
+  background-image: url("../../../../public/icons/globe.svg");
+}

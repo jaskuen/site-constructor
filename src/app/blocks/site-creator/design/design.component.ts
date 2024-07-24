@@ -5,6 +5,8 @@ import {ButtonComponent} from "../../../components/button/button.component";
 import {ColorPickerComponent} from "../../../components/color-picker/color-picker.component";
 import { Colors } from '../../../../colors';
 import {AlertComponent} from "../../../components/alert/alert.component";
+import {ImageLoaderComponent} from "../../../components/image-loader/image-loader.component";
+import {CheckboxComponent} from "../../../components/checkbox/checkbox.component";
 
 @Component({
   selector: 'app-design',
@@ -13,7 +15,9 @@ import {AlertComponent} from "../../../components/alert/alert.component";
     SelectComponent,
     ButtonComponent,
     ColorPickerComponent,
-    AlertComponent
+    AlertComponent,
+    ImageLoaderComponent,
+    CheckboxComponent
   ],
   templateUrl: './design.component.html',
   styleUrls: ['./design.component.scss', '../../../../colors.scss']

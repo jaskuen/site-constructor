@@ -13,13 +13,17 @@ import {RouterLink} from "@angular/router";
   styleUrl: './tabs.component.scss'
 })
 export class TabsComponent {
-  tabsArray: string[] = ['Оформление сайта', 'Контент'];
-  @Input() activeTab: number = 0;
+  tabsArray: string[] = []
 
+  @Input() activeTab: number = 0;
   @Output() tabChange = new EventEmitter<number>();
 
   changeTab(i: number): void {
     this.activeTab = i;
     this.tabChange.emit(this.activeTab);
+  }
+
+  constructor() {
+     this.tabsArray = ['Оформление сайта', 'Контент'];
   }
 }

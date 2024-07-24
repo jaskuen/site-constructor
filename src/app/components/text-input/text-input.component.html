@@ -1,0 +1,25 @@
+<div class="wrapper-row  {{info ? 'height110' : ''}}">
+  <ng-container *ngIf="label">
+    <p>{{label}}</p>
+  </ng-container>
+  <div class="wrapper-column no-gap margin240 {{info ? 'height110' : 'height32'}}">
+    <div class="block {{info ? 'height110' : 'height32'}}">
+      <textarea
+        type="text"
+        [(ngModel)]="value"
+        [maxLength]="symbolLimit ? symbolLimit : 524288"
+        (ngModelChange)="onValueChange($event)" >
+      </textarea>
+<!--      <ng-container *ngIf="link">-->
+<!--        <div class="icon18 textarea-icon">-->
+<!--          <svg class="globe-icon" />-->
+<!--        </div>-->
+<!--      </ng-container>-->
+    </div>
+    <ng-container *ngIf="symbolLimit">
+      <p class="placeholder small">Осталось символов: {{remaining()}}</p>
+    </ng-container>
+  </div>
+</div>
+
+

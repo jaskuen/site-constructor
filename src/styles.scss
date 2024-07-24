@@ -18,7 +18,7 @@ h3 {
   color: $PRIMARY;
 }
 
-p, select {
+p, select, textarea {
   font-family: Open Sans, serif;
   font-size: 14px;
   font-weight: 400;
@@ -28,6 +28,12 @@ p, select {
 
   white-space: nowrap;
   padding-block-end: 4px;
+}
+
+.small {
+  font-size: 12px;
+  line-height: 16px;
+  color: $PRIMARY_LIGHT_5;
 }
 
 h4 {
@@ -49,6 +55,7 @@ img, svg {
 }
 
 .block {
+  position: relative;
   display: flex;
   flex-direction: row;
   padding: 7px;
@@ -56,6 +63,12 @@ img, svg {
   border: 1px solid $PRIMARY_LIGHT_6;
   border-radius: 4px;
   width: fit-content;
+}
+
+.secondary {
+  border-color: $PRIMARY_LIGHT_5;
+  background-color: $LIGHT;
+  color: $ACCENT2_CALL_TO_ACTION;
 }
 
 .alert {
@@ -73,27 +86,82 @@ img, svg {
 }
 
 .icon18 {
+  min-width: 18px;
+  min-height: 18px;
   width: 18px;
   height: 18px;
 }
 
 .icon64 {
+  min-width: 64px;
+  min-height: 64px;
   width: 64px;
   height: 64px;
 }
 
+.image-preview {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border: 1px solid $PRIMARY_LIGHT_6;
+  border-radius: 8px;
+  align-content: center;
+  margin-inline-start: 16px;
+  margin-block-end: 16px;
+
+  img {
+    max-width: 144px;
+    max-height: 144px;
+    margin: 8px;
+  }
+}
+
+.no-margin {
+  margin-inline-start: 0;
+  margin-block-end: 0;
+}
+
 .wrapper-column {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   gap: 20px;
 }
 
+.gap10 {
+  gap: 10px;
+}
+
+.gap5 {
+  gap: 5px;
+}
+
+.no-gap {
+  gap: 0;
+}
+
 .wrapper-row {
+  position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   gap: 16px;
+}
+
+.margin193 {
+  position: absolute;
+  display: flex;
+  left: 193px;
+}
+
+.margin240 {
+  position: absolute;
+  display: flex;
+  left: 240px;
+}
+
+.center {
+  align-items: center;
 }
 
 .tile {
@@ -105,9 +173,9 @@ img, svg {
   flex-grow: 1;
   background: $LIGHT;
   border: 1px solid $PRIMARY_LIGHT_7;
-  border-radius: 5px;
+  border-radius: 8px;
 
-  padding: 18px;
+  padding: 26px;
 }
 
 .tile-first {

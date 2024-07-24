@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {SelectOption} from "../../../types";
 
@@ -14,7 +14,14 @@ import {SelectOption} from "../../../types";
   styleUrl: './select.component.scss'
 })
 export class SelectComponent {
-  @Input() type!: 'select' | 'color';
+  @Input() value!: string;
+  @Input() type!: 'primary' | 'secondary';
   @Input() placeholder!: string;
   @Input() options!: SelectOption[];
+  @Input() description!: string;
+  @Output() valueChange = new EventEmitter<string>();
+  onValueChange = (event: Event): void => {
+    this.value = (event.target as HTMLInputElement).value;
+    this.valueChange.emit(this.value);
+  }
 }

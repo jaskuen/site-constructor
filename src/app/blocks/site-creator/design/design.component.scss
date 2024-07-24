@@ -1,12 +1,5 @@
 @import "../../../../colors";
 
-.wrapper {
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .color-picker-group {
   display: flex;
   flex-direction: column;
@@ -15,7 +8,6 @@
 .preview {
   width: 65%;
   max-height: 500px;
-
   display: flex;
   flex-direction: column;
   align-items: center;

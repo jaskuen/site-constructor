@@ -1,1 +1,35 @@
-<p>content works!</p>
+<div class="wrapper-column">
+  <div class="tile tile-first">
+    <h3>Контент</h3>
+    <hr />
+    <div class="wrapper-row">
+      <p>Языки на сайте</p>
+      <div class="margin240 wrapper-row">
+        <app-checkbox
+          *ngFor="let option of selectLanguageOptions; let i = index"
+          [placeholder]="option.text!"
+          [main]="i == getMainLanguageId()"
+        />
+      </div>
+    </div>
+    <div class="wrapper-row select-language">
+      <p>Основной язык</p>
+      <app-select
+        type="secondary"
+        class="margin240"
+        [options]="selectLanguageOptions"
+        [(value)]="mainLanguage"
+        description="Основная языковая версия будет показана пользователям при первом заходе на сайт."
+      />
+    </div>
+    <hr />
+    <app-text-input label="Заголовок"/>
+    <hr />
+    <app-text-input
+      label="Описание сети"
+      [symbolLimit]="9000"
+      [info]="true"
+    />
+    <hr />
+  </div>
+</div>
