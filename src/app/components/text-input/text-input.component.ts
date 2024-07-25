@@ -15,7 +15,7 @@ import {FormsModule} from "@angular/forms";
 export class TextInputComponent {
   @Input() link: boolean = false;
   @Input() label!: string;
-  @Input() value!: string;
+  @Input() value: string = "";
   @Output() valueChanged = new EventEmitter<string>();
   @Input() symbolLimit!: number;
   @Input() info: boolean = false;
@@ -25,7 +25,10 @@ export class TextInputComponent {
     this.valueChanged.emit(this.value);
   }
 
-  remaining(): number {
+  remaining(): number | undefined {
+    if (!this.symbolLimit) {
+      return undefined;
+    }
     return this.symbolLimit - this.value.length;
   }
 }

@@ -17,11 +17,19 @@ export class ImageLoaderComponent {
   @Input() multiple: boolean = false
   @ViewChild('fileInput') fileInput: ElementRef | null = null
   imagePreviews: string[] = []
+  id: string  = v4();
+
+  setWrapperHeight(newFilesCount: number) {
+    let wrapper = document.getElementById(this.id) as HTMLDivElement;
+    let strings = Math.floor((this.imagePreviews.length + newFilesCount) / 4 ) + 1;
+    wrapper.style.height = 160 * strings + (16 * strings - 1) + 'px';
+  }
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement
     if (input.files) {
       this.processFiles(input.files)
+      this.setWrapperHeight(input.files.length)
     }
   }
 
@@ -42,5 +50,6 @@ export class ImageLoaderComponent {
 
   deleteImage(img: string) {
     this.imagePreviews = this.imagePreviews.filter(image => image !== img)
+    this.setWrapperHeight(0)
   }
 }

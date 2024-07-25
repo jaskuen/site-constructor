@@ -4,6 +4,7 @@ import {SelectComponent} from "../../../components/select/select.component";
 import {SelectOption} from "../../../../types";
 import {NgForOf} from "@angular/common";
 import {TextInputComponent} from "../../../components/text-input/text-input.component";
+import {ImageLoaderComponent} from "../../../components/image-loader/image-loader.component";
 
 @Component({
   selector: 'app-content',
@@ -12,7 +13,8 @@ import {TextInputComponent} from "../../../components/text-input/text-input.comp
     CheckboxComponent,
     SelectComponent,
     NgForOf,
-    TextInputComponent
+    TextInputComponent,
+    ImageLoaderComponent
   ],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss'

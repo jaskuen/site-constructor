@@ -9,13 +9,29 @@
   height: 160px;
 }
 
+.image-preview, .loader {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border: 1px solid $PRIMARY_LIGHT_6;
+  border-radius: 8px;
+  align-content: center;
+  margin-inline-end: 16px;
+  margin-block-end: 16px;
+
+  img {
+    max-width: 144px;
+    max-height: 144px;
+    margin: 8px;
+  }
+}
+
 .loader {
   display: flex;
   flex-direction: column;
-  width: 160px;
-  height: 160px;
+  min-width: 160px;
+  min-height: 160px;
   border: 2px dashed $PRIMARY_LIGHT_6;
-  border-radius: 8px;
   align-items: center;
   justify-content: center;
   cursor: pointer;

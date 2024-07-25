@@ -3,15 +3,16 @@
 textarea {
   background: none;
   border: none;
+  box-sizing: border-box;
   width: 480px;
   resize: none;
-  white-space: pre-wrap;
   outline: none;
-  padding: 7px;
+  padding-inline: 7px;
 }
 
 textarea::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
   margin-block-end: 2px;
 }
 
@@ -32,15 +33,24 @@ textarea::-webkit-scrollbar-thumb:hover {
 .height32 {
   height: 32px;
   white-space: none;
-  overflow: hidden;
+  overflow-x: auto;
+  textarea {
+    white-space: nowrap;
+    overflow-y: hidden;
+  }
 }
 
 .height110 {
   height: 110px;
+  textarea {
+    white-space: pre-wrap;
+  }
 }
 
 .height32, .height110 {
-  text-align: start;
+  text-align: center;
+  overflow-y: hidden;
+  text-align: center;
   padding: 0;
 }
 

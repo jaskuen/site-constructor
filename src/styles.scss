@@ -99,23 +99,6 @@ img, svg {
   height: 64px;
 }
 
-.image-preview {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  border: 1px solid $PRIMARY_LIGHT_6;
-  border-radius: 8px;
-  align-content: center;
-  margin-inline-start: 16px;
-  margin-block-end: 16px;
-
-  img {
-    max-width: 144px;
-    max-height: 144px;
-    margin: 8px;
-  }
-}
-
 .no-margin {
   margin-inline-start: 0;
   margin-block-end: 0;
