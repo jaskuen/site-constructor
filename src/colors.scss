@@ -332,3 +332,7 @@ $ACCENT8_WARNING_DARK_6: rgb(101, 76, 22);
 $ACCENT8_WARNING_DARK_7: rgb(75, 57, 16);
 $ACCENT8_WARNING_DARK_8: rgb(51, 38, 11);
 $ACCENT8_WARNING_DARK_9: rgb(25, 19, 5);
+
+@mixin set-background-color($color) {
+  background-color: $color;
+}

@@ -1,0 +1,14 @@
+@import "../../../colors";
+
+.wrapper {
+  z-index: 1000;
+}
+
+option:before {
+  content: " ";
+  height: 18px;
+  width: 18px;
+  border-radius: 100%;
+  display: inline-block;
+  background-color: orange;
+}
