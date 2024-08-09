@@ -6,16 +6,16 @@
     <div class="block {{info ? 'height110' : 'height32'}}">
       <textarea
         type="text"
+        class="{{link ? 'icon-space' : ''}}"
         [(ngModel)]="value"
-        [value]="value"
         [maxLength]="symbolLimit ? symbolLimit : 524288"
         (ngModelChange)="onValueChange($event)" >
       </textarea>
-<!--      <ng-container *ngIf="link">-->
-<!--        <div class="icon18 textarea-icon">-->
-<!--          <svg class="globe-icon" />-->
-<!--        </div>-->
-<!--      </ng-container>-->
+      <ng-container *ngIf="link">
+        <div class="icon18 textarea-icon">
+          <svg class="globe-icon" />
+        </div>
+      </ng-container>
     </div>
     <ng-container *ngIf="symbolLimit">
       <p class="placeholder small">Осталось символов: {{remaining()}}</p>

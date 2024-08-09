@@ -1,9 +1,14 @@
 <div class="wrapper">
-  <div class="block">
-    <span class="circle" [style.background-color]="bgColor"></span>
+  <div class="block" (click)="colorInput.click()">
+    <span class="circle" [style.background-color]="color"></span>
     <div class="icon18">
       <svg class="fill"/>
     </div>
+    <input
+      class="color-picker"
+      [(colorPicker)]="color"
+      (colorPickerChange)="onColorChange($event)"
+      #colorInput/>
   </div>
   <p>{{text}}</p>
 </div>

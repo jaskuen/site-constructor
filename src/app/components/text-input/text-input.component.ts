@@ -16,13 +16,11 @@ export class TextInputComponent {
   @Input() link: boolean = false;
   @Input() label!: string;
   @Input() value: string = "";
-  @Output() valueChanged = new EventEmitter<string>();
+  @Output() valueChange = new EventEmitter<string>();
   @Input() symbolLimit!: number;
   @Input() info: boolean = false;
-  onValueChange($event: Event) {
-    console.log('aaa');
-    this.value = ($event.target as HTMLInputElement).value;
-    this.valueChanged.emit(this.value);
+  onValueChange(event: string) {
+    this.valueChange.emit(event);
   }
 
   remaining(): number | undefined {

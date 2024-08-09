@@ -9,7 +9,5 @@ import {Component, Input} from '@angular/core';
 })
 export class ButtonComponent {
   @Input() text!: string;
-  handleClick() {
-    console.log('Click');
-  }
+  @Input() onClick: void = console.log('default');
 }

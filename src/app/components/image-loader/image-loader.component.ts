@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild, HostBinding} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild, HostBinding, EventEmitter, Output, AfterViewInit} from '@angular/core';
 import {v4} from "uuid";
 import {NgForOf, NgIf} from "@angular/common";
 
@@ -12,11 +12,12 @@ import {NgForOf, NgIf} from "@angular/common";
   templateUrl: './image-loader.component.html',
   styleUrl: './image-loader.component.scss'
 })
-export class ImageLoaderComponent {
+export class ImageLoaderComponent implements AfterViewInit {
   @Input() label = ""
   @Input() multiple: boolean = false
+  @Input() imagePreviews: string[] = []
+  @Output() imagePreviewsChange: EventEmitter<string[]> = new EventEmitter();
   @ViewChild('fileInput') fileInput: ElementRef | null = null
-  imagePreviews: string[] = []
   id: string  = v4();
 
   setWrapperHeight(newFilesCount: number) {
@@ -33,16 +34,17 @@ export class ImageLoaderComponent {
     }
   }
 
-  private processFiles(files: FileList) {
+  processFiles(files: FileList) {
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
       const reader = new FileReader()
       reader.onload = (e: any) => {
         if (this.multiple) {
-          this.imagePreviews.push(e.target.result)
+          this.imagePreviews = [...this.imagePreviews, e.target.result]
         } else {
           this.imagePreviews = [e.target.result]
         }
+        this.imagePreviewsChange.emit(this.imagePreviews)
       }
       reader.readAsDataURL(file)
     }
@@ -50,6 +52,11 @@ export class ImageLoaderComponent {
 
   deleteImage(img: string) {
     this.imagePreviews = this.imagePreviews.filter(image => image !== img)
+    this.setWrapperHeight(0)
+    this.imagePreviewsChange.emit(this.imagePreviews)
+  }
+
+  ngAfterViewInit() {
     this.setWrapperHeight(0)
   }
 }

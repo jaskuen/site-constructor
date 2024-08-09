@@ -6,9 +6,11 @@
       <p>Языки на сайте</p>
       <div class="margin240 wrapper-row">
         <app-checkbox
-          *ngFor="let option of selectLanguageOptions; let i = index"
-          [placeholder]="option.text!"
+          *ngFor="let language of pageData.languages; let i = index"
+          [(value)]="language.selected"
+          [placeholder]="language.name"
           [main]="i == getMainLanguageId()"
+          (change)="onChange()"
         />
       </div>
     </div>
@@ -17,27 +19,32 @@
       <app-select
         type="secondary"
         class="margin240"
-        [options]="selectLanguageOptions"
-        [(value)]="mainLanguage"
+        [options]="Languages"
+        [(value)]="pageData.mainLanguage.name"
+        (change)="onChange()"
         description="Основная языковая версия будет показана пользователям при первом заходе на сайт."
       />
     </div>
     <hr />
-    <app-text-input label="Заголовок"/>
+    <app-text-input label="Заголовок" [(value)]="pageData.header" (change)="onChange()"/>
     <hr />
     <app-text-input
       label="Описание сети"
+      [(value)]="pageData.description"
       [symbolLimit]="9000"
       [info]="true"
+      (change)="onChange()"
     />
     <hr />
-    <app-text-input label="VK.com"/>
-    <app-text-input label="Telegram"/>
-    <app-text-input label="YouTube"/>
+    <app-text-input label="VK.com" [link]="true" [(value)]="pageData.vkLink" (change)="onChange()"/>
+    <app-text-input label="Telegram" [link]="true" [(value)]="pageData.telegramLink" (change)="onChange()"/>
+    <app-text-input label="YouTube" [link]="true" [(value)]="pageData.youtubeLink" (change)="onChange()"/>
     <hr />
     <app-image-loader
       label="Загрузите фотографии"
       [multiple]="true"
+      [(imagePreviews)]="pageData.photosSrc"
+      (imagePreviewsChange)="onChange()"
     />
   </div>
 </div>

@@ -22,3 +22,14 @@
   background-image: url("../../../../public/icons/fill.svg");
   background-color: rgba(0, 0, 0, 0);
 }
+
+.color-picker {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  width: 0px;
+  height: 0px;
+  top: 50%;
+  left: 50px;
+  z-index: 1000;
+}

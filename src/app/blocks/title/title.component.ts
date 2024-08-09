@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ButtonComponent} from "../../components/button/button.component";
 
 @Component({
@@ -11,5 +11,5 @@ import {ButtonComponent} from "../../components/button/button.component";
   styleUrl: './title.component.scss'
 })
 export class TitleComponent {
-
+  @Input() onClick() {};
 }

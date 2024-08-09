@@ -56,10 +56,15 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .textarea-icon {
   position: absolute;
-  top: 8px;
+  top: 7px;
   right: 8px;
 }
 
 .globe-icon {
   background-image: url("../../../../public/icons/globe.svg");
+}
+
+.icon-space {
+  width: 448px;
+  margin-inline-end: 32px;
 }

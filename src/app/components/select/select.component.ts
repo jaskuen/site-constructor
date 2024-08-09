@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {SelectOption} from "../../../types";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-select',
@@ -8,7 +9,8 @@ import {SelectOption} from "../../../types";
   imports: [
     NgIf,
     NgForOf,
-    JsonPipe
+    JsonPipe,
+    FormsModule
   ],
   templateUrl: './select.component.html',
   styleUrl: './select.component.scss'
@@ -21,7 +23,9 @@ export class SelectComponent {
   @Input() description!: string;
   @Output() valueChange = new EventEmitter<string>();
   onValueChange = (event: Event): void => {
-    this.value = (event.target as HTMLInputElement).value;
+    let newOption = this.options.find(option => option.text === (event.target as HTMLSelectElement).value)!;
+    this.value = newOption.text;
+    console.log(this.value)
     this.valueChange.emit(this.value);
   }
 }
