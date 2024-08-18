@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {TabsComponent} from "../../components/tabs/tabs.component";
+import {TabsComponent} from "../../../components/tabs/tabs.component";
 import {NgIf} from "@angular/common";
-import {SelectComponent} from "../../components/select/select.component";
+import {SelectComponent} from "../../../components/select/select.component";
 import {RouterOutlet} from "@angular/router";
 import {DesignComponent} from "./design/design.component";
 import {ContentComponent} from "./content/content.component";
-import {ContentPageData, DesignPageData} from "../../../types";
+import {ContentPageData, DesignPageData} from "../../../../types";
 
 @Component({
   selector: 'app-site-creator',

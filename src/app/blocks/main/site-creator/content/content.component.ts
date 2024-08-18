@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {CheckboxComponent} from "../../../components/checkbox/checkbox.component";
-import {SelectComponent} from "../../../components/select/select.component";
-import {ContentPageData, LanguageType, SelectLanguageType, SelectOption} from "../../../../types";
+import {CheckboxComponent} from "../../../../components/checkbox/checkbox.component";
+import {SelectComponent} from "../../../../components/select/select.component";
+import {ContentPageData, LanguageType, SelectLanguageType, SelectOption} from "../../../../../types";
 import {NgForOf} from "@angular/common";
-import {TextInputComponent} from "../../../components/text-input/text-input.component";
-import {ImageLoaderComponent} from "../../../components/image-loader/image-loader.component";
-import {English, Italian, German, Russian, Languages} from "../../../../languages";
+import {TextInputComponent} from "../../../../components/text-input/text-input.component";
+import {ImageLoaderComponent} from "../../../../components/image-loader/image-loader.component";
+import {English, Italian, German, Russian, Languages} from "../../../../../languages";
 
 @Component({
   selector: 'app-content',

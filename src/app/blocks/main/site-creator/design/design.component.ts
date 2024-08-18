@@ -1,14 +1,14 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {SelectComponent} from "../../../components/select/select.component";
-import {ColorScheme, ColorSchemeName, DesignPageData, SelectOption} from "../../../../types";
-import {ButtonComponent} from "../../../components/button/button.component";
-import {ColorPickerComponent} from "../../../components/color-picker/color-picker.component";
-import { Colors } from '../../../../colors';
-import {AlertComponent} from "../../../components/alert/alert.component";
-import {ImageLoaderComponent} from "../../../components/image-loader/image-loader.component";
-import {CheckboxComponent} from "../../../components/checkbox/checkbox.component";
+import {SelectComponent} from "../../../../components/select/select.component";
+import {ColorScheme, ColorSchemeName, DesignPageData, SelectOption} from "../../../../../types";
+import {ButtonComponent} from "../../../../components/button/button.component";
+import {ColorPickerComponent} from "../../../../components/color-picker/color-picker.component";
+import { Colors } from '../../../../../colors';
+import {AlertComponent} from "../../../../components/alert/alert.component";
+import {ImageLoaderComponent} from "../../../../components/image-loader/image-loader.component";
+import {CheckboxComponent} from "../../../../components/checkbox/checkbox.component";
 import {ColorPickerModule} from "ngx-color-picker";
-import {ColorSchemes} from "../../../../colorSchemes";
+import {ColorSchemes} from "../../../../../colorSchemes";
 
 @Component({
   selector: 'app-design',
@@ -23,7 +23,7 @@ import {ColorSchemes} from "../../../../colorSchemes";
     ColorPickerModule
   ],
   templateUrl: './design.component.html',
-  styleUrls: ['./design.component.scss', '../../../../colors.scss']
+  styleUrls: ['./design.component.scss', '../../../../../colors.scss']
 })
 export class DesignComponent {
   @Input() pageData!: DesignPageData;

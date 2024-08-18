@@ -19,8 +19,13 @@ export class TextInputComponent {
   @Output() valueChange = new EventEmitter<string>();
   @Input() symbolLimit!: number;
   @Input() info: boolean = false;
+  @Input() login: boolean = false;
+  @Input() password: boolean = false;
   onValueChange(event: string) {
     this.valueChange.emit(event);
+    if (this.password) {
+
+    }
   }
 
   remaining(): number | undefined {

@@ -1,4 +1,4 @@
-@import "../../../../colors";
+@import "../../../../../colors";
 
 .color-picker-group {
   display: flex;
@@ -22,6 +22,6 @@
   width: 100%;
   height: 100%;
   background-color: $PRIMARY_LIGHT_8;
-  background-image: url("../../../../../public/icons/template-preview.svg");
+  background-image: url("../../../../../../public/icons/template-preview.svg");
   border-radius: 4px;
 }
