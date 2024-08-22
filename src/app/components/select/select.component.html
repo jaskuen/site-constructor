@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <ng-container *ngIf="placeholder!=null">
+    <p>{{placeholder}}</p>
+  </ng-container>
+  <div class="wrapper-column gap5">
+    <select
+      class="block {{type=='secondary' ? 'secondary' : ''}}"
+      name="select"
+      (change)="onValueChange($event)"
+      [ngModel]="value"
+      [value]="value"
+    >
+      <option class="block" *ngFor="let option of options" value="{{option.text}}">
+        <p>{{option.text}}</p>
+      </option>
+    </select>
+    <ng-container *ngIf="description!=null">
+      <p class="small">{{description}}</p>
+    </ng-container>
+  </div>
+</div>
+
+

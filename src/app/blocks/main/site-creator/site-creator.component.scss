@@ -1,0 +1,18 @@
+@import "../../../../colors";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.tabs {
+  z-index: 1;
+}
+
+.page {
+  width: 100%;
+}
+
+.page-first {
+  border-top-left-radius: 0;
+}

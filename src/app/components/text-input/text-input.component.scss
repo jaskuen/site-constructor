@@ -1,0 +1,78 @@
+@import "../../../colors";
+
+.login {
+  width: 100%;
+  input {
+    padding-inline-end: 0;
+    font-family: Open Sans, sans-serif;
+  }
+}
+
+textarea {
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  width: 480px;
+  resize: none;
+  outline: none;
+  padding-inline: 7px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  margin-block-end: 2px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: none;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: $PRIMARY_LIGHT_5;
+  border-radius: 2px;
+
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
+
+.height32 {
+  height: 32px;
+  white-space: none;
+  overflow-x: auto;
+  textarea {
+    white-space: nowrap;
+    overflow-y: hidden;
+  }
+}
+
+.height110 {
+  height: 110px;
+  textarea {
+    white-space: pre-wrap;
+  }
+}
+
+.height32, .height110 {
+  text-align: center;
+  overflow-y: hidden;
+  text-align: center;
+  padding: 0;
+}
+
+.textarea-icon {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+}
+
+.globe-icon {
+  background-image: url("../../../../public/icons/globe.svg");
+}
+
+.icon-space {
+  width: 448px;
+  margin-inline-end: 32px;
+}

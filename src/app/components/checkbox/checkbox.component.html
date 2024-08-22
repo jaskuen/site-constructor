@@ -1,0 +1,19 @@
+<div class="wrapper top-align">
+  <div class="checkbox">
+    <input
+      class="icon18"
+      type="checkbox"
+      [checked]="value"
+      (change)="onChange($event)"
+      [disabled]="main ? true : null"
+    >
+  </div>
+  <ng-container *ngIf="placeholder !== ''">
+    <div class="wrapper-column no-gap">
+      <p class="placeholder">{{placeholder}}</p>
+      <ng-container *ngIf="main">
+        <p class="placeholder small">Основной</p>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
