@@ -31,14 +31,21 @@ type ColorScheme = {
   },
 }
 
+type Image = {
+  id: string,
+  userId: string,
+  type: string,
+  imageFileBase64String: string,
+}
+
 type DesignPageData = ColorScheme & {
   colorSchemeName: ColorSchemeName,
   headersFont: FontType,
   mainTextFont: FontType,
-  logoSrc: string[],
+  logoSrc: Image[],
   logoBackgroundColor: string,
   removeLogoBackground: boolean,
-  faviconSrc: string[],
+  faviconSrc: Image[],
 }
 
 type ContentPageData = {
@@ -49,10 +56,15 @@ type ContentPageData = {
   vkLink: string,
   telegramLink: string,
   youtubeLink: string,
-  photosSrc: string[],
+  photosSrc: Image[],
 }
 
 type SiteConstructorData = DesignPageData & ContentPageData
+
+type AuthData = {
+  login: string,
+  password: string,
+}
 
 export type {
   SelectLanguageType,
@@ -63,4 +75,6 @@ export type {
   SiteConstructorData,
   ColorSchemeName,
   ColorScheme,
+  AuthData,
+  Image,
 }

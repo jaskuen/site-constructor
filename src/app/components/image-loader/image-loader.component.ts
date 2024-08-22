@@ -1,6 +1,7 @@
 import {Component, ElementRef, Input, ViewChild, HostBinding, EventEmitter, Output, AfterViewInit} from '@angular/core';
 import {v4} from "uuid";
 import {NgForOf, NgIf} from "@angular/common";
+import {Image} from "../../../types";
 
 @Component({
   selector: 'app-image-loader',
@@ -15,8 +16,9 @@ import {NgForOf, NgIf} from "@angular/common";
 export class ImageLoaderComponent implements AfterViewInit {
   @Input() label = ""
   @Input() multiple: boolean = false
-  @Input() imagePreviews: string[] = []
-  @Output() imagePreviewsChange: EventEmitter<string[]> = new EventEmitter();
+  @Input() type: string = "";
+  @Input() imagePreviews: Image[] = []
+  @Output() imagePreviewsChange: EventEmitter<Image[]> = new EventEmitter();
   @ViewChild('fileInput') fileInput: ElementRef | null = null
   id: string  = v4();
 
@@ -35,14 +37,21 @@ export class ImageLoaderComponent implements AfterViewInit {
   }
 
   processFiles(files: FileList) {
+    const userId = localStorage.getItem("userId")!;
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
       const reader = new FileReader()
       reader.onload = (e: any) => {
+        const result: Image = {
+          id: v4(),
+          userId: userId,
+          type: this.type,
+          imageFileBase64String: e.target.result,
+        }
         if (this.multiple) {
-          this.imagePreviews = [...this.imagePreviews, e.target.result]
+          this.imagePreviews = [...this.imagePreviews, result]
         } else {
-          this.imagePreviews = [e.target.result]
+          this.imagePreviews = [result]
         }
         this.imagePreviewsChange.emit(this.imagePreviews)
       }
@@ -50,8 +59,8 @@ export class ImageLoaderComponent implements AfterViewInit {
     }
   }
 
-  deleteImage(img: string) {
-    this.imagePreviews = this.imagePreviews.filter(image => image !== img)
+  deleteImage(img: Image) {
+    this.imagePreviews = this.imagePreviews.filter(image => image.imageFileBase64String !== img.imageFileBase64String)
     this.setWrapperHeight(0)
     this.imagePreviewsChange.emit(this.imagePreviews)
   }

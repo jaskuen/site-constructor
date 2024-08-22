@@ -2,6 +2,10 @@
 
 .login {
   width: 100%;
+  input {
+    padding-inline-end: 0;
+    font-family: Open Sans, sans-serif;
+  }
 }
 
 textarea {

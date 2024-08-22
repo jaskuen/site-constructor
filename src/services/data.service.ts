@@ -9,9 +9,13 @@ export class DataService {
   private apiUrl: string = "https://localhost:7299/api/SiteDataAPI";
 
   constructor(private http: HttpClient) {}
-
+  token: string | null = localStorage.getItem("token");
   postData(data: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+    console.log(this.token)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+      'Content-Type': 'application/json',
+    });
     return this.http.post<any>(this.apiUrl + "/GetData", data, {headers});
   }
 }

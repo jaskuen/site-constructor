@@ -1,11 +1,14 @@
 <ng-container *ngIf="password || login; else inputRef">
-  <div class="wrapper-column no-gap">
+  <div class="wrapper-column no-gap login">
     <ng-container *ngIf="label">
       <p>{{label}}</p>
     </ng-container>
     <input
+      [id]="id"
       type="{{password ? 'password' : 'text'}}"
       class="block login"
+      [(ngModel)]="value"
+      (ngModelChange)="onValueChange($event)"
     >
   </div>
 </ng-container>

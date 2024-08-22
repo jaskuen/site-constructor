@@ -9,5 +9,8 @@ import {ButtonComponent} from "../../../components/button/button.component";
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-
+  handleClick = () => {
+    localStorage.removeItem("token")
+    window.location.reload();
+  }
 }

@@ -5,7 +5,7 @@ import {ContentPageData, LanguageType, SelectLanguageType, SelectOption} from ".
 import {NgForOf} from "@angular/common";
 import {TextInputComponent} from "../../../../components/text-input/text-input.component";
 import {ImageLoaderComponent} from "../../../../components/image-loader/image-loader.component";
-import {English, Italian, German, Russian, Languages} from "../../../../../languages";
+import {Languages} from "../../../../../languages";
 
 @Component({
   selector: 'app-content',

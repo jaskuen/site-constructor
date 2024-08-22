@@ -1,5 +1,5 @@
-import { RouterOutlet } from '@angular/router';
-import {DataService} from "./data.service";
+import {Router, RouterOutlet} from '@angular/router';
+import {DataService} from "../services/data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {Component} from "@angular/core";
 
@@ -18,5 +18,12 @@ import {Component} from "@angular/core";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-
+  constructor(private dataService: DataService, private router: Router) {
+    const token = localStorage.getItem("token")
+    if (!token) {
+      this.router.navigate(["/login"])
+    } else {
+      this.router.navigate(["/"])
+    }
+  }
 }

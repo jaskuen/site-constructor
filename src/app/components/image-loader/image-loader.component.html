@@ -25,7 +25,7 @@
           />
         </div>
         <div class="image-preview" *ngFor="let img of imagePreviews" >
-          <img [src]="img" alt="Preview">
+          <img [src]="img.imageFileBase64String" alt="Preview">
           <div class="image-delete" (click)="deleteImage(img)" >
             <svg class="icon18 delete-icon" />
           </div>

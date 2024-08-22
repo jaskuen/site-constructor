@@ -43,6 +43,7 @@
     <app-image-loader
       label="Загрузите фотографии"
       [multiple]="true"
+      type="main"
       [(imagePreviews)]="pageData.photosSrc"
       (imagePreviewsChange)="onChange()"
     />
