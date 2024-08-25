@@ -1,0 +1,18 @@
+@import "../../../../colors";
+@import "../../../../fonts";
+
+h1 {
+  font-family: Roboto Condensed;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 40px;
+  text-align: left;
+  color: $PRIMARY;
+}
+
+.wrapper {
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
