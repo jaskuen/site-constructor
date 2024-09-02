@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/as8eU4lc6tC5AuKA2JAhOiqlUfScem6eaogt5aT73ioRjm8TR91Wcl0xlkbvEeS57HFcRzOprrDJpiwSe8Gag==",
+  "dgSpecHash": "5HwQmzDx8uAiy9DnCRKMOA2+0JHCzWfCp7kVdB30FUB2KVTF4zj9uFzNuHOohcTUQQBURbYnd/WMIK6/K4tCRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\SIteConstructor\\SiteConstructor.csproj",
+  "projectFilePath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\SIteConstructor\\SiteConstructor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jaskuen\\.nuget\\packages\\adaptivecards\\1.2.3\\adaptivecards.1.2.3.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
@@ -30,6 +30,7 @@
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
+    "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",

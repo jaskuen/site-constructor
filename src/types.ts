@@ -6,7 +6,7 @@ type SelectOption = {
   disabled?: boolean,
 }
 
-type FontType = "Franklin Gothic Demi" | "Open Sans" | "Roboto" | "Ariel"
+type FontType = "Franklin Gothic Medium" | "Open Sans" | "Roboto" | "Arial" // enum
 type LanguageCode = "ru-RU" | "en-US" | "de-DE" | "it-IT"
 type LanguageType = {
   code: LanguageCode,
@@ -77,4 +77,5 @@ export type {
   ColorScheme,
   AuthData,
   Image,
+  FontType,
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Domain\\Domain.csproj": {
+    "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Jaskuen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jaskuen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Jaskuen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jaskuen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +83,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\SIteConstructor\\Domain\\Domain.csproj"
+              "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\Domain\\Domain.csproj"
               }
             }
           }
@@ -98,6 +98,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

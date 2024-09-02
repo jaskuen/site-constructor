@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import {LoginComponent} from "./blocks/login/login.component";
-import {RegisterComponent} from "./blocks/register/register.component";
 import {MainComponent} from "./blocks/main/main.component";
+import {LoginComponent} from "./blocks/auth/login/login.component";
+import {RegisterComponent} from "./blocks/auth/register/register.component";
 
 export const routes: Routes = [
   {path: "login", component: LoginComponent},

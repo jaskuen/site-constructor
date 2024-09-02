@@ -4,7 +4,6 @@ body {
 
 h1 {
     color: white;
-    font-family: Nunito Sans;
     font-size: 32px;
     font-weight: 400;
     line-height: 43.65px;
@@ -23,7 +22,6 @@ footer {
     p
 
 {
-    font-family: Nunito Sans;
     font-size: 16px;
     font-weight: 300;
     line-height: 24px;
@@ -64,7 +62,6 @@ svg {
     left: 20px;
     padding-block: 21px;
     padding-inline: 12px;
-    background-color: white;
     img
 
 {
@@ -111,7 +108,6 @@ svg {
 
 {
     margin: 0;
-    font-family: Nunito Sans;
     font-size: 16px;
     font-weight: 300;
     line-height: 24px;
@@ -234,7 +230,6 @@ svg {
 
 {
     margin: 16px;
-    font-family: Nunito Sans;
     font-size: 14px;
     font-weight: 400;
     line-height: 19.1px;
@@ -263,7 +258,6 @@ svg {
 {
     max-width: 320px;
     margin: 0 auto;
-    font-family: Nunito Sans;
     font-size: 20px;
     font-weight: 600;
     line-height: 27.28px;
@@ -274,25 +268,12 @@ svg {
 p {
     max-width: 320px;
     margin: 0 auto;
-    font-family: Nunito Sans;
     font-size: 15px;
     font-weight: 300;
     line-height: 24px;
     text-align: center;
 }
 
-}
-
-.vk {
-    background-image: url("/images/vk.svg");
-}
-
-.youtube {
-    background-image: url("/images/youtube.svg");
-}
-
-.telegram {
-    background-image: url("/images/telegram.svg");
 }
 
 .vk, .youtube, .telegram {
@@ -443,7 +424,6 @@ p {
 @media (min-width: 1201px) {
     h1 {
         color: white;
-        font-family: Nunito Sans;
         font-size: 64px;
         font-weight: 400;
         line-height: 87.3px;
@@ -537,11 +517,6 @@ svg {
     align-items: center;
     justify-content: center;
     color: white;
-    svg
-
-{
-    background-image: url('../../static/images/arrowDown.svg');
-}
 
 }
 

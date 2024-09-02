@@ -1,6 +1,13 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/core';
 import {SelectComponent} from "../../../../components/select/select.component";
-import {ColorScheme, ColorSchemeName, DesignPageData, SelectOption} from "../../../../../types";
+import {
+  ColorScheme,
+  ColorSchemeName,
+  ContentPageData,
+  DesignPageData, FontType,
+  SelectOption,
+  SiteConstructorData
+} from "../../../../../types";
 import {ButtonComponent} from "../../../../components/button/button.component";
 import {ColorPickerComponent} from "../../../../components/color-picker/color-picker.component";
 import { Colors } from '../../../../../colors';
@@ -9,6 +16,7 @@ import {ImageLoaderComponent} from "../../../../components/image-loader/image-lo
 import {CheckboxComponent} from "../../../../components/checkbox/checkbox.component";
 import {ColorPickerModule} from "ngx-color-picker";
 import {ColorSchemes} from "../../../../../colorSchemes";
+import {SitePreviewComponent} from "../../../../components/site-preview/site-preview.component";
 
 @Component({
   selector: 'app-design',
@@ -20,7 +28,8 @@ import {ColorSchemes} from "../../../../../colorSchemes";
     AlertComponent,
     ImageLoaderComponent,
     CheckboxComponent,
-    ColorPickerModule
+    ColorPickerModule,
+    SitePreviewComponent
   ],
   templateUrl: './design.component.html',
   styleUrls: ['./design.component.scss', '../../../../../colors.scss']
@@ -30,16 +39,19 @@ export class DesignComponent {
   @Output() pageDataChange: EventEmitter<DesignPageData> = new EventEmitter()
 
   selectFontOptions: SelectOption[] = [{
-    text: 'Franklin Gothic Demi',
+    text: 'Franklin Gothic Medium',
   }, {
     text: 'Open Sans',
   }, {
     text: 'Roboto',
   }, {
-    text: 'Ariel',
+    text: 'Arial',
   }]
 
   onDataChange() {
+    if (this.pageData.removeLogoBackground) {
+      this.pageData.logoBackgroundColor = "none"
+    }
     this.pageDataChange.emit(this.pageData)
   }
   protected readonly Colors = Colors;

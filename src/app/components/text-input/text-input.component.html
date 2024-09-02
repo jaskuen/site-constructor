@@ -8,8 +8,12 @@
       type="{{password ? 'password' : 'text'}}"
       class="block login"
       [(ngModel)]="value"
+      [maxLength]="symbolLimit ? symbolLimit : 524288"
       (ngModelChange)="onValueChange($event)"
     >
+    <ng-container *ngIf="symbolLimit">
+      <p class="placeholder small">Осталось символов: {{remaining()}}</p>
+    </ng-container>
   </div>
 </ng-container>
 <ng-template #inputRef>

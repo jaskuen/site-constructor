@@ -32,8 +32,8 @@ export class MainComponent {
   @Input() designPageData: DesignPageData = {
     colorSchemeName: (ColorSchemes[0].text) as ColorSchemeName,
     ...this.currentColorScheme,
-    headersFont: 'Franklin Gothic Demi',
-    mainTextFont: 'Franklin Gothic Demi',
+    headersFont: 'Franklin Gothic Medium',
+    mainTextFont: 'Franklin Gothic Medium',
     logoSrc: [],
     logoBackgroundColor: '',
     removeLogoBackground: false,
@@ -62,6 +62,19 @@ export class MainComponent {
     photosSrc: [],
   }
   handleClick = async () => {
+    this.dataService.test()
+      .pipe(map(response => {
+        return response;
+      }),
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response)
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      })
     const data: SiteConstructorData = {
       ...this.contentPageData,
       ...this.designPageData,
@@ -74,6 +87,29 @@ export class MainComponent {
       .subscribe({
         next: (response) => {
           console.log("Data successfully posted", response)
+          this.dataService.downloadSite()
+            .pipe(map(response => {
+              return response;
+            }),
+            )
+            .subscribe({
+              next: (response) => {
+                console.log('Download site')
+                const url = window.URL.createObjectURL(response)
+                const a = document.createElement("a")
+                a.href = url
+                a.download = ''
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                  a.remove()
+                  window.URL.revokeObjectURL(url)
+                }, 100)
+              },
+              error: (error) => {
+                console.log("Error downloading site", error)
+              }
+            })
         },
         error: (error) => {
           console.log("Error posting data", error)

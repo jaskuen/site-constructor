@@ -1,19 +1,20 @@
 using System.Text;
+using Infrastructure;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using SiteConstructor.Data;
-using SiteConstructor.Domain.Repositories;
-using SiteConstructor.Infrastructure.Foundation.Repositories;
+using SiteConstructor.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var key = builder.Configuration.GetValue<string>("ApiSettings:Secret");
+
 // Add services to the container.
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<ISiteDataRepository, SiteDataRepository>();
+DependencyInjection.AddDependencies(builder.Services, builder.Configuration);
+builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 
-var key = builder.Configuration.GetValue<string>("ApiSettings:Secret");
 
 builder.Services.AddAuthentication(x =>
 {
@@ -28,8 +29,8 @@ builder.Services.AddAuthentication(x =>
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-            ValidateIssuer = true,
-            ValidateAudience = true,
+            //ValidateIssuer = true,
+            //ValidateAudience = true,
         };
     });
 
@@ -39,6 +40,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhostPorts", builder =>

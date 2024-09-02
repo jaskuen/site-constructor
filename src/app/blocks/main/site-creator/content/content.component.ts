@@ -25,13 +25,14 @@ export class ContentComponent {
   @Input() pageData!: ContentPageData
   @Output() pageDataChange: EventEmitter<ContentPageData> = new EventEmitter();
   onChange() {
+    this.pageData.languages[this.getMainLanguageId()].selected = true
     this.pageDataChange.emit(this.pageData)
   }
   getMainLanguageId(): number {
     return Languages.findIndex(option => option.text === this.pageData.mainLanguage.name);
   }
 
-  protected readonly Languages = Languages.map(language => {
+  protected readonly Languages = Languages.map((language, index) => {
     return {
       ...language,
       selected: false,

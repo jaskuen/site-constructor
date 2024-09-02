@@ -11,17 +11,31 @@ const images = {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const data = await fetch("./data/data.json?v=" + new Date().getTime())
-        .then(response => response.json())
+  const data = JSON.parse(window.data)
     if (data) {
-        console.log(data)
-        languageChanger.languages = data.Languages
+        languageChanger.languages = data.Languages.filter(element => {
+          return element.Selected
+        })
         images.main = data.PhotosSrc
         if (images.main.length == 0) {
-            document.getElementsByClassName('wrapper-main')[0].style.background = data.BackgroundColors.Additional
+          document.getElementsByClassName('wrapper-main')[0].style.background = data.BackgroundColors.Additional
         }
-        images.logo = data.LogoSrc[0]
+        if (data.LogoSrc.length > 0) {
+          images.logo = data.LogoSrc[0].ImageFileBase64String
+        }
         languageChanger.value = data.Languages[0].Code
+        if (languageChanger.languages.length <= 1) {
+          document.getElementById('language-changer').style.display = 'none'
+        }
+        if (!data.VkLink) {
+          document.getElementById('link-vk').style.display = 'none'
+        }
+        if (!data.YoutubeLink) {
+          document.getElementById('link-youtube').style.display = 'none'
+        }
+        if (!data.TelegramLink) {
+          document.getElementById('link-telegram').style.display = 'none'
+        }
     }
     document.getElementById('site-logo').src = images.logo
     document.getElementById('language-change-value').textContent = languageChanger.value
@@ -41,7 +55,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 const onLanguageClick = () => {
     const changer = document.getElementById('language-select-wrapper')
     if (!languageChanger.opened) {
-        console.log('opening language changer')
         const select = document.createElement('div')
         select.id = 'language-select'
         select.className = 'language-select'
@@ -67,7 +80,6 @@ const onLanguageClick = () => {
             }
         }
     } else {
-        console.log('closing language changer')
         const select = document.getElementById('language-select');
         select.remove()
     }
@@ -87,18 +99,17 @@ const setImage = (type, number) => {
         return;
     }
     if (number === 0 && type === 'arrow') {
-        image.src = images.main[number]
+        image.src = images.main[number].ImageFileBase64String
     } else {
-        console.log(images.current + number)
         image.remove()
         const imageBlock = document.getElementById('main-image')
         const newImage = document.createElement('img')
         document.getElementById(`image-selector-${images.current}`).checked = null
         if (type === "arrow") {
-            newImage.src = images.main[images.current + number]
+            newImage.src = images.main[images.current + number].ImageFileBase64String
             images.current += number
         } else {
-            newImage.src = images.main[number]
+            newImage.src = images.main[number].ImageFileBase64String
             images.current = number
         }
         document.getElementById(`image-selector-${images.current}`).checked = true

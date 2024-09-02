@@ -5,7 +5,7 @@
   <div class="{{multiple ? 'margin240' : 'margin193'}}">
     <ng-container *ngIf="multiple==false && imagePreviews.length == 1; else multipleRef">
       <div class="image-preview no-margin" >
-        <img [src]="imagePreviews[0]" alt="Preview">
+        <img [src]="imagePreviews[0].imageFileBase64String" alt="Preview">
         <div class="image-delete" (click)="deleteImage(imagePreviews[0])" >
           <svg class="icon18 delete-icon" />
         </div>

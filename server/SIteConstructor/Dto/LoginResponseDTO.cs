@@ -1,4 +1,4 @@
-﻿using SiteConstructor.Domain.Entities;
+using Domain.Models.Entities.LocalUser;
 
 namespace SiteConstructor.Dto;
 

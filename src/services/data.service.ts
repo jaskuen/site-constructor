@@ -18,4 +18,18 @@ export class DataService {
     });
     return this.http.post<any>(this.apiUrl + "/GetData", data, {headers});
   }
+  downloadSite(): Observable<Blob> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+    });
+    return this.http.get(this.apiUrl + "/DownloadResultSite", {
+      responseType: "blob"
+    });
+  }
+  test(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+    })
+    return this.http.get(this.apiUrl + "/test", {})
+  }
 }

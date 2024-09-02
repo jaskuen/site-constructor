@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = './'
 languageCode = 'en-US'
 title = 'My New Hugo Site'
 

@@ -42,4 +42,5 @@ export class TextInputComponent implements AfterViewInit {
     }
     return this.symbolLimit - this.value.length;
   }
+
 }

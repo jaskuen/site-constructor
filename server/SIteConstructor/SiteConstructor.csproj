@@ -28,4 +28,9 @@
     <Folder Include="site-creator\themes\first\content\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
