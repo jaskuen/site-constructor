@@ -3,7 +3,7 @@ import {SiteCreatorComponent} from "./site-creator/site-creator.component";
 import {TitleComponent} from "./title/title.component";
 import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
-import {DataService} from "../../../services/data.service";
+import {DataService} from "./api/data.service";
 import {ColorScheme, ColorSchemeName, ContentPageData, DesignPageData, SiteConstructorData} from "../../../types";
 import {ColorSchemes} from "../../../colorSchemes";
 import {English, German, Italian, Russian} from "../../../languages";

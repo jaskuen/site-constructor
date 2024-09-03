@@ -5,7 +5,7 @@ import {Router, RouterLink} from "@angular/router";
 import {AuthData} from "../../../../types";
 import {map} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
-import {popup} from "../../../../popup";
+import {popup} from "../popup";
 import {AuthService} from "../api/auth.service";
 
 @Component({
@@ -38,11 +38,8 @@ export class LoginComponent {
       )
       .subscribe({
         next: (response) => {
+          popup("Вы успешно вошли!")
           setTimeout(() => {
-            popup("Вы успешно вошли!")
-            console.log(response.result);
-            const jwtToken = response.result.token
-            localStorage.setItem("token", jwtToken);
             window.location.reload()
           }, 1000)
         },

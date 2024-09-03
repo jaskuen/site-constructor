@@ -14,7 +14,7 @@ public class UnitOfWork : IUnitOfWork
   {
     _dbContext = dbContext;
   }
-  public async void Commit()
+  public void Commit()
   {
     _dbContext.SaveChanges();
   }

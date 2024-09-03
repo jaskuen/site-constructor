@@ -40,6 +40,7 @@ public class SiteDataController : ControllerBase
         return Ok();
     }
 
+    [Authorize]
     [HttpGet("DownloadResultSite")]
     public IActionResult DownloadResultSite()
     {

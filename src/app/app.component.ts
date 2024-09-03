@@ -1,7 +1,8 @@
 import {Router, RouterOutlet} from '@angular/router';
-import {DataService} from "../services/data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {Component} from "@angular/core";
+import {CookieService} from "ngx-cookie-service";
+import {DataService} from "./blocks/main/api/data.service";
 
 
 @Component({
@@ -18,9 +19,10 @@ import {Component} from "@angular/core";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private dataService: DataService, private router: Router) {
-    const token = localStorage.getItem("token")
-    if (!token) {
+  constructor(private dataService: DataService, private router: Router, private cookieService: CookieService) {
+    const token = this.cookieService.get("tasty-cookies")
+    console.log(token)
+    if (token == "") {
       this.router.navigate(["/login"])
     } else {
       this.router.navigate(["/"])

@@ -5,7 +5,7 @@ import {TextInputComponent} from "../../../components/text-input/text-input.comp
 import {AuthData} from "../../../../types";
 import {map} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
-import {popup} from "../../../../popup";
+import {popup} from "../popup";
 import {AuthService} from "../api/auth.service";
 
 @Component({

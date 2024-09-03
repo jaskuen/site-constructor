@@ -293,3 +293,4 @@ C:\Users\Jaskuen\WebstormProjects\site-constructor\server\SIteConstructor\bin\De
 C:\Users\Jaskuen\WebstormProjects\site-constructor\server\SIteConstructor\bin\Debug\net8.0\Infrastructure.dll
 C:\Users\Jaskuen\WebstormProjects\site-constructor\server\SIteConstructor\bin\Debug\net8.0\Domain.pdb
 C:\Users\Jaskuen\WebstormProjects\site-constructor\server\SIteConstructor\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\Jaskuen\WebstormProjects\site-constructor\server\SIteConstructor\bin\Debug\net8.0\Microsoft.Net.Http.Headers.dll

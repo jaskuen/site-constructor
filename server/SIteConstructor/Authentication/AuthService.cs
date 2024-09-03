@@ -16,7 +16,7 @@ public interface IUserAuthenticationService
   /// </summary>
   /// <returns>If success, returns loginResponseDto, otherwise returns null</returns>
   bool IsUniqueUser(string username);
-  TokenDTO TryToLogin(LoginRequestDTO request);
+  Task<TokenDTO> TryToLogin(LoginRequestDTO request);
   Task<LocalUser> TryToRegister(RegistrationRequestDTO request);
 }
 
@@ -56,7 +56,7 @@ public class UserAuthenticationService : IUserAuthenticationService
     return user;
   }
 
-  public TokenDTO TryToLogin(LoginRequestDTO request)
+  public async Task<TokenDTO> TryToLogin(LoginRequestDTO request)
   {
     var account = _userRepository.Table.FirstOrDefault(account => account.Username == request.Login);
     if (account == null)

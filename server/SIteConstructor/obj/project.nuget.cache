@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5HwQmzDx8uAiy9DnCRKMOA2+0JHCzWfCp7kVdB30FUB2KVTF4zj9uFzNuHOohcTUQQBURbYnd/WMIK6/K4tCRg==",
+  "dgSpecHash": "wvFTXdH6/WPOMp871FNp8r7lZLGGtOkWZCrymdUDynnPLxedEKXGGzHpJGm4RqKi1cr1JJi4QNXpW2aOZdQptA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\server\\SIteConstructor\\SiteConstructor.csproj",
   "expectedPackageFiles": [
@@ -48,6 +48,7 @@
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.identitymodel.protocols\\7.1.2\\microsoft.identitymodel.protocols.7.1.2.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.1.2\\microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.1.2\\microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
+    "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.net.http.headers\\8.0.8\\microsoft.net.http.headers.8.0.8.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.rest.clientruntime\\2.3.24\\microsoft.rest.clientruntime.2.3.24.nupkg.sha512",
     "C:\\Users\\Jaskuen\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",

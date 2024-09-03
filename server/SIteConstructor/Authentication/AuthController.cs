@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using SiteConstructor.Domain.Repositories;
 using SiteConstructor.Dto;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.Bot.Connector;
 using System.Net;
 
 namespace SiteConstructor.Authentication;
@@ -13,16 +10,24 @@ public class AuthController : ControllerBase
 {
   private readonly IUserAuthenticationService _authService;
   private APIRequestDTO _response;
-  public AuthController(IUserAuthenticationService authService)
+  private readonly HttpContext _context;
+  public AuthController(IUserAuthenticationService authService, IHttpContextAccessor contextAccessor)
   {
     _authService = authService;
     _response = new();
+    _context = contextAccessor.HttpContext;
+  }
+
+  [HttpOptions]
+  public IActionResult Preflight()
+  {
+    return NoContent();
   }
 
   [HttpPost("login")]
   public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
   {
-    var loginResponse = _authService.TryToLogin(model);
+    var loginResponse = await _authService.TryToLogin(model);
     if (loginResponse == null || string.IsNullOrEmpty(loginResponse.Token))
     {
       _response.StatusCode = HttpStatusCode.BadRequest;
@@ -32,7 +37,12 @@ public class AuthController : ControllerBase
     }
     _response.StatusCode = HttpStatusCode.OK;
     _response.IsSuccess = true;
-    _response.Result = loginResponse;
+    _context.Response.Cookies.Append("tasty-cookies", loginResponse.Token, new CookieOptions
+      {
+        SameSite = SameSiteMode.None,
+        Secure = true
+      });
+    Console.WriteLine(loginResponse.Token);
     return Ok(_response);
   }
 
