@@ -1,20 +1,40 @@
 <div class="wrapper-column tile login">
   <h1>Вход в аккаунт</h1>
-  <app-text-input
-    label="Логин"
-    [(value)]="login"
-    [login]="true"
-  />
-  <app-text-input
-    label="Пароль"
-    [(value)]="password"
-    [password]="true"
-  />
-  <div class="wrapper-row registerLink">
-    <app-button
-      text="Войти"
-      [onClick]="handleLoginButtonClick"
-    />
-    <p routerLink="/register" >Нет аккаунта? Зарегистрироваться.</p>
-  </div>
+  <form class="wrapper-column" [formGroup]="authForm">
+    <mat-form-field >
+      <mat-label>Логин</mat-label>
+      <input matInput [formControl]="authForm.controls.username" name="Логин" placeholder="Логин">
+    </mat-form-field>
+
+    <mat-form-field >
+      <mat-label>Пароль</mat-label>
+      <input
+        matInput
+        [formControl]="authForm.controls.password"
+        name="Пароль"
+        placeholder="Пароль"
+        [type]="hide() ? 'password' : 'text'"
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()">
+        <mat-icon >
+          {{hide() ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+      </button>
+
+    </mat-form-field>
+
+    <div class="wrapper-row registerLink">
+      <app-button
+        text="Войти"
+        [onClick]="handleLoginButtonClick"
+      />
+      <p routerLink="/register" >Нет аккаунта? Зарегистрироваться.</p>
+    </div>
+  </form>
+
 </div>

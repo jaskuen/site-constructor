@@ -24,6 +24,12 @@ public class AuthController : ControllerBase
     return NoContent();
   }
 
+  [HttpPost("checkLogin")]
+  public bool CheckLogin([FromBody] CheckLoginDTO model)
+  {
+    return _authService.IsUniqueUser(model.Login);
+  }
+
   [HttpPost("login")]
   public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
   {
@@ -39,8 +45,8 @@ public class AuthController : ControllerBase
     _response.IsSuccess = true;
     _context.Response.Cookies.Append("tasty-cookies", loginResponse.Token, new CookieOptions
       {
-        SameSite = SameSiteMode.None,
-        Secure = true
+        SameSite = SameSiteMode.Lax,
+
       });
     Console.WriteLine(loginResponse.Token);
     return Ok(_response);

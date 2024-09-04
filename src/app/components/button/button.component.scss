@@ -23,3 +23,7 @@ button:hover {
 button:active {
   background: $ACCENT2_CALL_TO_ACTION_DARK_2;
 }
+
+button:disabled {
+  background: $DARK_LIGHT_7;
+}

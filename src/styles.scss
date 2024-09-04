@@ -1,3 +1,20 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$untitled1-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+:root {
+  @include mat.all-component-themes($untitled1-theme);
+}
+@include mat.core();
 @import "./colors";
 @import "./fonts";
 
@@ -187,3 +204,6 @@ img, svg {
 }
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

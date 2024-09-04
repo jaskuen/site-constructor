@@ -12,11 +12,19 @@ namespace SiteConstructor.Authentication;
 public interface IUserAuthenticationService
 {
   /// <summary>
+  /// Checks, if this login is free to use.
+  /// </summary>
+  /// <returns>If there is no user with that login, returns true, otherwise returns false</returns>
+  bool IsUniqueUser(string username);
+  /// <summary>
   /// Tryes to authenticate.
   /// </summary>
-  /// <returns>If success, returns loginResponseDto, otherwise returns null</returns>
-  bool IsUniqueUser(string username);
+  /// <returns>If success, returns token, otherwise returns null</returns>
   Task<TokenDTO> TryToLogin(LoginRequestDTO request);
+  /// <summary>
+  /// Tryes to register user.
+  /// </summary>
+  /// <returns>If success, returns local user, otherwise returns null</returns>
   Task<LocalUser> TryToRegister(RegistrationRequestDTO request);
 }
 

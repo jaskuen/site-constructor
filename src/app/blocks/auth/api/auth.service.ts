@@ -16,12 +16,19 @@ export class AuthService {
     return this.http.post<any>(this._apiUrl + "/login", data, {withCredentials: true, headers});
   }
 
+  public logout() {
+    this.cookieService.delete("tasty-cookies", "/");
+  }
+
+  public checkLogin(login: string): Observable<boolean> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+    return this.http.post<boolean>(this._apiUrl + "/checkLogin", { login }, {withCredentials: true, headers});
+  }
+
   public register(data: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
     return this.http.post<any>(this._apiUrl + "/register", data, {headers});
   }
 
-  public logout() {
-    this.cookieService.delete("tasty-cookies", "/");
-  }
+
 }
