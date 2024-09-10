@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="607a3cf5-6482-457c-9d02-2cb658d32891" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/alert.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/check.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/delete.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/fill.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/globe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/photo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/template-preview.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/ProjectEvaluation/siteconstructor.metadata.v7.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/ProjectEvaluation/siteconstructor.projects.v7.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/SIteConstructor/DesignTimeBuild/.dtbcache.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/SIteConstructor/config/applicationhost.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/SIteConstructor/v17/.futdcache.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/SIteConstructor/v17/.suo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Domain.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Models/Entities/Entity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Models/Entities/LocalUser/LocalUser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Models/ValueObjects/SiteData/SiteData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Models/ValueObjects/SiteData/SiteDataElements.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Models/ValueObjects/SiteData/SiteDataService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Repositories/IResopitory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Repositories/ISiteDataRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/Repositories/IUnitOfWork.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/bin/Debug/net8.0/Domain.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/bin/Debug/net8.0/Domain.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/bin/Debug/net8.0/Domain.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.GlobalUsings.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.csproj.BuildWithSkipAnalyzers" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/Domain.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/ref/Domain.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Debug/net8.0/refint/Domain.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Domain.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Domain.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/Domain.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Domain/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/ApplicationDbContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/DependencyInjection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/Infrastructure.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/Repositories/BaseRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/Repositories/SiteDataRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/Repositories/UnitOfWork.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/bin/Debug/net8.0/Domain.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/bin/Debug/net8.0/Domain.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/bin/Debug/net8.0/Infrastructure.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/bin/Debug/net8.0/Infrastructure.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/bin/Debug/net8.0/Infrastructure.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.GlobalUsings.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.csproj.BuildWithSkipAnalyzers" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/Infrastructure.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/ref/Infrastructure.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Debug/net8.0/refint/Infrastructure.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Infrastructure.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Infrastructure.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/Infrastructure.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Infrastructure/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Authentication/AuthConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Authentication/AuthController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Authentication/AuthService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Controllers/SiteDataController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Dto/APIRequestDTO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Dto/CheckLoginDTO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Dto/LoginRequestDTO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Dto/LoginResponseDTO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Dto/RegistrationRequestDTO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Dto/TokenDTO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Migrations/20240815181938_addUsersToDb.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Migrations/20240815181938_addUsersToDb.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/SIteConstructor.http" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/SiteConstructor.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/SiteConstructor.csproj.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/AdaptiveCards.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Azure.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Azure.Identity.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Humanizer.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Bot.Connector.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Bot.Schema.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.CodeAnalysis.Workspaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Data.SqlClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Identity.Client.Extensions.Msal.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Identity.Client.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.OpenApi.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Rest.ClientRuntime.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.SqlServer.Server.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Microsoft.Win32.SystemEvents.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Mono.TextTemplating.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/SIteConstructor.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/SIteConstructor.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/SiteConstructor.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/SiteConstructor.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/SiteConstructor.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.CodeDom.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Composition.AttributedModel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Composition.Convention.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Composition.Hosting.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Composition.Runtime.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Composition.TypedParts.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Drawing.Common.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Memory.Data.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Runtime.Caching.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Security.Permissions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Text.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/System.Windows.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/unix/lib/net6.0/Microsoft.Data.SqlClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/unix/lib/net6.0/System.Drawing.Common.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win/lib/net6.0/Microsoft.Data.SqlClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/site-creator/public/data/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/site-creator/static/data/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.GlobalUsings.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.MvcApplicationPartsAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.csproj.BuildWithSkipAnalyzers" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SIteConstructor.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/SiteConstructor.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/apphost.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/ref/SIteConstructor.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/refint/SIteConstructor.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/staticwebassets/msbuild.build.SIteConstructor.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.SIteConstructor.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.SIteConstructor.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/SIteConstructor.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/SIteConstructor.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/SiteConstructor.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/.hugo_build.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/archetypes/default.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/hugo.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/categories/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/data/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/images/logo.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/images/main/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/images/main/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/images/main/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/images/main/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/images/main/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/sitemap.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/public/tags/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/static/data/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/archetypes/default.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/assets/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/hugo.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/layouts/_default/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/static/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/SIteConstructor/site-creator/themes/first/theme.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/api/auth.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/api/auth.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/login/login.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/login/login.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/login/login.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/login/login.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/popup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/register/register.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/register/register.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/register/register.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/auth/register/register.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/api/data.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/api/data.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/footer/footer.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/footer/footer.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/footer/footer.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/footer/footer.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/header/header.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/header/header.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/header/header.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/header/header.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/main.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/main.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/main.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/main.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/content/content.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/content/content.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/content/content.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/content/content.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/design/design.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/design/design.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/design/design.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/design/design.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/site-creator.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/site-creator.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/site-creator.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/site-creator/site-creator.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/title/title.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/title/title.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/title/title.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blocks/main/title/title.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/alert/alert.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/alert/alert.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/alert/alert.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/alert/alert.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/button/button.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/button/button.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/button/button.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/button/button.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/checkbox/checkbox.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/checkbox/checkbox.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/checkbox/checkbox.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/checkbox/checkbox.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/color-picker/color-picker.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/color-picker/color-picker.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/color-picker/color-picker.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/color-picker/color-picker.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/image-loader/image-loader.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/image-loader/image-loader.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/image-loader/image-loader.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/image-loader/image-loader.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/select/select.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/select/select.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/select/select.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/select/select.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/site-preview/site-preview.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/site-preview/site-preview.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/site-preview/site-preview.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/site-preview/site-preview.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/tabs/tabs.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/tabs/tabs.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/tabs/tabs.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/tabs/tabs.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/text-input/text-input.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/text-input/text-input.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/text-input/text-input.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/text-input/text-input.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/certs/localhost.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/certs/localhost.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/colorSchemes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/colors.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/colors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fonts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/languages.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.spec.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jaskuen"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jaskuen/site-constructor.git",
+    "accountId": "a7278cab-9c40-4716-8703-cc82559a091d"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2ltSPLPEr3HUKGPj58imXCR3K6Z" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "server-with-front",
+    "last_opened_file_path": "C:/Users/Jaskuen/WebstormProjects/site-constructor/Application/Web",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="607a3cf5-6482-457c-9d02-2cb658d32891" name="Changes" comment="" />
+      <created>1725997855828</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725997855828</updated>
+      <workItem from="1725997858297" duration="68000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
