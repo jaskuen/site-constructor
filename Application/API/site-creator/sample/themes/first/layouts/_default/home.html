@@ -41,8 +41,8 @@
         }
 
         .vk path, .youtube path, .telegram path {
-            fill: var(--backgroundColors-additional) !important;
-            stroke: var(--backgroundColors-additional) !important;
+            fill: var(--backgroundColors-translucent) !important;
+            stroke: var(--backgroundColors-translucent) !important;
         }
 
         .container .checkmark:after {
@@ -55,6 +55,9 @@
 
         .container input:checked ~ .checkmark:after {
             background: var(--backgroundColors-main);
+        }
+        .info, footer {
+            background-color: var(--backgroundColors-main);
         }
         .info {
             h2 {
