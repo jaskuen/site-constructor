@@ -48,6 +48,7 @@ public class AuthController : ControllerBase
             SameSite = SameSiteMode.Lax,
 
         });
+        _response.Result = loginResponse;
         Console.WriteLine(loginResponse.Token);
         return Ok(_response);
     }

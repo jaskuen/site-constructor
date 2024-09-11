@@ -76,6 +76,7 @@ export class MainComponent {
         }
       })
     const data: SiteConstructorData = {
+      userId: localStorage.getItem("userId")!,
       ...this.contentPageData,
       ...this.designPageData,
     }
@@ -87,7 +88,7 @@ export class MainComponent {
       .subscribe({
         next: (response) => {
           console.log("Data successfully posted", response)
-          this.dataService.downloadSite()
+          this.dataService.downloadSite(localStorage.getItem("userId")!)
             .pipe(map(response => {
               return response;
             }),

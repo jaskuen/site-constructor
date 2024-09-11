@@ -33,21 +33,21 @@ public class SiteDataController : ControllerBase
         {
             throw new ArgumentNullException("Site data is null");
         }
-        _siteRepository.CreateHugoDirectory("");
-        _siteRepository.CreatePhotoFiles(siteData);
         _siteRepository.SetOrUpdateData(siteData);
-        string jsonPath = "./site-creator/static/data/data.json";
+        _siteRepository.CreateHugoDirectory();
+        _siteRepository.CreatePhotoFiles();
+        string jsonPath = $"./site-creator/{siteData.UserId}/static/data/data.json";
         System.IO.File.WriteAllText(jsonPath, JsonSerializer.Serialize(siteData));
-        _siteRepository.GetSiteData();
         return Ok();
     }
 
     [Authorize]
     [HttpGet("DownloadResultSite")]
-    public IActionResult DownloadResultSite()
+    public IActionResult DownloadResultSite([FromQuery] string userId)
     {
-        SiteDataService.BuildHugoSite("./site-creator");
-        string folderPath = Path.Combine("./site-creator/public");
+        SiteDataService.BuildHugoSite($"./site-creator/{userId}");
+        string hugoFolderPath = Path.Combine($"./site-creator/{userId}");
+        string siteFolderPath = Path.Combine(hugoFolderPath, "public");
         string zipFileName = "result.zip";
 
         string tempZipFilePath = Path.Combine(Path.GetTempPath(), zipFileName);
@@ -57,7 +57,7 @@ public class SiteDataController : ControllerBase
             System.IO.File.Delete(tempZipFilePath);
         }
 
-        ZipFile.CreateFromDirectory(folderPath, tempZipFilePath);
+        ZipFile.CreateFromDirectory(siteFolderPath, tempZipFilePath);
 
         var memory = new MemoryStream();
         using (var stream = new FileStream(tempZipFilePath, FileMode.Open))
@@ -74,6 +74,8 @@ public class SiteDataController : ControllerBase
             FileName = "result.zip",
             Inline = false,
         }.ToString());
+
+        Directory.Delete(hugoFolderPath, true);
 
         return File(memory, "application/zip", zipFileName);
     }

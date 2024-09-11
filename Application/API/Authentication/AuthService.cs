@@ -23,7 +23,7 @@ public interface IUserAuthenticationService
     /// <summary>
     /// Tryes to register user.
     /// </summary>
-    /// <returns>If success, returns local user, otherwise returns null</returns>
+    /// <returns>If success, returns token, otherwise returns null</returns>
     Task<LocalUser> TryToRegister(RegistrationRequestDTO request);
 }
 
@@ -82,6 +82,7 @@ public class UserAuthenticationService : IUserAuthenticationService
 
         var token = new TokenDTO()
         {
+            UserId = account.Id,
             Token = _tokenHandler.WriteToken(jwt),
             ExpireDate = expireDate,
         };

@@ -15,6 +15,7 @@ import {MatIcon} from "@angular/material/icon";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
+import {stringify} from "uuid";
 
 @Component({
   selector: 'app-login',
@@ -68,6 +69,8 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           popup("Вы успешно вошли!")
+          console.log(response)
+          localStorage.setItem("userId", response.result.userId.toString())
           setTimeout(() => {
             window.location.reload()
           }, 1000)

@@ -1,3 +1,5 @@
+import {HttpStatusCode} from "@angular/common/http";
+
 type SelectOption = {
   colorScheme?: ColorScheme,
   iconColor?: string,
@@ -59,11 +61,26 @@ type ContentPageData = {
   photosSrc: Image[],
 }
 
-type SiteConstructorData = DesignPageData & ContentPageData
+type SiteConstructorData = DesignPageData & ContentPageData & {
+  userId: string,
+}
 
 type AuthData = {
   login: string,
   password: string,
+}
+
+type LoginResponse = {
+  userId: number,
+  token: string,
+  expireDate: Date,
+}
+
+type ApiResponse<T> = {
+  statusCode: HttpStatusCode,
+  isSuccess: boolean,
+  errorMessages: Array<string>,
+  result: T,
 }
 
 export type {
@@ -76,6 +93,8 @@ export type {
   ColorSchemeName,
   ColorScheme,
   AuthData,
+  LoginResponse,
   Image,
   FontType,
+  ApiResponse,
 }

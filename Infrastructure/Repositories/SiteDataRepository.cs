@@ -10,10 +10,10 @@ public class SiteDataRepository : ISiteDataRepository
     {
         return _siteData;
     }
-    public void CreateHugoDirectory(string userId)
+    public void CreateHugoDirectory()
     {
         string hugoSamplePath = "./site-creator/sample";
-        string hugoUserPath = $"./site-creator/{userId}";
+        string hugoUserPath = $"./site-creator/{_siteData.UserId}";
         if (Directory.Exists(hugoSamplePath))
         {
             if (!Directory.Exists(hugoUserPath))
@@ -32,9 +32,9 @@ public class SiteDataRepository : ISiteDataRepository
         _siteData = siteData;
     }
 
-    public void CreatePhotoFiles(SiteData siteData)
+    public void CreatePhotoFiles()
     {
-        string folderPath = "./site-creator/themes/first/static/images";
+        string folderPath = $"./site-creator/{_siteData.UserId}/themes/first/static/images";
         if (Directory.Exists(folderPath))
         {
             string[] files = Directory.GetFiles(folderPath);
@@ -69,35 +69,34 @@ public class SiteDataRepository : ISiteDataRepository
                 throw new Exception("Неизвестный формат файла.");
         }
 
-        List<Image> images = siteData.PhotosSrc;
+        List<Image> images = _siteData.PhotosSrc;
         try
         {
-            if (siteData.FaviconSrc.Count > 0)
+            if (_siteData.FaviconSrc.Count > 0)
             {
-                Image favicon = siteData.FaviconSrc[0];
-                string faviconPath = $"./site-creator/themes/first/static/favicon.ico";
+                Image favicon = _siteData.FaviconSrc[0];
+                string faviconPath = $"./site-creator/{_siteData.UserId}/themes/first/static/favicon.ico";
                 string faviconBase64String = favicon.ImageFileBase64String.Split(',')[1];
                 byte[] faviconFileBytes = Convert.FromBase64String(faviconBase64String);
                 File.WriteAllBytes(faviconPath, faviconFileBytes);
-                siteData.FaviconSrc[0].ImageFileBase64String = "./favicon.ico";
+                _siteData.FaviconSrc[0].ImageFileBase64String = "./favicon.ico";
             }
-            if (siteData.LogoSrc.Count > 0)
+            if (_siteData.LogoSrc.Count > 0)
             {
-                Image logo = siteData.LogoSrc[0];
-                string logoPath = $"./site-creator/themes/first/static/images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
+                Image logo = _siteData.LogoSrc[0];
+                string logoPath = $"./site-creator/{_siteData.UserId}/themes/first/static/images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
                 string logoBase64String = logo.ImageFileBase64String.Split(',')[1];
                 byte[] logoFileBytes = Convert.FromBase64String(logoBase64String);
                 File.WriteAllBytes(logoPath, logoFileBytes);
-                siteData.LogoSrc[0].ImageFileBase64String = $"./images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
+                _siteData.LogoSrc[0].ImageFileBase64String = $"./images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
             }
             for (int i = 0; i < images.Count; i++)
             {
-                string filePath = $"./site-creator/themes/first/static/images/main/{i + 1}.{GetFileExtension(images[i].ImageFileBase64String)}";
+                string filePath = $"./site-creator/{_siteData.UserId}/themes/first/static/images/main/{i + 1}.{GetFileExtension(images[i].ImageFileBase64String)}";
                 string base64String = images[i].ImageFileBase64String.Split(',')[1];
                 byte[] fileBytes = Convert.FromBase64String(base64String);
-                Console.WriteLine("One file");
                 File.WriteAllBytes(filePath, fileBytes);
-                siteData.PhotosSrc[i].ImageFileBase64String = $"./images/main/{i + 1}.{GetFileExtension(images[i].ImageFileBase64String)}";
+                _siteData.PhotosSrc[i].ImageFileBase64String = $"./images/main/{i + 1}.{GetFileExtension(images[i].ImageFileBase64String)}";
             }
         }
         catch (Exception e)
