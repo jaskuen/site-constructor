@@ -4,7 +4,7 @@ import {
   ColorScheme,
   ColorSchemeName,
   ContentPageData,
-  DesignPageData, FontType,
+  DesignPageData, FontType, Image,
   SelectOption,
   SiteConstructorData
 } from "../../../../../types";
@@ -35,7 +35,7 @@ import {SitePreviewComponent} from "../../../../components/site-preview/site-pre
   styleUrls: ['./design.component.scss', '../../../../../colors.scss']
 })
 
-export class DesignComponent implements OnInit, OnChanges{
+export class DesignComponent implements OnInit{
   @Input() pageData!: DesignPageData;
   @Input() contentPageData!: ContentPageData;
   @Input() sitePreviewData!: ColorScheme;
@@ -57,12 +57,6 @@ export class DesignComponent implements OnInit, OnChanges{
       textColors: this.pageData.textColors,
     }
     this.pageData.logoBackgroundColor = Colors.LIGHT;
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if(changes['pageData']) {
-      console.log('data was changed')
-    }
   }
 
   onDataChange() {

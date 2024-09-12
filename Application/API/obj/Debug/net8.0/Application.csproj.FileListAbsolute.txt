@@ -148,4 +148,3 @@ C:\Users\Jaskuen\WebstormProjects\site-constructor\Application\API\obj\Debug\net
 C:\Users\Jaskuen\WebstormProjects\site-constructor\Application\API\obj\Debug\net8.0\Application.genruntimeconfig.cache
 C:\Users\Jaskuen\WebstormProjects\site-constructor\Application\API\obj\Debug\net8.0\ref\Application.dll
 C:\Users\Jaskuen\WebstormProjects\site-constructor\Application\API\bin\Debug\net8.0\site-creator\sample\static\data\data.json
-C:\Users\Jaskuen\WebstormProjects\site-constructor\Application\API\bin\Debug\net8.0\site-creator\7002\static\data\data.json

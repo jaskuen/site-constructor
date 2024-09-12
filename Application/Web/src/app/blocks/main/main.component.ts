@@ -62,19 +62,6 @@ export class MainComponent {
     photosSrc: [],
   }
   handleClick = async () => {
-    this.dataService.test()
-      .pipe(map(response => {
-        return response;
-      }),
-      )
-      .subscribe({
-        next: (response) => {
-          console.log(response)
-        },
-        error: (error) => {
-          console.error(error)
-        }
-      })
     const data: SiteConstructorData = {
       userId: localStorage.getItem("userId")!,
       ...this.contentPageData,

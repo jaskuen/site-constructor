@@ -1,10 +1,14 @@
-<div class="site-preview" [style.background-color]="colors.backgroundColors.main">
-  <div class="wrapper-main" [style.background-color]="colors.backgroundColors.additional">
+<div class="site-preview">
+  <div class="wrapper-main" [style.background]="imagesSrc.length == 0 ? colors.backgroundColors.additional : 'none'">
     <div class="site-logo" [style.background]="!removeLogoBackground && logoSrc && logoSrc[0] ? logoBackgroundColor : 'none'">
       <img id="site-logo" [style.display]="logoSrc.length > 0 ? 'block' : 'none'" [src]="logoSrc && logoSrc[0] && logoSrc[0].imageFileBase64String ? logoSrc[0].imageFileBase64String : null"/>
     </div>
     <div class="language-change" id="language-changer" >
-      <p [style.color]="colors.textColors.translucent" [style.fill]="colors.textColors.main" id="language-change-value">ru-RU</p>
+      <p
+        [style.color]="colors.textColors.translucent"
+        [style.fill]="colors.textColors.main"
+        [style.font-family]="mainTextFont"
+        id="language-change-value">ru-RU</p>
       <svg class="arrowDown" width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <g opacity="0.6">
           <path [style.fill]="colors.backgroundColors.navigation + ' !important'" d="M19.8688 9.00012L12.0797 16.0415L4.19763 8.91602L5.00001 8.18382L12.0797 14.5935L19.0665 8.26798L19.8688 9.00012Z" fill="none" />
@@ -25,22 +29,22 @@
     <div class="image-list" id="image-list">
     </div>
     <div class="header">
-      <h1 [style.color]="colors.textColors.translucent">Заголовок сайта</h1>
+      <h1 [style.color]="colors.textColors.translucent" [style.font-family]="headersFont">Заголовок сайта</h1>
     </div>
     <div class="main-image" id="main-image">
-      <img id="main-image-img" />
+      <img id="main-image-img" [src]="imagesSrc.length > 0 ? imagesSrc[current].imageFileBase64String : null"/>
     </div>
   </div>
   <div class="info" [style.background-color]="colors.backgroundColors.main">
-    <h2 [style.color]="colors.textColors.main">Заголовок сайта</h2>
-    <p [style.color]="colors.textColors.main">
+    <h2 [style.color]="colors.textColors.main" [style.font-family]="headersFont">Заголовок сайта</h2>
+    <p [style.color]="colors.textColors.main" [style.font-family]="mainTextFont">
       Являясь всего лишь частью общей картины, предприниматели в сети интернет неоднозначны и будут обнародованы. Имеется спорная точка зрения, гласящая примерно следующее: действия представителей оппозиции, превозмогая сложившуюся непростую экономическую ситуацию, объединены в целые кластеры себе подобных. Сложно сказать, почему стремящиеся вытеснить традиционное производство, нанотехнологии, превозмогая сложившуюся непростую экономическую ситуацию, функционально разнесены на независимые элементы. Как уже неоднократно упомянуто, активно развивающиеся страны третьего мира будут смешаны с не уникальными данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности.
     </p>
   </div>
   <footer [style.background-color]="colors.backgroundColors.main">
     <div class="footer-text" >
-      <p [style.color]="colors.textColors.main">© Заголовок сайта</p>
-      <p [style.color]="colors.textColors.main">2023 Официальный сайт</p>
+      <p [style.color]="colors.textColors.main" [style.font-family]="mainTextFont">© Заголовок сайта</p>
+      <p [style.color]="colors.textColors.main" [style.font-family]="mainTextFont">2023 Официальный сайт</p>
     </div>
     <div class="link-icons">
       <a id="link-vk" target="_blank">
