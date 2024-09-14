@@ -1,8 +1,8 @@
-namespace Application.Results;
+namespace Application.UseCases.Results;
 
 public class Error
 {
-    public string Reason;
+    public string Reason { get; set; }
 
     public Error( string reason )
     {

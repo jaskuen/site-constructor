@@ -1,22 +1,25 @@
 using Application.Authentication;
+using Application.UseCases.Authentication;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+IConfiguration configuration = builder.Configuration;
 
-DependencyInjection.AddDependencies(builder.Services, builder.Configuration);
-builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
-
+builder.Services.AddDependencies( builder.Configuration);
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddApiConfiguration(builder.Configuration);
+AuthConfigurator.AddAuthenticationServices(
+    builder.Services,
+    configuration.GetSection( "Authentication" ).Get<AuthConfiguration>()  );
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlServerOptions => sqlServerOptions.MigrationsAssembly( "Application" )));
 
 builder.Services.AddCors(options =>
 {
@@ -40,8 +43,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowLocalhostPorts");
-app.UseAuthentication();
-app.UseAuthorization();
+AuthConfigurator.AddAuthentication( app );
 
 app.MapControllers();
 

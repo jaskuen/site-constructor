@@ -1,4 +1,4 @@
-namespace Application.Results;
+namespace Application.UseCases.Results;
 
 public abstract class Result<TResult, TData> : Result
     where TResult : Result<TResult, TData>, new()
