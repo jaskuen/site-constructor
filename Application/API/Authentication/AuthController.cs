@@ -1,6 +1,11 @@
-using Application.Authentication.Results;
-using Application.Dto;
-using Application.Results;
+using Application.UseCases.Authentication.Commands.Register;
+using Application.UseCases.Authentication.Commands.Register.DTOs;
+using Application.UseCases.Authentication.Queries.CheckLogin;
+using Application.UseCases.Authentication.Queries.CheckLogin.DTOs;
+using Application.UseCases.Authentication.Queries.Login;
+using Application.UseCases.Authentication.Queries.Login.DTOs;
+using Application.UseCases.Results;
+using Application.UseCases.UseCases;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +15,18 @@ namespace Application.Authentication;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly IUserAuthenticationService _authService;
+    private readonly IQueryHandler<LoginQuery, LoginQueryResult> _loginHandler;
+    private readonly IQueryHandler<CheckLoginQuery, CheckLoginQueryResult> _checkLoginHandler;
+    private readonly ICommandHandler<RegisterCommand, Result> _registerHandler;
 
-    public AuthController(IUserAuthenticationService authService)
+    public AuthController(
+        IQueryHandler<LoginQuery, LoginQueryResult> loginHandler,
+        IQueryHandler<CheckLoginQuery, CheckLoginQueryResult> checkLoginHandler,
+        ICommandHandler<RegisterCommand, Result> registerHandler )
     {
-        _authService = authService;
+        _loginHandler = loginHandler;
+        _checkLoginHandler = checkLoginHandler;
+        _registerHandler = registerHandler;
     }
 
     [HttpOptions]
@@ -24,43 +36,23 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("checkLogin")]
-    public bool CheckLogin([FromBody] CheckLoginDTO model)
+    public async Task<IActionResult> CheckLogin([FromBody] CheckLoginRequestDto model)
     {
-        return _authService.IsUniqueUser(model.Login);
+        var result = await _checkLoginHandler.Handle( new CheckLoginQuery( model ) );
+        return result.IsSuccess ? Ok( result ) : BadRequest( result );
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
+    public async Task<IActionResult> Login([FromBody] LoginRequestDto model)
     {
-        TokenDTO? loginResponse = await _authService.TryToLogin(model);
-        if (loginResponse == null || string.IsNullOrEmpty(loginResponse.Token))
-        {
-            return BadRequest( LoginResult.Fail( new Error( "Username or password is incorrect" ) ) );
-        }
-
-        Response.Cookies.Append("tasty-cookies", loginResponse.Token, new CookieOptions
-        {
-            SameSite = SameSiteMode.Lax,
-        });
-
-        return Ok( LoginResult.Ok( loginResponse ) );
+        var result = await _loginHandler.Handle( new LoginQuery( model ) );
+        return result.IsSuccess ? Ok( result ) : BadRequest( result );
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegistrationRequestDTO model)
+    public async Task<IActionResult> Register([FromBody] RegistrationRequestDto model)
     {
-        bool ifUserNameUnique = _authService.IsUniqueUser(model.Login);
-        if (!ifUserNameUnique)
-        {
-            return BadRequest( Result.Fail( new Error( "Username already exists" ) ) );
-        }
-
-        var user = await _authService.TryToRegister(model);
-        if (user == null)
-        {
-            return BadRequest( Result.Fail( new Error( "Error while registering" ) ) );
-        }
-
-        return Ok( Result.Ok() );
+        var result = await _registerHandler.Handle( new RegisterCommand( model  ) );
+        return result.IsSuccess ? Ok( result ) : BadRequest( result );
     }
 }

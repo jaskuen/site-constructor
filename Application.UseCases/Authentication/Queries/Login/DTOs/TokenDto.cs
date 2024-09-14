@@ -1,6 +1,6 @@
-namespace Application.Authentication.Results;
+namespace Application.UseCases.Authentication.Queries.Login.DTOs;
 
-public class TokenDTO
+public class TokenDto
 {
     public int UserId { get; set; }
     public string Token { get; set; }

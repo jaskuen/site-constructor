@@ -1,4 +1,4 @@
-namespace Application.Results;
+namespace Application.UseCases.Results;
 
 public class Result
 {
