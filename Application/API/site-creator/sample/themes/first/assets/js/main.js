@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           images.logo = data.LogoSrc[0].ImageFileBase64String
         }
         if (data.RemoveLogoBackground || data.LogoSrc.length == 0) {
-          console.log("removing logo bg")
           document.getElementsByClassName('site-logo')[0].style.background = "none"
         }
         languageChanger.value = data.Languages[0].Code

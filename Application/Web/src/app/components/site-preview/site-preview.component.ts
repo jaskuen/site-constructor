@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ColorScheme, Image} from "../../../types";
 import {NgStyle} from "@angular/common";
 

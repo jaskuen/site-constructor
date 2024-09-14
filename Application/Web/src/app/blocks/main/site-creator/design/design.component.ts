@@ -60,9 +60,6 @@ export class DesignComponent implements OnInit{
   }
 
   onDataChange() {
-    if (this.pageData.removeLogoBackground) {
-      this.pageData.logoBackgroundColor = "none"
-    }
     this.sitePreviewData = {
       ...this.sitePreviewData,
       ...this.pageData,
