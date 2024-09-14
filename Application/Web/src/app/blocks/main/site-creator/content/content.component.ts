@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CheckboxComponent} from "../../../../components/checkbox/checkbox.component";
 import {SelectComponent} from "../../../../components/select/select.component";
 import {ContentPageData, LanguageType, SelectLanguageType, SelectOption} from "../../../../../types";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {TextInputComponent} from "../../../../components/text-input/text-input.component";
 import {ImageLoaderComponent} from "../../../../components/image-loader/image-loader.component";
 import {Languages} from "../../../../../languages";
@@ -15,7 +15,8 @@ import {Languages} from "../../../../../languages";
     SelectComponent,
     NgForOf,
     TextInputComponent,
-    ImageLoaderComponent
+    ImageLoaderComponent,
+    NgIf
   ],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss'
@@ -24,6 +25,7 @@ export class ContentComponent {
   @Input() mainLanguage: string = Languages[0].text
   @Input() pageData!: ContentPageData
   @Output() pageDataChange: EventEmitter<ContentPageData> = new EventEmitter();
+
   onChange() {
     this.pageData.languages[this.getMainLanguageId()].selected = true
     this.pageDataChange.emit(this.pageData)

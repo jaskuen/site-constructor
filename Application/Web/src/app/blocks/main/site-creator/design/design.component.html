@@ -1,4 +1,4 @@
-<div class="wrapper-column">
+<div *ngIf="pageData && contentPageData" class="wrapper-column">
   <div class="tile tile-first">
     <h3>Оформление сайта</h3>
     <hr />
@@ -14,7 +14,7 @@
           />
         </div>
         <hr />
-        <div class="color-picker-group gap10">
+        <div *ngIf="pageData.backgroundColors" class="color-picker-group gap10">
           <p>Цвет фона</p>
           <app-color-picker [(color)]="pageData.backgroundColors.main" text="Основной" (colorChange)="onDataChange()"/>
           <app-color-picker [(color)]="pageData.backgroundColors.additional" text="Дополнительный" (colorChange)="onDataChange()"/>

@@ -28,12 +28,10 @@ export class SiteCreatorComponent {
   @Output() contentPageDataChange = new EventEmitter<ContentPageData>();
 
   onDesignChange() {
-    console.log('changes')
     this.designPageDataChange.emit(this.designPageData);
   }
 
   onContentChange() {
-    console.log('changes')
     this.contentPageDataChange.emit(this.contentPageData);
   }
 

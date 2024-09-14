@@ -34,27 +34,25 @@ public class SiteDataRepository : ISiteDataRepository
 
     public void CreatePhotoFiles()
     {
-        string folderPath = $"./site-creator/{_siteData.UserId}/themes/first/static/images";
-        if (Directory.Exists(folderPath))
+        string folderPath = $"C:/Users/Jaskuen/Documents/GitHub/StaticData/site-constructor/{_siteData.UserId}";
+        if (!Directory.Exists(folderPath))
         {
-            string[] files = Directory.GetFiles(folderPath);
-
-            foreach (string file in files)
-            {
-                File.Delete(file);
-            }
-            if (Directory.Exists(folderPath + "/main"))
-            {
-                string[] mainImages = Directory.GetFiles(folderPath + "/main");
-                foreach (string image in mainImages)
-                {
-                    File.Delete(image);
-                }
-            }
+            Directory.CreateDirectory(folderPath);    
         }
-        else
+
+        string[] files = Directory.GetFiles(folderPath);
+
+        foreach (string file in files)
         {
-            Console.WriteLine("Папка не существует.");
+            File.Delete(file);
+        }
+        if (Directory.Exists(folderPath + "/main"))
+        {
+            string[] mainImages = Directory.GetFiles(folderPath + "/main");
+            foreach (string image in mainImages)
+            {
+                File.Delete(image);
+            }
         }
 
         static string GetFileExtension(string base64String)

@@ -2,11 +2,9 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {SelectComponent} from "../../../../components/select/select.component";
 import {
   ColorScheme,
-  ColorSchemeName,
   ContentPageData,
-  DesignPageData, FontType, Image,
+  DesignPageData,
   SelectOption,
-  SiteConstructorData
 } from "../../../../../types";
 import {ButtonComponent} from "../../../../components/button/button.component";
 import {ColorPickerComponent} from "../../../../components/color-picker/color-picker.component";
@@ -17,6 +15,7 @@ import {CheckboxComponent} from "../../../../components/checkbox/checkbox.compon
 import {ColorPickerModule} from "ngx-color-picker";
 import {ColorSchemes} from "../../../../../colorSchemes";
 import {SitePreviewComponent} from "../../../../components/site-preview/site-preview.component";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-design',
@@ -30,6 +29,7 @@ import {SitePreviewComponent} from "../../../../components/site-preview/site-pre
     CheckboxComponent,
     ColorPickerModule,
     SitePreviewComponent,
+    NgIf,
   ],
   templateUrl: './design.component.html',
   styleUrls: ['./design.component.scss', '../../../../../colors.scss']
@@ -52,11 +52,13 @@ export class DesignComponent implements OnInit{
   }]
 
   ngOnInit() {
-    this.sitePreviewData = {
-      backgroundColors: this.pageData.backgroundColors,
-      textColors: this.pageData.textColors,
+    if (this.pageData) {
+      this.sitePreviewData = {
+        backgroundColors: this.pageData.backgroundColors,
+        textColors: this.pageData.textColors,
+      }
+      this.pageData.logoBackgroundColor = Colors.LIGHT;
     }
-    this.pageData.logoBackgroundColor = Colors.LIGHT;
   }
 
   onDataChange() {

@@ -31,7 +31,7 @@ public class SiteDataController : ControllerBase
     {
         if (siteData == null)
         {
-            throw new ArgumentNullException("Site data is null");
+            throw new ArgumentNullException("Site data is null"); // return result.BadRequest...
         }
         _siteRepository.SetOrUpdateData(siteData);
         _siteRepository.CreateHugoDirectory();
