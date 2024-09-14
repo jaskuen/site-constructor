@@ -1,4 +1,4 @@
-namespace SiteConstructor.Dto;
+namespace Application.Authentication.Results;
 
 public class TokenDTO
 {

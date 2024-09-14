@@ -2,7 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace SiteConstructor.Authentication;
+namespace Application.Authentication;
 
 public static class AuthConfiguration
 {

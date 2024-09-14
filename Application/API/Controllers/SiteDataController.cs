@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SiteConstructor.Domain.Repositories;
 
-namespace SiteConstructor.Controllers;
+namespace Application.Controllers;
 
 [Route("api/SiteDataAPI")]
 [ApiController]

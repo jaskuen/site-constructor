@@ -1,6 +1,6 @@
+using Application.Authentication;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using SiteConstructor.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 

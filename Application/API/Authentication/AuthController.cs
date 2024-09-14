@@ -1,21 +1,20 @@
-using System.Net;
+using Application.Authentication.Results;
+using Application.Dto;
+using Application.Results;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using SiteConstructor.Dto;
 
-namespace SiteConstructor.Authentication;
+namespace Application.Authentication;
 
 [Route("api/UserAuth")]
 [ApiController]
 public class AuthController : ControllerBase
 {
     private readonly IUserAuthenticationService _authService;
-    private APIRequestDTO _response;
-    private readonly HttpContext _context;
-    public AuthController(IUserAuthenticationService authService, IHttpContextAccessor contextAccessor)
+
+    public AuthController(IUserAuthenticationService authService)
     {
         _authService = authService;
-        _response = new();
-        _context = contextAccessor.HttpContext;
     }
 
     [HttpOptions]
@@ -33,24 +32,18 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
     {
-        var loginResponse = await _authService.TryToLogin(model);
+        TokenDTO? loginResponse = await _authService.TryToLogin(model);
         if (loginResponse == null || string.IsNullOrEmpty(loginResponse.Token))
         {
-            _response.StatusCode = HttpStatusCode.BadRequest;
-            _response.IsSuccess = false;
-            _response.ErrorMessages.Add("Username or password is incorrect");
-            return BadRequest(_response);
+            return BadRequest( LoginResult.Fail( new Error( "Username or password is incorrect" ) ) );
         }
-        _response.StatusCode = HttpStatusCode.OK;
-        _response.IsSuccess = true;
-        _context.Response.Cookies.Append("tasty-cookies", loginResponse.Token, new CookieOptions
+
+        Response.Cookies.Append("tasty-cookies", loginResponse.Token, new CookieOptions
         {
             SameSite = SameSiteMode.Lax,
-
         });
-        _response.Result = loginResponse;
-        Console.WriteLine(loginResponse.Token);
-        return Ok(_response);
+
+        return Ok( LoginResult.Ok( loginResponse ) );
     }
 
     [HttpPost("register")]
@@ -59,22 +52,15 @@ public class AuthController : ControllerBase
         bool ifUserNameUnique = _authService.IsUniqueUser(model.Login);
         if (!ifUserNameUnique)
         {
-            _response.StatusCode = HttpStatusCode.BadRequest;
-            _response.IsSuccess = false;
-            _response.ErrorMessages.Add("Username already exists");
-            return BadRequest(_response);
+            return BadRequest( Result.Fail( new Error( "Username already exists" ) ) );
         }
+
         var user = await _authService.TryToRegister(model);
         if (user == null)
         {
-            _response.StatusCode = HttpStatusCode.BadRequest;
-            _response.IsSuccess = false;
-            _response.ErrorMessages.Add("Error while registering");
-            return BadRequest(_response);
+            return BadRequest( Result.Fail( new Error( "Error while registering" ) ) );
         }
 
-        _response.StatusCode = HttpStatusCode.OK;
-        _response.IsSuccess = true;
-        return Ok(_response);
+        return Ok( Result.Ok() );
     }
 }

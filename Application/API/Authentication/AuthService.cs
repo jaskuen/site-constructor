@@ -1,12 +1,13 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Application.Authentication.Results;
+using Application.Dto;
 using Domain.Models.Entities.LocalUser;
 using Domain.Repositories;
 using Microsoft.IdentityModel.Tokens;
-using SiteConstructor.Dto;
 
-namespace SiteConstructor.Authentication;
+namespace Application.Authentication;
 
 public interface IUserAuthenticationService
 {
@@ -19,7 +20,7 @@ public interface IUserAuthenticationService
     /// Tryes to authenticate.
     /// </summary>
     /// <returns>If success, returns token, otherwise returns null</returns>
-    Task<TokenDTO> TryToLogin(LoginRequestDTO request);
+    Task<TokenDTO?> TryToLogin(LoginRequestDTO request);
     /// <summary>
     /// Tryes to register user.
     /// </summary>
@@ -63,7 +64,7 @@ public class UserAuthenticationService : IUserAuthenticationService
         return user;
     }
 
-    public async Task<TokenDTO> TryToLogin(LoginRequestDTO request)
+    public async Task<TokenDTO?> TryToLogin(LoginRequestDTO request)
     {
         var account = _userRepository.Table.FirstOrDefault(account => account.Username == request.Login);
         if (account == null)

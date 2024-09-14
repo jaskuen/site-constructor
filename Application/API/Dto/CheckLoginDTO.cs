@@ -1,4 +1,4 @@
-namespace SiteConstructor.Dto;
+namespace Application.Dto;
 
 public class CheckLoginDTO
 {
