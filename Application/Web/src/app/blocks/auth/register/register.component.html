@@ -1,0 +1,62 @@
+<div id="register" class="wrapper-column tile register">
+  <h1>Регистрация</h1>
+  <form class="wrapper-column" [formGroup]="authForm">
+    <mat-form-field >
+      <mat-label>Логин</mat-label>
+      <input matInput [formControl]="authForm.controls.username" name="Логин" placeholder="Логин">
+      <mat-error *ngIf="authForm.controls.username.hasError('loginTaken')">
+        Логин уже занят
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field >
+      <mat-label>Пароль</mat-label>
+      <input
+        matInput
+        [formControl]="authForm.controls.password"
+        name="Пароль"
+        placeholder="Пароль"
+        [type]="hide() ? 'password' : 'text'"
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()">
+        <mat-icon >
+          {{hide() ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+      </button>
+
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Повторите пароль</mat-label>
+      <input
+        matInput
+        [formControl]="authForm.controls.repeatPassword"
+        name="Пароль"
+        placeholder="Пароль"
+        [type]="hideRepeated() ? 'password' : 'text'"
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickRepeatedEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hideRepeated()">
+        <mat-icon >
+          {{hideRepeated() ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+      </button>
+
+    </mat-form-field>
+  </form>
+  <div class="wrapper-row registerLink">
+    <app-button
+      text="Зарегистрироваться"
+      [onClick]="handleRegisterButtonClick"
+      [disabled]="disableButton"
+    />
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div [id]="id" class="wrapper">
+  <ng-container *ngIf="label!=''">
+    <p>{{label}}</p>
+  </ng-container>
+  <div class="{{multiple ? 'margin240' : 'margin193'}}">
+    <ng-container *ngIf="multiple==false && imagePreviews.length == 1; else multipleRef">
+      <div class="image-preview no-margin" >
+        <img [src]="imagePreviews[0].imageFileBase64String" alt="Preview">
+        <div class="image-delete" (click)="deleteImage(imagePreviews[0])" >
+          <svg class="icon18 delete-icon" />
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #multipleRef>
+      <div class="images-wrapper" [hidden]="imagePreviews.length == 0">
+        <div class="loader" (click)="fileInput.click()">
+          <svg class="icon64 photo-icon" />
+          <p>Добавить фото</p>
+          <input
+            type="file" #fileInput
+            (change)="onFileSelected($event)"
+            accept=".jpg, .png, .gif"
+            [attr.multiple]="multiple ? '' : null"
+            style="display: none;"
+          />
+        </div>
+        <div class="image-preview" *ngFor="let img of imagePreviews" >
+          <img [src]="img.imageFileBase64String" alt="Preview">
+          <div class="image-delete" (click)="deleteImage(img)" >
+            <svg class="icon18 delete-icon" />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
