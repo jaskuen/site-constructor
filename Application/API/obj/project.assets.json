@@ -4634,11 +4634,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Application\\API\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Application\\API\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Application\\API\\Application.csproj",
+      "projectPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Application\\API\\Application.csproj",
       "packagesPath": "C:\\Users\\Jaskuen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Application\\API\\obj\\",
+      "outputPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Application\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jaskuen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4655,11 +4655,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Domain\\Domain.csproj"
+            "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

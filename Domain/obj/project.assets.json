@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Jaskuen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jaskuen\\WebstormProjects\\site-constructor\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\Jaskuen\\Documents\\GitHub\\site-constructor\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jaskuen\\AppData\\Roaming\\NuGet\\NuGet.Config",
