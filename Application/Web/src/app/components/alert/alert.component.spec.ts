@@ -20,4 +20,9 @@ describe('AlertComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should change its value correctly', () => {
+    component.text = 'text';
+    fixture.detectChanges();
+    expect(component.text).toBe('text');
+  });
 });

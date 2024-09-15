@@ -2,10 +2,10 @@
   <app-tabs class="tabs" [activeTab]="currentPageNumber" (tabChange)="setCurrentPageNumber($event)" />
   <div class="page">
     <ng-container *ngIf="currentPageNumber == 0; else contentRef">
-      <app-design [(pageData)]="designPageData" [contentPageData]="contentPageData" (change)="onDesignChange()"/>
+      <app-design *ngIf="designPageData && contentPageData" [(pageData)]="designPageData" [contentPageData]="contentPageData" (change)="onDesignChange()"/>
     </ng-container>
     <ng-template #contentRef>
-      <app-content [(pageData)]="contentPageData" (change)="onContentChange()"/>
+      <app-content *ngIf="contentPageData" [(pageData)]="contentPageData" (change)="onContentChange()"/>
     </ng-template>
   </div>
 </div>

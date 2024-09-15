@@ -20,4 +20,9 @@ describe('ImageLoaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should change its text correctly', () => {
+    component.label = 'text';
+    fixture.detectChanges();
+    expect(component.label).toBe('text');
+  });
 });
