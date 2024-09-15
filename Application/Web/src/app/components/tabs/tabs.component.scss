@@ -24,8 +24,10 @@ button {
   border-inline-end: 1px solid $PRIMARY_LIGHT_7;
   height: 100%;
   width: 100%;
+  padding-inline-start: 16px;
   background: $PRIMARY_LIGHT_8;
   color: $PRIMARY;
+  text-align: left;
 }
 
 .active {

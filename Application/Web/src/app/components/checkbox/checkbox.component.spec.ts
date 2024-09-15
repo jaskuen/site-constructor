@@ -20,4 +20,9 @@ describe('CheckboxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should change its value correctly', () => {
+    component.placeholder = 'text';
+    fixture.detectChanges();
+    expect(component.placeholder).toBe('text');
+  });
 });

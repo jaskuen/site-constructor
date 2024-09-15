@@ -20,4 +20,9 @@ describe('TabsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should change its value correctly', () => {
+    component.activeTab = 1;
+    fixture.detectChanges();
+    expect(component.activeTab).toBe(1);
+  });
 });

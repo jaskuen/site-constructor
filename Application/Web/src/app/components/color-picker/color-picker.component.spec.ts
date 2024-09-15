@@ -20,4 +20,14 @@ describe('ColorPickerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should change its text correctly', () => {
+    component.text = 'text';
+    fixture.detectChanges();
+    expect(component.text).toBe('text');
+  });
+  it('should change its color correctly', () => {
+    component.color = "#000000";
+    fixture.detectChanges();
+    expect(component.color).toBe("#000000");
+  });
 });

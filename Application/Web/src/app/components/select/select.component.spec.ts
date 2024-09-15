@@ -20,4 +20,9 @@ describe('SelectComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should change its value correctly', () => {
+    component.value = 'text';
+    fixture.detectChanges();
+    expect(component.value).toBe('text');
+  });
 });
