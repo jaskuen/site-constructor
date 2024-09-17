@@ -76,11 +76,23 @@ type LoginResponse = {
   expireDate: Date,
 }
 
+type Error = {
+  reason: string,
+}
+
 type ApiResponse<T> = {
-  statusCode: HttpStatusCode,
   isSuccess: boolean,
-  errorMessages: Array<string>,
-  result: T,
+  error?: Error,
+  data: T,
+}
+
+type DownloadSiteRequest = {
+  userId: string,
+  fileName: string,
+}
+
+type GetSiteDataRequest = {
+  siteData: SiteConstructorData,
 }
 
 export type {
@@ -97,4 +109,6 @@ export type {
   Image,
   FontType,
   ApiResponse,
+  DownloadSiteRequest,
+  GetSiteDataRequest,
 }

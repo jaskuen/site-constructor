@@ -1,0 +1,11 @@
+<div class="overlay" *ngIf="isOpened" (mousedown)="closePopover()">
+  <div class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
+    <p>Название архива</p>
+    <input type="text" class="block" [(ngModel)]="siteName">
+    <app-button [onClick]="handleClick" text="Сгенерировать сайт"/>
+    <a [style.z-index]="1000" id="download" [download]="siteDownloadUrl">
+      Скачать
+<!--      <app-button [disabled]="siteDownloadUrl == ''" text="Скачать"/>-->
+    </a>
+  </div>
+</div>

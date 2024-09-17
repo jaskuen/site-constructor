@@ -1,12 +1,13 @@
 <html>
 <head>
-  {{ $data := getJSON "static/data/data.json" }}
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="./favicon.ico">
-  <title>{{ $data.Header }}</title>
-  {{ $styles := resources.Get "./css/main.css" }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}">
-  <style>
+    {{ $jsonPath := getenv "HUGO_JSON_DATA_PATH"}}
+    {{ $data := getJSON $jsonPath }}
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <title>{{ $data.Header }}</title>
+    {{ $styles := resources.Get "./css/main.css" }}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}">
+    <style>
     :root {
       --backgroundColors-main: {{ $data.BackgroundColors.Main | safeCSS }};
       --backgroundColors-additional: {{$data.BackgroundColors.Additional | safeCSS }};
@@ -71,12 +72,12 @@
             background-color: var(--logo-background)
         }
 
-  </style>
-  <script>
+    </style>
+    <script>
   window.data = {{ $data | jsonify }}
-  </script>
-  {{ $script := resources.Get "./js/main.js" }}
-  <script src="{{ $script.Permalink }}"></script>
+    </script>
+    {{ $script := resources.Get "./js/main.js" }}
+    <script src="{{ $script.Permalink }}"></script>
 </head>
     <body>
         <div class="wrapper-main">

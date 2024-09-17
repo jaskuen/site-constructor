@@ -4,8 +4,9 @@ namespace Domain.Models.ValueObjects.SiteData
 {
     public static class SiteDataService
     {
-        public static void BuildHugoSite(string sitePath)
+        public static void BuildHugoSite(string userId)
         {
+            Environment.SetEnvironmentVariable("HUGO_JSON_DATA_PATH", $"../../../../../StaticData/site-constructor/{userId}/data.json", EnvironmentVariableTarget.Process);
             try
             {
                 ProcessStartInfo processStartInfo = new ProcessStartInfo
@@ -16,7 +17,7 @@ namespace Domain.Models.ValueObjects.SiteData
                     RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                    WorkingDirectory = sitePath
+                    WorkingDirectory = "./site-creator/sample"
                 };
 
                 using (Process process = new Process())
