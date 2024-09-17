@@ -95,6 +95,14 @@ type GetSiteDataRequest = {
   siteData: SiteConstructorData,
 }
 
+type CheckLoginRequest = {
+  login: string,
+}
+
+type CheckLoginResponse = {
+  exists: boolean,
+}
+
 export type {
   SelectLanguageType,
   SelectOption,
@@ -111,4 +119,6 @@ export type {
   ApiResponse,
   DownloadSiteRequest,
   GetSiteDataRequest,
+  CheckLoginRequest,
+  CheckLoginResponse,
 }

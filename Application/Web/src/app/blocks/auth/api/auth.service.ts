@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CookieService} from "ngx-cookie-service";
-import {ApiResponse, AuthData, LoginResponse} from "../../../../types";
+import {ApiResponse, AuthData, CheckLoginRequest, CheckLoginResponse, LoginResponse} from "../../../../types";
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +22,9 @@ export class AuthService {
     localStorage.removeItem("userId");
   }
 
-  public checkLogin(login: string): Observable<boolean> {
+  public checkLogin(data: CheckLoginRequest): Observable<ApiResponse<CheckLoginResponse>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
-    return this.http.post<boolean>(this._apiUrl + "/checkLogin", { login }, {withCredentials: true, headers});
+    return this.http.post<ApiResponse<CheckLoginResponse>>(this._apiUrl + "/checkLogin",  data, {withCredentials: true, headers});
   }
 
   public register(data: AuthData): Observable<AuthData> {

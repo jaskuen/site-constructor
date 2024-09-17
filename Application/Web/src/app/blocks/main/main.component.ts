@@ -17,6 +17,8 @@ import {English, German, Italian, Russian} from "../../../languages";
 import {HttpClientModule} from "@angular/common/http";
 import {map} from "rxjs";
 import {PopoverComponent} from "../../components/popover/popover.component";
+import {saveAs} from "file-saver";
+import {popup} from "../auth/popup";
 
 @Component({
   selector: 'app-main',
@@ -73,7 +75,11 @@ export class MainComponent {
   @Input() isPopoverOpened = false
   @Input() siteDownloadUrl: string = "";
   handleClick = () => {
-    this.isPopoverOpened = true;
+    if (this.contentPageData.header.trim() == "") {
+      popup("Введите заголовок сайта")
+    } else {
+      this.isPopoverOpened = true;
+    }
   }
   generateSite = async (downloadSiteRequest: DownloadSiteRequest) => {
     const data: SiteConstructorData = {
@@ -91,6 +97,7 @@ export class MainComponent {
           console.log("Data successfully posted", response)
           this.dataService.downloadSite(downloadSiteRequest)
             .pipe(map(response => {
+              console.log(response)
               return response;
             }),
             )

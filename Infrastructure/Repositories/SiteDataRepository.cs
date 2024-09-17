@@ -19,27 +19,32 @@ public class SiteDataRepository : ISiteDataRepository
 
     public void ApplyDataToHugo()
     {
-        string folderPath = $"C:/Users/Jaskuen/Documents/GitHub/StaticData/site-constructor/{_siteData.UserId}";
+        string staticDataPath = "C:/Users/Jaskuen/Documents/GitHub/StaticData/site-constructor";
+        string folderPath = $"{staticDataPath}/{_siteData.UserId}";
         string imagesFolderPath = folderPath + "/images";
         if (!Directory.Exists(folderPath))
         {
             Directory.CreateDirectory(folderPath);    
         }
-
-        string[] files = Directory.GetFiles(folderPath);
-
-        foreach (string file in files)
+        if (!Directory.Exists(imagesFolderPath))
         {
-            File.Delete(file);
+            Directory.CreateDirectory(imagesFolderPath);
         }
-        if (Directory.Exists(imagesFolderPath + "main"))
-        {
-            string[] mainImages = Directory.GetFiles(imagesFolderPath + "/main");
-            foreach (string image in mainImages)
-            {
-                File.Delete(image);
-            }
-        }
+
+        //string[] files = Directory.GetFiles(folderPath);
+
+        //foreach (string file in files)
+        //{
+        //    File.Delete(file);
+        //}
+        //if (Directory.Exists(imagesFolderPath + "/main"))
+        //{
+        //    string[] mainImages = Directory.GetFiles(imagesFolderPath + "/main");
+        //    foreach (string image in mainImages)
+        //    {
+        //        File.Delete(image);
+        //    }
+        //}
 
         static string GetFileExtension(string base64String)
         {
@@ -64,6 +69,10 @@ public class SiteDataRepository : ISiteDataRepository
                 byte[] faviconFileBytes = Convert.FromBase64String(faviconBase64String);
                 File.WriteAllBytes(faviconPath, faviconFileBytes);
                 _siteData.FaviconSrc[0].ImageFileBase64String = imagesFolderPath + "/favicon.ico";
+            }
+            else
+            {
+                _siteData.FaviconSrc[0].ImageFileBase64String = staticDataPath + "/favicon_default.ico";
             }
             if (_siteData.LogoSrc.Count > 0)
             {

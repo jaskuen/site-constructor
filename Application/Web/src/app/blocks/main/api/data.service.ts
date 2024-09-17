@@ -26,7 +26,4 @@ export class DataService {
       withCredentials: true,
     });
   }
-  test(): Observable<any> {
-    return this.http.get(this.apiUrl + "/test")
-  }
 }

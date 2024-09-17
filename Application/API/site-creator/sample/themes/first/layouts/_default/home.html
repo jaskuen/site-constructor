@@ -3,7 +3,6 @@
     {{ $jsonPath := getenv "HUGO_JSON_DATA_PATH"}}
     {{ $data := getJSON $jsonPath }}
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>{{ $data.Header }}</title>
     {{ $styles := resources.Get "./css/main.css" }}
     <link rel="stylesheet" href="{{ $styles.Permalink }}">

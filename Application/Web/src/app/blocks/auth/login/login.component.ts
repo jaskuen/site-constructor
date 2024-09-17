@@ -78,7 +78,13 @@ export class LoginComponent {
           }, 1000)
         },
         error: (error) => {
-          popup("Ошибка входа!")
+          if (error && error.error && error.error.error) {
+            const errorMessage = error.error.error.reason;
+            if (errorMessage) {
+              popup("Ошибка входа: " + errorMessage)
+            }
+          }
+          popup("Ошибка сервера")
           console.log("Error logging in", error)
         }
       })

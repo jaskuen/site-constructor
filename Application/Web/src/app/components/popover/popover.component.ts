@@ -4,6 +4,7 @@ import {ButtonComponent} from "../button/button.component";
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {DownloadSiteRequest} from "../../../types";
+import {saveAs} from "file-saver";
 
 @Component({
   selector: 'app-popover',
@@ -37,6 +38,10 @@ export class PopoverComponent {
     this.generateSite(downloadSiteRequest);
   }
   handleDownloadClick = () => {
-    console.log(this.siteDownloadUrl);
+    saveAs(this.siteDownloadUrl, this.siteName);
+    window.URL.revokeObjectURL(this.siteDownloadUrl);
+    this.siteDownloadUrl = ""
+    this.siteName = ""
+    this.closePopover()
   };
 }

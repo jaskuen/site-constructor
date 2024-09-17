@@ -7,6 +7,7 @@ const languageChanger = {
 const images = {
     main: [],
     logo: "",
+    favicon: "",
     current: 0,
 }
 
@@ -22,6 +23,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         if (data.LogoSrc.length > 0) {
           images.logo = data.LogoSrc[0].ImageFileBase64String
+        }
+        if (data.FaviconSrc.length > 0) {
+            images.favicon = data.LogoSrc[0].ImageFileBase64String
+            var link = document.querySelector("link[rel~='stylesheet']");
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'icon';
+                document.head.appendChild(link);
+            }
+            link.href = images.favicon;
         }
         if (data.RemoveLogoBackground || data.LogoSrc.length == 0) {
           document.getElementsByClassName('site-logo')[0].style.background = "none"
