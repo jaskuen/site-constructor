@@ -5,7 +5,7 @@ import {Router, RouterLink} from "@angular/router";
 import {AuthData} from "../../../../types";
 import {map} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
-import {popup} from "../popup";
+import {popup} from "../../../components/popup";
 import {AuthService} from "../api/auth.service";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";

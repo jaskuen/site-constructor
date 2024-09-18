@@ -30,7 +30,10 @@ public class SiteDataRepository : ISiteDataRepository
         {
             Directory.CreateDirectory(imagesFolderPath);
         }
-
+        if (!Directory.Exists(imagesFolderPath + "/main"))
+        {
+            Directory.CreateDirectory(imagesFolderPath + "/main");
+        }
         //string[] files = Directory.GetFiles(folderPath);
 
         //foreach (string file in files)
@@ -68,7 +71,7 @@ public class SiteDataRepository : ISiteDataRepository
                 string faviconBase64String = favicon.ImageFileBase64String.Split(',')[1];
                 byte[] faviconFileBytes = Convert.FromBase64String(faviconBase64String);
                 File.WriteAllBytes(faviconPath, faviconFileBytes);
-                _siteData.FaviconSrc[0].ImageFileBase64String = imagesFolderPath + "/favicon.ico";
+                _siteData.FaviconSrc[0].ImageFileBase64String = faviconPath;
             }
             else
             {
@@ -81,7 +84,7 @@ public class SiteDataRepository : ISiteDataRepository
                 string logoBase64String = logo.ImageFileBase64String.Split(',')[1];
                 byte[] logoFileBytes = Convert.FromBase64String(logoBase64String);
                 File.WriteAllBytes(logoPath, logoFileBytes);
-                _siteData.LogoSrc[0].ImageFileBase64String = imagesFolderPath + $"/logo.{GetFileExtension(logo.ImageFileBase64String)}";
+                _siteData.LogoSrc[0].ImageFileBase64String = logoPath;
             }
             for (int i = 0; i < images.Count; i++)
             {
@@ -89,7 +92,7 @@ public class SiteDataRepository : ISiteDataRepository
                 string base64String = images[i].ImageFileBase64String.Split(',')[1];
                 byte[] fileBytes = Convert.FromBase64String(base64String);
                 File.WriteAllBytes(filePath, fileBytes);
-                _siteData.PhotosSrc[i].ImageFileBase64String = imagesFolderPath + $"/main/{images[i].Id}.{GetFileExtension(images[i].ImageFileBase64String)}";
+                _siteData.PhotosSrc[i].ImageFileBase64String = filePath;
             }
         }
         catch (Exception e)

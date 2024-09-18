@@ -17,8 +17,7 @@ import {English, German, Italian, Russian} from "../../../languages";
 import {HttpClientModule} from "@angular/common/http";
 import {map} from "rxjs";
 import {PopoverComponent} from "../../components/popover/popover.component";
-import {saveAs} from "file-saver";
-import {popup} from "../auth/popup";
+import {popup} from "../../components/popup";
 
 @Component({
   selector: 'app-main',

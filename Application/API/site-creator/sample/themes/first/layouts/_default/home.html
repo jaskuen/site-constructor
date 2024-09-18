@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>{{ $data.Header }}</title>
     {{ $styles := resources.Get "./css/main.css" }}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}">
+    <link rel="stylesheet" id="favicon" href="{{ $styles.Permalink }}">
     <style>
     :root {
       --backgroundColors-main: {{ $data.BackgroundColors.Main | safeCSS }};

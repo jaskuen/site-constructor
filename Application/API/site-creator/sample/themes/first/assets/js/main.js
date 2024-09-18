@@ -12,21 +12,21 @@ const images = {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const data = JSON.parse(window.data)
-    if (data) {
-        languageChanger.languages = data.Languages.filter(element => {
+  const parsedData = JSON.parse(window.data)
+    if (parsedData) {
+        languageChanger.languages = parsedData.Languages.filter(element => {
           return element.Selected
         })
-        images.main = data.PhotosSrc
+        images.main = parsedData.PhotosSrc
         if (images.main.length == 0) {
-          document.getElementsByClassName('wrapper-main')[0].style.background = data.BackgroundColors.Additional
+            document.getElementsByClassName('wrapper-main')[0].style.background = parsedData.BackgroundColors.Additional
         }
-        if (data.LogoSrc.length > 0) {
-          images.logo = data.LogoSrc[0].ImageFileBase64String
+        if (parsedData.LogoSrc.length > 0) {
+            images.logo = parsedData.LogoSrc[0].ImageFileBase64String
         }
-        if (data.FaviconSrc.length > 0) {
-            images.favicon = data.LogoSrc[0].ImageFileBase64String
-            var link = document.querySelector("link[rel~='stylesheet']");
+        if (parsedData.FaviconSrc.length > 0) {
+            images.favicon = parsedData.FaviconSrc[0].ImageFileBase64String
+            var link = document.getElementById("favicon")
             if (!link) {
                 link = document.createElement('link');
                 link.rel = 'icon';
@@ -34,20 +34,20 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             link.href = images.favicon;
         }
-        if (data.RemoveLogoBackground || data.LogoSrc.length == 0) {
+        if (parsedData.RemoveLogoBackground || parsedData.LogoSrc.length == 0) {
           document.getElementsByClassName('site-logo')[0].style.background = "none"
         }
-        languageChanger.value = data.Languages[0].Code
+        languageChanger.value = parsedData.Languages[0].Code
         if (languageChanger.languages.length <= 1) {
           document.getElementById('language-changer').style.display = 'none'
         }
-        if (!data.VkLink) {
+        if (!parsedData.VkLink) {
           document.getElementById('link-vk').style.display = 'none'
         }
-        if (!data.YoutubeLink) {
+        if (!parsedData.YoutubeLink) {
           document.getElementById('link-youtube').style.display = 'none'
         }
-        if (!data.TelegramLink) {
+        if (!parsedData.TelegramLink) {
           document.getElementById('link-telegram').style.display = 'none'
         }
     }
