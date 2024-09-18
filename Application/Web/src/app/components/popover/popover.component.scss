@@ -22,6 +22,14 @@
   align-items: center;
 }
 
+.loading {
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  resize: both;
+  background-image: url("../../../../public/loading.gif");
+}
+
 p {
   padding: 0;
 }

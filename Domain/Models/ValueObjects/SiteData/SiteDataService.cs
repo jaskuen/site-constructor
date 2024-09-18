@@ -6,7 +6,6 @@ namespace Domain.Models.ValueObjects.SiteData
     {
         public static void BuildHugoSite(string userId)
         {
-            Environment.SetEnvironmentVariable("HUGO_JSON_DATA_PATH", $"../../../../../StaticData/site-constructor/{userId}/data.json", EnvironmentVariableTarget.Process);
             try
             {
                 ProcessStartInfo processStartInfo = new ProcessStartInfo
@@ -17,7 +16,7 @@ namespace Domain.Models.ValueObjects.SiteData
                     RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                    WorkingDirectory = "./site-creator/sample"
+                    WorkingDirectory = $"./site-creator/{userId}"
                 };
 
                 using (Process process = new Process())
@@ -34,19 +33,15 @@ namespace Domain.Models.ValueObjects.SiteData
 
                     process.WaitForExit();
 
-                    if (process.ExitCode == 0)
+                    if (process.ExitCode != 0)
                     {
-                        Console.WriteLine("Сайт успешно собран.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Произошла ошибка при сборке сайта.");
+                        throw new Exception("Произошла ошибка при сборке сайта.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка: {ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
     }

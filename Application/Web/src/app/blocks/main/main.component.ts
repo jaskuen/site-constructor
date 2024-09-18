@@ -73,6 +73,7 @@ export class MainComponent {
   }
   @Input() isPopoverOpened = false
   @Input() siteDownloadUrl: string = "";
+  @Input() siteLoading: boolean = false;
   handleClick = () => {
     if (this.contentPageData.header.trim() == "") {
       popup("Введите заголовок сайта")
@@ -81,6 +82,7 @@ export class MainComponent {
     }
   }
   generateSite = async (downloadSiteRequest: DownloadSiteRequest) => {
+    this.siteLoading = true;
     const data: SiteConstructorData = {
       userId: localStorage.getItem("userId")!,
       ...this.contentPageData,
@@ -93,25 +95,25 @@ export class MainComponent {
       )
       .subscribe({
         next: (response) => {
-          console.log("Data successfully posted", response)
           this.dataService.downloadSite(downloadSiteRequest)
             .pipe(map(response => {
-              console.log(response)
-              return response;
+                this.siteLoading = false;
+                return response;
             }),
             )
             .subscribe({
               next: (response) => {
-                console.log('Download site')
                 this.siteDownloadUrl = window.URL.createObjectURL(response);
               },
               error: (error) => {
                 console.log("Error downloading site", error)
+                popup(error.error.error.reason)
               }
             })
         },
         error: (error) => {
           console.log("Error posting data", error)
+          popup(error.error.error.reason)
         }
       })
   }

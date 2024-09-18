@@ -27,6 +27,7 @@ public class GetSiteDataCommandHandler : ICommandHandler<GetSiteDataCommand, Res
         }
 
         _siteDataRepository.SetOrUpdateData(command.RequestDto.SiteData);
+        _siteDataRepository.CreateHugoDirectory();
         _siteDataRepository.ApplyDataToHugo();
 
         return Result.Ok();

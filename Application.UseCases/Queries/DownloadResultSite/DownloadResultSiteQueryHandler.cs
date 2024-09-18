@@ -39,7 +39,7 @@ public class DownloadResultSiteQueryHandler : IQueryHandler<DownloadResultSiteQu
         {
             return DownloadResultSiteQueryResult.Fail(new Error(ex.Message));
         }
-        string siteFolderPath = Path.Combine($"./site-creator/sample/public");
+        string siteFolderPath = Path.Combine($"./site-creator/{query.DownloadResultSiteDto.UserId}/public");
         string zipFileName = "result.zip";
 
         string tempZipFilePath = Path.Combine(Path.GetTempPath(), zipFileName);

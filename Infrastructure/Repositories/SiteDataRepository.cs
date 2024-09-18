@@ -17,37 +17,45 @@ public class SiteDataRepository : ISiteDataRepository
         _siteData = siteData;
     }
 
+    public void CreateHugoDirectory()
+    {
+        string hugoSamplePath = "./site-creator/sample";
+        string hugoUserPath = $"./site-creator/{_siteData.UserId}";
+        if (!Directory.Exists(hugoSamplePath))
+        {
+            Directory.CreateDirectory(hugoSamplePath);
+        }
+        if (!Directory.Exists(hugoUserPath))
+        {
+            Directory.CreateDirectory(hugoUserPath);
+        }
+        CopyDirectory(hugoSamplePath, hugoUserPath);
+    }
+
     public void ApplyDataToHugo()
     {
-        string staticDataPath = "C:/Users/Jaskuen/Documents/GitHub/StaticData/site-constructor";
-        string folderPath = $"{staticDataPath}/{_siteData.UserId}";
-        string imagesFolderPath = folderPath + "/images";
-        if (!Directory.Exists(folderPath))
+        string folderPath = $"./site-creator/{_siteData.UserId}/themes/first/static/images";
+        if (Directory.Exists(folderPath))
         {
-            Directory.CreateDirectory(folderPath);    
-        }
-        if (!Directory.Exists(imagesFolderPath))
-        {
-            Directory.CreateDirectory(imagesFolderPath);
-        }
-        if (!Directory.Exists(imagesFolderPath + "/main"))
-        {
-            Directory.CreateDirectory(imagesFolderPath + "/main");
-        }
-        //string[] files = Directory.GetFiles(folderPath);
+            string[] files = Directory.GetFiles(folderPath);
 
-        //foreach (string file in files)
-        //{
-        //    File.Delete(file);
-        //}
-        //if (Directory.Exists(imagesFolderPath + "/main"))
-        //{
-        //    string[] mainImages = Directory.GetFiles(imagesFolderPath + "/main");
-        //    foreach (string image in mainImages)
-        //    {
-        //        File.Delete(image);
-        //    }
-        //}
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+            if (Directory.Exists(folderPath + "/main"))
+            {
+                string[] mainImages = Directory.GetFiles(folderPath + "/main");
+                foreach (string image in mainImages)
+                {
+                    File.Delete(image);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Папка не существует.");
+        }
 
         static string GetFileExtension(string base64String)
         {
@@ -67,32 +75,28 @@ public class SiteDataRepository : ISiteDataRepository
             if (_siteData.FaviconSrc.Count > 0)
             {
                 Image favicon = _siteData.FaviconSrc[0];
-                string faviconPath = imagesFolderPath + "/favicon.ico";
+                string faviconPath = $"./site-creator/{_siteData.UserId}/themes/first/static/favicon.ico";
                 string faviconBase64String = favicon.ImageFileBase64String.Split(',')[1];
                 byte[] faviconFileBytes = Convert.FromBase64String(faviconBase64String);
                 File.WriteAllBytes(faviconPath, faviconFileBytes);
-                _siteData.FaviconSrc[0].ImageFileBase64String = faviconPath;
-            }
-            else
-            {
-                _siteData.FaviconSrc[0].ImageFileBase64String = staticDataPath + "/favicon_default.ico";
+                _siteData.FaviconSrc[0].ImageFileBase64String = "./favicon.ico";
             }
             if (_siteData.LogoSrc.Count > 0)
             {
                 Image logo = _siteData.LogoSrc[0];
-                string logoPath = imagesFolderPath + $"/logo.{GetFileExtension(logo.ImageFileBase64String)}";
+                string logoPath = $"./site-creator/{_siteData.UserId}/themes/first/static/images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
                 string logoBase64String = logo.ImageFileBase64String.Split(',')[1];
                 byte[] logoFileBytes = Convert.FromBase64String(logoBase64String);
                 File.WriteAllBytes(logoPath, logoFileBytes);
-                _siteData.LogoSrc[0].ImageFileBase64String = logoPath;
+                _siteData.LogoSrc[0].ImageFileBase64String = $"./images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
             }
             for (int i = 0; i < images.Count; i++)
             {
-                string filePath = imagesFolderPath + $"/main/{images[i].Id}.{GetFileExtension(images[i].ImageFileBase64String)}";
+                string filePath = $"./site-creator/{_siteData.UserId}/themes/first/static/images/main/{i + 1}.{GetFileExtension(images[i].ImageFileBase64String)}";
                 string base64String = images[i].ImageFileBase64String.Split(',')[1];
                 byte[] fileBytes = Convert.FromBase64String(base64String);
                 File.WriteAllBytes(filePath, fileBytes);
-                _siteData.PhotosSrc[i].ImageFileBase64String = filePath;
+                _siteData.PhotosSrc[i].ImageFileBase64String = $"./images/main/{i + 1}.{GetFileExtension(images[i].ImageFileBase64String)}";
             }
         }
         catch (Exception e)
@@ -100,7 +104,27 @@ public class SiteDataRepository : ISiteDataRepository
             Console.WriteLine(e.Message);
         }
 
-        string jsonPath = folderPath + "/data.json";
-        System.IO.File.WriteAllText(jsonPath, JsonSerializer.Serialize(_siteData));
+        string jsonPath = $"./site-creator/{_siteData.UserId}/static/data/data.json";
+        File.WriteAllText(jsonPath, JsonSerializer.Serialize(_siteData));
+    }
+
+    private void CopyDirectory(string sourceDir, string destDir)
+    {
+        DirectoryInfo dir = new DirectoryInfo(sourceDir);
+        if (!dir.Exists)
+        {
+            throw new DirectoryNotFoundException($"Source directory does not exist: {sourceDir}");
+        }
+        Directory.CreateDirectory(destDir);
+        foreach (FileInfo file in dir.GetFiles())
+        {
+            string targetFilePath = Path.Combine(destDir, file.Name);
+            file.CopyTo(targetFilePath, true);
+        }
+        foreach (DirectoryInfo subdir in dir.GetDirectories())
+        {
+            string newDestinationDir = Path.Combine(destDir, subdir.Name);
+            CopyDirectory(subdir.FullName, newDestinationDir);
+        }
     }
 }

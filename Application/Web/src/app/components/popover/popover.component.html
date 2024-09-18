@@ -8,8 +8,11 @@
       <p>.zip</p>
     </div>
     <app-button [onClick]="handleClick" text="Сгенерировать сайт"/>
+    <p [style.display]="siteLoading ? 'block' : 'none'" >
+      Ожидание сервера...
+    </p>
     <a [style.z-index]="1000" id="download" [download]="siteDownloadUrl">
-      <app-button [disabled]="siteDownloadUrl == ''" text="Скачать" [onClick]="handleDownloadClick"/>
+      <app-button [style.display]="siteDownloadUrl == '' ? 'none' : 'block'" text="Скачать" [onClick]="handleDownloadClick"/>
     </a>
   </div>
 </div>

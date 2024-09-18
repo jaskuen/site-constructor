@@ -6,5 +6,6 @@ public interface ISiteDataRepository
 {
     public SiteData GetSiteData();
     public void SetOrUpdateData(SiteData siteData);
+    public void CreateHugoDirectory();
     public void ApplyDataToHugo();
 }

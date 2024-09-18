@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TextInputComponent} from "../text-input/text-input.component";
 import {ButtonComponent} from "../button/button.component";
-import {NgIf} from "@angular/common";
+import {NgIf, NgOptimizedImage} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {DownloadSiteRequest} from "../../../types";
 import {saveAs} from "file-saver";
@@ -15,7 +15,8 @@ import {popup} from "../popup";
     ButtonComponent,
     NgIf,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss'
@@ -26,7 +27,7 @@ export class PopoverComponent {
   @Input() isOpened: boolean = false;
   @Output() isOpenedChange = new EventEmitter<boolean>();
   @Input() siteDownloadUrl: string = "";
-
+  @Input() siteLoading: boolean = false;
   fileNameControl = new FormControl(this.siteName, [
     Validators.required, Validators.pattern(/^[a-zA-Z0-9_-]+$/),
   ]);
