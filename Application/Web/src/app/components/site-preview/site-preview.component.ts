@@ -30,12 +30,16 @@ export class SitePreviewComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-      if (this.imagesSrc.length > 1) {
-        document.getElementById('arrowLeft')!.addEventListener('click', () => this.changePhoto(-1))
-        document.getElementById('arrowRight')!.addEventListener('click', () => this.changePhoto(1))
+    const arrowLeft = document.getElementById('arrowLeft')
+    const arrowRight = document.getElementById('arrowRight')
+    if (arrowLeft && arrowRight) {
+      if (this.imagesSrc && this.imagesSrc.length > 1) {
+        arrowLeft.addEventListener('click', () => this.changePhoto(-1))
+        arrowLeft.addEventListener('click', () => this.changePhoto(1))
       } else {
-        document.getElementById('arrowLeft')!.style.display = 'none'
-        document.getElementById('arrowRight')!.style.display = 'none'
+        arrowLeft.style.display = 'none'
+        arrowRight.style.display = 'none'
       }
     }
+  }
 }
