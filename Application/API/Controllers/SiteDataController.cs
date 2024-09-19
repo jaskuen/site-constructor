@@ -1,6 +1,12 @@
 using System.IO.Compression;
 using System.Net.Mime;
 using System.Text.Json;
+using Application.UseCases.Commands.GetSiteData;
+using Application.UseCases.Commands.GetSiteData.DTOs;
+using Application.UseCases.Queries.DownloadResultSite;
+using Application.UseCases.Queries.DownloadResultSite.DTOs;
+using Application.UseCases.Results;
+using Application.UseCases.UseCases;
 using Domain.Models.ValueObjects.SiteData;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,71 +18,30 @@ namespace Application.Controllers;
 [ApiController]
 public class SiteDataController : ControllerBase
 {
-    private readonly ISiteDataRepository _siteRepository;
-    public SiteDataController(ISiteDataRepository siteRepository)
+    private readonly ICommandHandler<GetSiteDataCommand, Result> _getDataHandler;
+    private readonly IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> _downloadSiteHandler;
+    public SiteDataController(
+            ICommandHandler<GetSiteDataCommand, Result> getDataHandler,
+            IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> downloadSiteHandler
+        )
     {
-        _siteRepository = siteRepository;
-    }
-
-    [HttpGet("test")]
-    [Authorize]
-    public IActionResult Test()
-    {
-        return Ok();
-    }
+        _getDataHandler = getDataHandler;
+        _downloadSiteHandler = downloadSiteHandler;
+    }   
 
     [Authorize]
     [HttpPost("GetData")]
-    public IActionResult GetData([FromBody] SiteData siteData)
+    public async Task<IActionResult> GetData([FromBody] GetSiteDataRequestDto model)
     {
-        if (siteData == null)
-        {
-            throw new ArgumentNullException("Site data is null"); // return result.BadRequest...
-        }
-        _siteRepository.SetOrUpdateData(siteData);
-        _siteRepository.CreateHugoDirectory();
-        _siteRepository.CreatePhotoFiles();
-        string jsonPath = $"./site-creator/{siteData.UserId}/static/data/data.json";
-        System.IO.File.WriteAllText(jsonPath, JsonSerializer.Serialize(siteData));
-        return Ok();
+        var result = await _getDataHandler.Handle( new GetSiteDataCommand(model) );
+        return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
 
     [Authorize]
     [HttpGet("DownloadResultSite")]
-    public IActionResult DownloadResultSite([FromQuery] string userId)
+    public async Task<IActionResult> DownloadResultSite([FromQuery] DownloadResultSiteRequestDto model)
     {
-        SiteDataService.BuildHugoSite($"./site-creator/{userId}");
-        string hugoFolderPath = Path.Combine($"./site-creator/{userId}");
-        string siteFolderPath = Path.Combine(hugoFolderPath, "public");
-        string zipFileName = "result.zip";
-
-        string tempZipFilePath = Path.Combine(Path.GetTempPath(), zipFileName);
-
-        if (System.IO.File.Exists(tempZipFilePath))
-        {
-            System.IO.File.Delete(tempZipFilePath);
-        }
-
-        ZipFile.CreateFromDirectory(siteFolderPath, tempZipFilePath);
-
-        var memory = new MemoryStream();
-        using (var stream = new FileStream(tempZipFilePath, FileMode.Open))
-        {
-            stream.CopyTo(memory);
-        }
-
-        memory.Position = 0;
-
-        System.IO.File.Delete(tempZipFilePath);
-
-        Response.Headers.Append("Content-Disposition", new ContentDisposition
-        {
-            FileName = "result.zip",
-            Inline = false,
-        }.ToString());
-
-        Directory.Delete(hugoFolderPath, true);
-
-        return File(memory, "application/zip", zipFileName);
+        var result = await _downloadSiteHandler.Handle(new DownloadResultSiteQuery(model));
+        return result.IsSuccess ? File(result.Data.Memory.ToArray(), result.Data.ContentType, result.Data.FileName) : BadRequest(result);
     }
 }

@@ -4,11 +4,20 @@ import {TitleComponent} from "./title/title.component";
 import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
 import {DataService} from "./api/data.service";
-import {ColorScheme, ColorSchemeName, ContentPageData, DesignPageData, SiteConstructorData} from "../../../types";
+import {
+  ColorScheme,
+  ColorSchemeName,
+  ContentPageData,
+  DesignPageData,
+  DownloadSiteRequest,
+  SiteConstructorData
+} from "../../../types";
 import {ColorSchemes} from "../../../colorSchemes";
 import {English, German, Italian, Russian} from "../../../languages";
 import {HttpClientModule} from "@angular/common/http";
 import {map} from "rxjs";
+import {PopoverComponent} from "../../components/popover/popover.component";
+import {popup} from "../../components/popup";
 
 @Component({
   selector: 'app-main',
@@ -19,6 +28,7 @@ import {map} from "rxjs";
     HeaderComponent,
     FooterComponent,
     HttpClientModule,
+    PopoverComponent,
   ],
   providers: [
     DataService,
@@ -61,46 +71,49 @@ export class MainComponent {
     youtubeLink: "",
     photosSrc: [],
   }
-  handleClick = async () => {
+  @Input() isPopoverOpened = false
+  @Input() siteDownloadUrl: string = "";
+  @Input() siteLoading: boolean = false;
+  handleClick = () => {
+    if (this.contentPageData.header.trim() == "") {
+      popup("Введите заголовок сайта")
+    } else {
+      this.isPopoverOpened = true;
+    }
+  }
+  generateSite = async (downloadSiteRequest: DownloadSiteRequest) => {
+    this.siteLoading = true;
     const data: SiteConstructorData = {
       userId: localStorage.getItem("userId")!,
       ...this.contentPageData,
       ...this.designPageData,
     }
-    this.dataService.postData(data)
+    this.dataService.postData({siteData: data})
       .pipe(map(response => {
           return response;
         }),
       )
       .subscribe({
         next: (response) => {
-          console.log("Data successfully posted", response)
-          this.dataService.downloadSite(localStorage.getItem("userId")!)
+          this.dataService.downloadSite(downloadSiteRequest)
             .pipe(map(response => {
-              return response;
+                this.siteLoading = false;
+                return response;
             }),
             )
             .subscribe({
               next: (response) => {
-                console.log('Download site')
-                const url = window.URL.createObjectURL(response)
-                const a = document.createElement("a")
-                a.href = url
-                a.download = ''
-                document.body.appendChild(a);
-                a.click();
-                setTimeout(() => {
-                  a.remove()
-                  window.URL.revokeObjectURL(url)
-                }, 100)
+                this.siteDownloadUrl = window.URL.createObjectURL(response);
               },
               error: (error) => {
                 console.log("Error downloading site", error)
+                popup(error.error.error.reason)
               }
             })
         },
         error: (error) => {
           console.log("Error posting data", error)
+          popup(error.error.error.reason)
         }
       })
   }

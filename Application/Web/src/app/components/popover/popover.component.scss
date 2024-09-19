@@ -1,0 +1,35 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popover {
+  padding: 40px;
+  width: 300px;
+  align-items: center;
+  margin-inline: 500px;
+}
+
+.site-name {
+  align-items: center;
+}
+
+.loading {
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  resize: both;
+  background-image: url("../../../../public/loading.gif");
+}
+
+p {
+  padding: 0;
+}

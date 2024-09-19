@@ -50,7 +50,7 @@ public class LoginQueryHandler : IQueryHandler<LoginQuery, LoginQueryResult>
 
         return LoginQueryResult.Ok( new TokenDto
         {
-            UserId = account.Id,
+            UserId = account.Id.ToString(),
             Token = _tokenHandler.WriteToken( BuildJwtProvider( startDate, expireDate ) ),
             ExpireDate = expireDate,
         } );

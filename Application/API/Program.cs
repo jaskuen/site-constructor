@@ -1,4 +1,5 @@
 using Application.Authentication;
+using Application.UseCases;
 using Application.UseCases.Authentication;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ builder.Services.AddDependencies( builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+ConfigureUseCases.AddServices( builder.Services );
 AuthConfigurator.AddAuthenticationServices(
     builder.Services,
     configuration.GetSection( "Authentication" ).Get<AuthConfiguration>()  );

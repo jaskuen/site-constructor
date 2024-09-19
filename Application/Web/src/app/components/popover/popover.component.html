@@ -1,0 +1,18 @@
+<div class="overlay" *ngIf="isOpened" (mousedown)="closePopover()">
+  <div class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
+    <p>Название архива</p>
+    <div class="wrapper-row no-gap site-name">
+      <form>
+        <input type="text" class="block" [formControl]="fileNameControl" (input)="onInput($event)">
+      </form>
+      <p>.zip</p>
+    </div>
+    <app-button [onClick]="handleClick" text="Сгенерировать сайт"/>
+    <p [style.display]="siteLoading ? 'block' : 'none'" >
+      Ожидание сервера...
+    </p>
+    <a [style.z-index]="1000" id="download" [download]="siteDownloadUrl">
+      <app-button [style.display]="siteDownloadUrl == '' ? 'none' : 'block'" text="Скачать" [onClick]="handleDownloadClick"/>
+    </a>
+  </div>
+</div>

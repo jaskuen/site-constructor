@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+using System.Text.Json;
 using Domain.Models.ValueObjects.SiteData;
 using SiteConstructor.Domain.Repositories;
 
@@ -5,54 +7,54 @@ namespace Infrastructure.Repositories;
 
 public class SiteDataRepository : ISiteDataRepository
 {
-    public SiteData _siteData = new();
+    private SiteData _siteData = new();
     public SiteData GetSiteData()
     {
         return _siteData;
-    }
-    public void CreateHugoDirectory()
-    {
-        string hugoSamplePath = "./site-creator/sample";
-        string hugoUserPath = $"./site-creator/{_siteData.UserId}";
-        if (Directory.Exists(hugoSamplePath))
-        {
-            if (!Directory.Exists(hugoUserPath))
-            {
-                Directory.CreateDirectory(hugoUserPath);
-            }
-            CopyDirectory(hugoSamplePath, hugoUserPath);
-        }
-        else
-        {
-            Console.WriteLine("Папка не существует.");
-        }
     }
     public void SetOrUpdateData(SiteData siteData)
     {
         _siteData = siteData;
     }
 
-    public void CreatePhotoFiles()
+    public void CreateHugoDirectory()
     {
-        string folderPath = $"C:/Users/Jaskuen/Documents/GitHub/StaticData/site-constructor/{_siteData.UserId}";
-        if (!Directory.Exists(folderPath))
+        string hugoSamplePath = "./site-creator/sample";
+        string hugoUserPath = $"./site-creator/{_siteData.UserId}";
+        if (!Directory.Exists(hugoSamplePath))
         {
-            Directory.CreateDirectory(folderPath);    
+            Directory.CreateDirectory(hugoSamplePath);
         }
-
-        string[] files = Directory.GetFiles(folderPath);
-
-        foreach (string file in files)
+        if (!Directory.Exists(hugoUserPath))
         {
-            File.Delete(file);
+            Directory.CreateDirectory(hugoUserPath);
         }
-        if (Directory.Exists(folderPath + "/main"))
+        CopyDirectory(hugoSamplePath, hugoUserPath);
+    }
+
+    public void ApplyDataToHugo()
+    {
+        string folderPath = $"./site-creator/{_siteData.UserId}/themes/first/static/images";
+        if (Directory.Exists(folderPath))
         {
-            string[] mainImages = Directory.GetFiles(folderPath + "/main");
-            foreach (string image in mainImages)
+            string[] files = Directory.GetFiles(folderPath);
+
+            foreach (string file in files)
             {
-                File.Delete(image);
+                File.Delete(file);
             }
+            if (Directory.Exists(folderPath + "/main"))
+            {
+                string[] mainImages = Directory.GetFiles(folderPath + "/main");
+                foreach (string image in mainImages)
+                {
+                    File.Delete(image);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Папка не существует.");
         }
 
         static string GetFileExtension(string base64String)
@@ -101,28 +103,24 @@ public class SiteDataRepository : ISiteDataRepository
         {
             Console.WriteLine(e.Message);
         }
+
+        string jsonPath = $"./site-creator/{_siteData.UserId}/static/data/data.json";
+        File.WriteAllText(jsonPath, JsonSerializer.Serialize(_siteData));
     }
 
     private void CopyDirectory(string sourceDir, string destDir)
     {
         DirectoryInfo dir = new DirectoryInfo(sourceDir);
-
-        // Ensure the destination directory exists
         if (!dir.Exists)
         {
             throw new DirectoryNotFoundException($"Source directory does not exist: {sourceDir}");
         }
-
         Directory.CreateDirectory(destDir);
-
-        // Copy files
         foreach (FileInfo file in dir.GetFiles())
         {
             string targetFilePath = Path.Combine(destDir, file.Name);
             file.CopyTo(targetFilePath, true);
         }
-
-        // Copy subdirectories
         foreach (DirectoryInfo subdir in dir.GetDirectories())
         {
             string newDestinationDir = Path.Combine(destDir, subdir.Name);

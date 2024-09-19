@@ -5,7 +5,7 @@ import {TextInputComponent} from "../../../components/text-input/text-input.comp
 import {AuthData} from "../../../../types";
 import {catchError, debounceTime, map, of, switchMap} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
-import {popup} from "../popup";
+import {popup} from "../../../components/popup";
 import {AuthService} from "../api/auth.service";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatError, MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
@@ -71,16 +71,20 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authForm.controls.username.valueChanges.pipe(
-      debounceTime(300),
-      switchMap(value => this.authService.checkLogin(value!)),
-      catchError(() => of(false)) // Обработка ошибок
-    ).subscribe(isAvailable => {
-      if (!isAvailable) {
-        this.disableButton = true
-        this.authForm.controls.username.setErrors({ loginTaken: true });
-      } else {
-        this.disableButton = false
+    this.authForm.controls.username.valueChanges
+      .pipe(
+        debounceTime(100),
+        switchMap(value => this.authService.checkLogin({login: value!})),
+        catchError(() => of(false)) // Обработка ошибок
+      )
+      .subscribe(response => {
+      if (typeof(response) === "object") {
+        if (response.data.exists) {
+          this.disableButton = true
+          this.authForm.controls.username.setErrors({ loginTaken: true });
+        } else {
+          this.disableButton = false
+        }
       }
     });
   }

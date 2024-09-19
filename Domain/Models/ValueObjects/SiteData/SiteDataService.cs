@@ -4,7 +4,7 @@ namespace Domain.Models.ValueObjects.SiteData
 {
     public static class SiteDataService
     {
-        public static void BuildHugoSite(string sitePath)
+        public static void BuildHugoSite(string userId)
         {
             try
             {
@@ -16,7 +16,7 @@ namespace Domain.Models.ValueObjects.SiteData
                     RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                    WorkingDirectory = sitePath
+                    WorkingDirectory = $"./site-creator/{userId}"
                 };
 
                 using (Process process = new Process())
@@ -33,19 +33,15 @@ namespace Domain.Models.ValueObjects.SiteData
 
                     process.WaitForExit();
 
-                    if (process.ExitCode == 0)
+                    if (process.ExitCode != 0)
                     {
-                        Console.WriteLine("Сайт успешно собран.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Произошла ошибка при сборке сайта.");
+                        throw new Exception("Произошла ошибка при сборке сайта.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка: {ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
     }

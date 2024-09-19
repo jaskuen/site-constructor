@@ -76,11 +76,31 @@ type LoginResponse = {
   expireDate: Date,
 }
 
+type Error = {
+  reason: string,
+}
+
 type ApiResponse<T> = {
-  statusCode: HttpStatusCode,
   isSuccess: boolean,
-  errorMessages: Array<string>,
-  result: T,
+  error?: Error,
+  data: T,
+}
+
+type DownloadSiteRequest = {
+  userId: string,
+  fileName: string,
+}
+
+type GetSiteDataRequest = {
+  siteData: SiteConstructorData,
+}
+
+type CheckLoginRequest = {
+  login: string,
+}
+
+type CheckLoginResponse = {
+  exists: boolean,
 }
 
 export type {
@@ -97,4 +117,8 @@ export type {
   Image,
   FontType,
   ApiResponse,
+  DownloadSiteRequest,
+  GetSiteDataRequest,
+  CheckLoginRequest,
+  CheckLoginResponse,
 }

@@ -5,7 +5,7 @@ import {Router, RouterLink} from "@angular/router";
 import {AuthData} from "../../../../types";
 import {map} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
-import {popup} from "../popup";
+import {popup} from "../../../components/popup";
 import {AuthService} from "../api/auth.service";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -16,6 +16,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
 import {stringify} from "uuid";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
@@ -39,7 +40,7 @@ import {stringify} from "uuid";
 export class LoginComponent {
   @Input() username: string = "";
   @Input() password: string = "";
-  constructor(private router: Router, private authService: AuthService, ) {}
+  constructor(private router: Router, private authService: AuthService, private cookieService: CookieService) {}
   public authForm = new FormGroup({
     username: new FormControl(
       this.username, [
@@ -70,13 +71,20 @@ export class LoginComponent {
         next: (response) => {
           popup("Вы успешно вошли!")
           console.log(response)
-          localStorage.setItem("userId", response.result.userId.toString())
+          localStorage.setItem("userId", response.data.userId.toString())
+          this.cookieService.set("tasty-cookies", response.data.token)
           setTimeout(() => {
             window.location.reload()
           }, 1000)
         },
         error: (error) => {
-          popup("Ошибка входа!")
+          if (error && error.error && error.error.error) {
+            const errorMessage = error.error.error.reason;
+            if (errorMessage) {
+              popup("Ошибка входа: " + errorMessage)
+            }
+          }
+          popup("Ошибка сервера")
           console.log("Error logging in", error)
         }
       })

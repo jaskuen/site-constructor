@@ -88,6 +88,7 @@ img, svg {
   display: flex;
   flex-direction: row;
   padding: 7px;
+  font-family: Open Sans, serif;
   background-color: $ACCENT2_CALL_TO_ACTION_LIGHT_9;
   border: 1px solid $PRIMARY_LIGHT_6;
   border-radius: 4px;
@@ -97,9 +98,11 @@ img, svg {
 .popup {
   position: fixed;
   left: 50%;
+  transform: translate(-50%, 0);
   bottom: 80px;
   border: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
 }
 
 .secondary {
@@ -149,18 +152,6 @@ img, svg {
   gap: 20px;
 }
 
-.gap10 {
-  gap: 10px;
-}
-
-.gap5 {
-  gap: 5px;
-}
-
-.no-gap {
-  gap: 0;
-}
-
 .wrapper-row {
   position: relative;
   display: flex;
@@ -203,6 +194,17 @@ img, svg {
   z-index: 0;
 }
 
+.gap10 {
+  gap: 10px;
+}
+
+.gap5 {
+  gap: 5px;
+}
+
+.no-gap {
+  gap: 0;
+}
 
 
 html, body { height: 100%; }
