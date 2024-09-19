@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\API\Application.csproj", "{BD8EFC65-DD5F-49E5-B91F-A01E88D05EC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\API\Application.csproj", "{BD8EFC65-DD5F-49E5-B91F-A01E88D05EC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{A8888670-1345-419E-B3BE-539586466558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{A8888670-1345-419E-B3BE-539586466558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BE907029-67F0-4114-943C-BED8C811DE2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BE907029-67F0-4114-943C-BED8C811DE2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UseCases", "Application.UseCases\Application.UseCases.csproj", "{7B2021E4-2C1B-40AD-9F7C-39FB4BD61734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UseCases", "Application.UseCases\Application.UseCases.csproj", "{7B2021E4-2C1B-40AD-9F7C-39FB4BD61734}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteConstructor.Tests", "SiteConstructor.Tests\SiteConstructor.Tests.csproj", "{26C7CBCB-B8E8-413B-B2BF-B8E607C7A24F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7B2021E4-2C1B-40AD-9F7C-39FB4BD61734}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B2021E4-2C1B-40AD-9F7C-39FB4BD61734}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B2021E4-2C1B-40AD-9F7C-39FB4BD61734}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C7CBCB-B8E8-413B-B2BF-B8E607C7A24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C7CBCB-B8E8-413B-B2BF-B8E607C7A24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C7CBCB-B8E8-413B-B2BF-B8E607C7A24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C7CBCB-B8E8-413B-B2BF-B8E607C7A24F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
