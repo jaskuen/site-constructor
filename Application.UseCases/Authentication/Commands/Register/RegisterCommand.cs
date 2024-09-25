@@ -8,7 +8,7 @@ public class RegisterCommand : ICommand<Result>
 {
     public readonly RegistrationRequestDto RequestDto;
 
-    public RegisterCommand( RegistrationRequestDto requestDto )
+    public RegisterCommand(RegistrationRequestDto requestDto)
     {
         RequestDto = requestDto;
     }

@@ -1,6 +1,5 @@
 using Domain.Repositories;
 using Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SiteConstructor.Domain.Repositories;

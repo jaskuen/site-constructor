@@ -9,16 +9,16 @@ namespace Application.UseCases.Authentication;
 
 public static class ConfigureAuthenticationUseCases
 {
-    public static IServiceCollection AddAuthenticationServices( 
+    public static IServiceCollection AddAuthenticationServices(
         this IServiceCollection services,
-        AuthConfiguration configuration )
+        AuthConfiguration configuration)
     {
-        services.AddSingleton( configuration );
+        services.AddSingleton(configuration);
 
         services.AddScoped<IQueryHandler<LoginQuery, LoginQueryResult>, LoginQueryHandler>();
         services.AddScoped<IQueryHandler<CheckLoginQuery, CheckLoginQueryResult>, CheckLoginQueryHandler>();
         services.AddScoped<ICommandHandler<RegisterCommand, Result>, RegisterCommandHandler>();
 
         return services;
-    }  
+    }
 }

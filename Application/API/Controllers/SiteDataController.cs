@@ -1,16 +1,11 @@
-using System.IO.Compression;
-using System.Net.Mime;
-using System.Text.Json;
 using Application.UseCases.Commands.GetSiteData;
 using Application.UseCases.Commands.GetSiteData.DTOs;
 using Application.UseCases.Queries.DownloadResultSite;
 using Application.UseCases.Queries.DownloadResultSite.DTOs;
 using Application.UseCases.Results;
 using Application.UseCases.UseCases;
-using Domain.Models.ValueObjects.SiteData;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SiteConstructor.Domain.Repositories;
 
 namespace Application.Controllers;
 
@@ -27,13 +22,13 @@ public class SiteDataController : ControllerBase
     {
         _getDataHandler = getDataHandler;
         _downloadSiteHandler = downloadSiteHandler;
-    }   
+    }
 
     [Authorize]
     [HttpPost("GetData")]
     public async Task<IActionResult> GetData([FromBody] GetSiteDataRequestDto model)
     {
-        var result = await _getDataHandler.Handle( new GetSiteDataCommand(model) );
+        var result = await _getDataHandler.Handle(new GetSiteDataCommand(model));
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
 

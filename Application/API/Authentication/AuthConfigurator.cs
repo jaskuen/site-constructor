@@ -7,7 +7,7 @@ namespace Application.Authentication;
 
 public static class AuthConfigurator
 {
-    public static void AddAuthentication( IApplicationBuilder app )
+    public static void AddAuthentication(IApplicationBuilder app)
     {
         app.UseAuthentication();
         app.UseAuthorization();
@@ -15,29 +15,29 @@ public static class AuthConfigurator
 
     public static void AddAuthenticationServices(
         IServiceCollection services,
-        AuthConfiguration? configuration )
+        AuthConfiguration? configuration)
     {
-        if ( configuration == null )
+        if (configuration == null)
         {
-            throw new ArgumentException( $"{nameof( AuthConfiguration )} was not specified" );
+            throw new ArgumentException($"{nameof(AuthConfiguration)} was not specified");
         }
 
-        services.AddAuthenticationServices( configuration );
-        
+        services.AddAuthenticationServices(configuration);
+
         services
-           .AddAuthentication( x =>
+           .AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            } )
-           .AddJwtBearer( x =>
+            })
+           .AddJwtBearer(x =>
             {
                 x.RequireHttpsMetadata = false;
                 x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey( Encoding.ASCII.GetBytes( configuration.PrivateKey ) ),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration.PrivateKey)),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = false,
@@ -46,12 +46,12 @@ public static class AuthConfigurator
                 {
                     OnMessageReceived = context =>
                     {
-                        context.Token = context.Request.Cookies[ "tasty-cookies" ];
+                        context.Token = context.Request.Cookies["tasty-cookies"];
 
                         return Task.CompletedTask;
                     },
                 };
-            } );
+            });
 
         services.AddAuthorization();
     }

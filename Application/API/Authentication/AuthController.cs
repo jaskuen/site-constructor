@@ -6,7 +6,6 @@ using Application.UseCases.Authentication.Queries.Login;
 using Application.UseCases.Authentication.Queries.Login.DTOs;
 using Application.UseCases.Results;
 using Application.UseCases.UseCases;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Authentication;
@@ -22,7 +21,7 @@ public class AuthController : ControllerBase
     public AuthController(
         IQueryHandler<LoginQuery, LoginQueryResult> loginHandler,
         IQueryHandler<CheckLoginQuery, CheckLoginQueryResult> checkLoginHandler,
-        ICommandHandler<RegisterCommand, Result> registerHandler )
+        ICommandHandler<RegisterCommand, Result> registerHandler)
     {
         _loginHandler = loginHandler;
         _checkLoginHandler = checkLoginHandler;
@@ -38,21 +37,21 @@ public class AuthController : ControllerBase
     [HttpPost("checkLogin")]
     public async Task<IActionResult> CheckLogin([FromBody] CheckLoginRequestDto model)
     {
-        var result = await _checkLoginHandler.Handle( new CheckLoginQuery( model ) );
-        return result.IsSuccess ? Ok( result ) : BadRequest( result );
+        var result = await _checkLoginHandler.Handle(new CheckLoginQuery(model));
+        return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequestDto model)
     {
-        var result = await _loginHandler.Handle( new LoginQuery( model ) );
-        return result.IsSuccess ? Ok( result ) : BadRequest( result );
+        var result = await _loginHandler.Handle(new LoginQuery(model));
+        return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegistrationRequestDto model)
     {
-        var result = await _registerHandler.Handle( new RegisterCommand( model  ) );
-        return result.IsSuccess ? Ok( result ) : BadRequest( result );
+        var result = await _registerHandler.Handle(new RegisterCommand(model));
+        return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
 }

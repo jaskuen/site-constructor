@@ -7,7 +7,7 @@ public class CheckLoginQuery : IQuery<CheckLoginQueryResult>
 {
     public readonly CheckLoginRequestDto CheckLoginRequestDto;
 
-    public CheckLoginQuery( CheckLoginRequestDto checkLoginRequestDto )
+    public CheckLoginQuery(CheckLoginRequestDto checkLoginRequestDto)
     {
         CheckLoginRequestDto = checkLoginRequestDto;
     }
