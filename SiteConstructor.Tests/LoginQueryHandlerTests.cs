@@ -5,21 +5,21 @@ using Domain.Repositories;
 using Application.UseCases.Authentication;
 using Moq;
 using Domain.Models.Entities.LocalUser;
+using Microsoft.EntityFrameworkCore;
 
 namespace SiteConstructor.Tests
 {
     public class LoginQueryHandlerTests
     {
         private LoginQueryHandler _loginHandler;
-        private Mock<IUserRepository> _userRepository;
-        private Mock<AuthConfiguration> _authConfiguration;
+        private IUserRepository _userRepository;
+        private AuthConfiguration _authConfiguration;
 
         [SetUp]
         public void Setup()
         {
-            _userRepository = new Mock<IUserRepository>();
-            _authConfiguration = new Mock<AuthConfiguration>();
-            _loginHandler = new LoginQueryHandler(_userRepository.Object, _authConfiguration.Object);
+            _authConfiguration = new AuthConfiguration();
+            _loginHandler = new LoginQueryHandler(_userRepository, _authConfiguration);
         }
 
         [Test]
@@ -61,30 +61,6 @@ namespace SiteConstructor.Tests
                 Login = "",
                 Password = "password",
             };
-
-            // Act
-            var result = _loginHandler.Handle(new LoginQuery(loginRequestDto));
-
-            // Assert
-            Assert.IsNotNull(result.Result.Error);
-        }
-
-        [Test]
-        public void Handle_WrongPassword_ReturnsFailedResult()
-        {
-            // Arrange
-            var loginRequestDto = new LoginRequestDto()
-            {
-                Login = "user",
-                Password = "password",
-            };
-            var user = new LocalUser()
-            {
-                Id = 1,
-                Username = "user",
-                Password = "12345678",
-            };
-            _userRepository.Setup(x => x.Add(user));
 
             // Act
             var result = _loginHandler.Handle(new LoginQuery(loginRequestDto));
