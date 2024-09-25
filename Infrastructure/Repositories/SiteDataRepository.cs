@@ -69,26 +69,26 @@ public class SiteDataRepository : ISiteDataRepository
                 throw new Exception("Неизвестный формат файла.");
         }
 
-        List<Image> images = _siteData.PhotosSrc;
+        List<Image> images = _siteData.ContentPageData.PhotosSrc;
         try
         {
-            if (_siteData.FaviconSrc.Count > 0)
+            if (_siteData.DesignPageData.FaviconSrc.Count > 0)
             {
-                Image favicon = _siteData.FaviconSrc[0];
+                Image favicon = _siteData.DesignPageData.FaviconSrc[0];
                 string faviconPath = $"./site-creator/{_siteData.UserId}/themes/first/static/favicon.ico";
                 string faviconBase64String = favicon.ImageFileBase64String.Split(',')[1];
                 byte[] faviconFileBytes = Convert.FromBase64String(faviconBase64String);
                 File.WriteAllBytes(faviconPath, faviconFileBytes);
-                _siteData.FaviconSrc[0].ImageFileBase64String = "./favicon.ico";
+                _siteData.DesignPageData.FaviconSrc[0].ImageFileBase64String = "./favicon.ico";
             }
-            if (_siteData.LogoSrc.Count > 0)
+            if (_siteData.DesignPageData.LogoSrc.Count > 0)
             {
-                Image logo = _siteData.LogoSrc[0];
+                Image logo = _siteData.DesignPageData.LogoSrc[0];
                 string logoPath = $"./site-creator/{_siteData.UserId}/themes/first/static/images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
                 string logoBase64String = logo.ImageFileBase64String.Split(',')[1];
                 byte[] logoFileBytes = Convert.FromBase64String(logoBase64String);
                 File.WriteAllBytes(logoPath, logoFileBytes);
-                _siteData.LogoSrc[0].ImageFileBase64String = $"./images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
+                _siteData.DesignPageData.LogoSrc[0].ImageFileBase64String = $"./images/logo.{GetFileExtension(logo.ImageFileBase64String)}";
             }
             for (int i = 0; i < images.Count; i++)
             {
@@ -96,7 +96,7 @@ public class SiteDataRepository : ISiteDataRepository
                 string base64String = images[i].ImageFileBase64String.Split(',')[1];
                 byte[] fileBytes = Convert.FromBase64String(base64String);
                 File.WriteAllBytes(filePath, fileBytes);
-                _siteData.PhotosSrc[i].ImageFileBase64String = $"./images/main/{i + 1}.{GetFileExtension(images[i].ImageFileBase64String)}";
+                _siteData.ContentPageData.PhotosSrc[i].ImageFileBase64String = $"./images/main/{i + 1}.{GetFileExtension(images[i].ImageFileBase64String)}";
             }
         }
         catch (Exception e)

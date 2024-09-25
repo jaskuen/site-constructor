@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.UseCases.Results;
+﻿using Application.UseCases.Results;
 using Application.UseCases.UseCases;
 using SiteConstructor.Domain.Repositories;
 
@@ -18,7 +13,7 @@ public class GetSiteDataCommandHandler : ICommandHandler<GetSiteDataCommand, Res
         _siteDataRepository = siteDataRepository;
     }
 
-    public async Task<Result> Handle( GetSiteDataCommand command)
+    public async Task<Result> Handle(GetSiteDataCommand command)
     {
         Error? validationError = Validate(command);
         if (validationError != null)
@@ -41,7 +36,7 @@ public class GetSiteDataCommandHandler : ICommandHandler<GetSiteDataCommand, Res
         {
             return new Error("No data provided");
         }
-        if (String.IsNullOrWhiteSpace(command.RequestDto.SiteData.Header))
+        if (String.IsNullOrWhiteSpace(command.RequestDto.SiteData.ContentPageData.Header))
         {
             return new Error("No site header");
         }

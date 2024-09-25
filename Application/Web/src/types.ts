@@ -61,7 +61,9 @@ type ContentPageData = {
   photosSrc: Image[],
 }
 
-type SiteConstructorData = DesignPageData & ContentPageData & {
+type SiteConstructorData = {
+  designPageData: DesignPageData,
+  contentPageData: ContentPageData,
   userId: string,
 }
 
