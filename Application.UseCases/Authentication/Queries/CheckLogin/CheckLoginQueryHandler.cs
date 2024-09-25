@@ -9,25 +9,25 @@ public class CheckLoginQueryHandler : IQueryHandler<CheckLoginQuery, CheckLoginQ
 {
     private readonly IUserRepository _userRepository;
 
-    public CheckLoginQueryHandler( IUserRepository userRepository )
+    public CheckLoginQueryHandler(IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }
 
-    public async Task<CheckLoginQueryResult> Handle( CheckLoginQuery query )
+    public async Task<CheckLoginQueryResult> Handle(CheckLoginQuery query)
     {
-        if ( query.CheckLoginRequestDto == null )
+        if (query.CheckLoginRequestDto == null)
         {
-            return CheckLoginQueryResult.Fail( new Error( "No data provided" ) );
+            return CheckLoginQueryResult.Fail(new Error("No data provided"));
         }
 
-        if ( String.IsNullOrWhiteSpace( query.CheckLoginRequestDto.Login ) )
+        if (String.IsNullOrWhiteSpace(query.CheckLoginRequestDto.Login))
         {
-            return CheckLoginQueryResult.Fail( new Error( "Login is null" ) );
+            return CheckLoginQueryResult.Fail(new Error("Login is null"));
         }
-        
-        var doesLoginExist = await _userRepository.HasLogin( query.CheckLoginRequestDto.Login.Trim() );
 
-        return CheckLoginQueryResult.Ok( new CheckLoginResponseDto( doesLoginExist ) );
+        var doesLoginExist = await _userRepository.HasLogin(query.CheckLoginRequestDto.Login.Trim());
+
+        return CheckLoginQueryResult.Ok(new CheckLoginResponseDto(doesLoginExist));
     }
 }

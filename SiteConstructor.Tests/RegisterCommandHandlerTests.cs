@@ -1,16 +1,6 @@
-using Application.UseCases.Authentication.Queries.Login.DTOs;
-using Application.UseCases.Authentication.Queries.Login;
-using Application.UseCases.UseCases;
-using Domain.Repositories;
-using Application.UseCases.Authentication;
-using Moq;
-using Domain.Models.Entities.LocalUser;
-using Microsoft.EntityFrameworkCore;
-using Application.UseCases.Authentication.Queries.CheckLogin;
-using Application.UseCases.Authentication.Queries.CheckLogin.DTOs;
 using Application.UseCases.Authentication.Commands.Register;
 using Application.UseCases.Authentication.Commands.Register.DTOs;
-using System.Text.RegularExpressions;
+using Domain.Repositories;
 
 namespace SiteConstructor.Tests
 {
@@ -30,7 +20,7 @@ namespace SiteConstructor.Tests
         public void Handle_EmptyLogin_ReturnsFailedResult()
         {
             // Arrange
-            var registerRequestDto = new RegistrationRequestDto() 
+            var registerRequestDto = new RegistrationRequestDto()
             {
                 Login = "",
                 Password = "password",

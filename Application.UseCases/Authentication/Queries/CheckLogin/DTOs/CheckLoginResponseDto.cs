@@ -4,7 +4,7 @@ public class CheckLoginResponseDto
 {
     public bool Exists { get; set; }
 
-    public CheckLoginResponseDto( bool exists )
+    public CheckLoginResponseDto(bool exists)
     {
         Exists = exists;
     }

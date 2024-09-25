@@ -1,11 +1,7 @@
-using Application.UseCases.Authentication.Queries.Login.DTOs;
-using Application.UseCases.Authentication.Queries.Login;
-using Application.UseCases.UseCases;
-using Domain.Repositories;
 using Application.UseCases.Authentication;
-using Moq;
-using Domain.Models.Entities.LocalUser;
-using Microsoft.EntityFrameworkCore;
+using Application.UseCases.Authentication.Queries.Login;
+using Application.UseCases.Authentication.Queries.Login.DTOs;
+using Domain.Repositories;
 
 namespace SiteConstructor.Tests
 {
@@ -27,10 +23,10 @@ namespace SiteConstructor.Tests
         {
             // Arrange
             var loginRequestDto = new LoginRequestDto();
-            
+
             // Act
             var result = _loginHandler.Handle(new LoginQuery(loginRequestDto));
-            
+
             // Assert
             Assert.IsNotNull(result.Result.Error);
         }
@@ -39,7 +35,7 @@ namespace SiteConstructor.Tests
         public void Handle_EmptyLogin_ReturnsFailedResult()
         {
             // Arrange
-            var loginRequestDto = new LoginRequestDto() 
+            var loginRequestDto = new LoginRequestDto()
             {
                 Login = "",
                 Password = "password",

@@ -9,19 +9,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 IConfiguration configuration = builder.Configuration;
 
-builder.Services.AddDependencies( builder.Configuration);
+builder.Services.AddDependencies(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-ConfigureUseCases.AddServices( builder.Services );
+ConfigureUseCases.AddServices(builder.Services);
 AuthConfigurator.AddAuthenticationServices(
     builder.Services,
-    configuration.GetSection( "Authentication" ).Get<AuthConfiguration>()  );
+    configuration.GetSection("Authentication").Get<AuthConfiguration>());
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlServerOptions => sqlServerOptions.MigrationsAssembly( "Application" )));
+        sqlServerOptions => sqlServerOptions.MigrationsAssembly("Application")));
 
 builder.Services.AddCors(options =>
 {
@@ -45,7 +45,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowLocalhostPorts");
-AuthConfigurator.AddAuthentication( app );
+AuthConfigurator.AddAuthentication(app);
 
 app.MapControllers();
 
