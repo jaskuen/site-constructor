@@ -17,7 +17,7 @@ public static class ConfigureUseCases
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddScoped<IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult>, DownloadResultSiteQueryHandler>();
-        services.AddScoped<ICommandHandler<GetSiteDataCommand, Result>, GetSiteDataCommandHandler>();
+        services.AddScoped<ICommandHandler<SetResultSiteDataCommand, Result>, SetResultSiteDataCommandHandler>();
         return services;
     }
 }

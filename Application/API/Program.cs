@@ -21,7 +21,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlServerOptions => sqlServerOptions.MigrationsAssembly("Application")));
+        sqlServerOptions => sqlServerOptions.MigrationsAssembly("Application.Migrations")));
 
 builder.Services.AddCors(options =>
 {

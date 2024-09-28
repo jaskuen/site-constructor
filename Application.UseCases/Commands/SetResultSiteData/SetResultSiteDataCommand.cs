@@ -10,10 +10,10 @@ using Application.UseCases.UseCases;
 
 namespace Application.UseCases.Commands.GetSiteData;
 
-public class GetSiteDataCommand : ICommand<Result>
+public class SetResultSiteDataCommand : ICommand<Result>
 {
-    public readonly GetSiteDataRequestDto RequestDto;
-    public GetSiteDataCommand( GetSiteDataRequestDto requestDto)
+    public readonly SetResultSiteDataRequestDto RequestDto;
+    public SetResultSiteDataCommand( SetResultSiteDataRequestDto requestDto)
     {
         RequestDto = requestDto;
     }

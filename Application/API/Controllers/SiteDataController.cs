@@ -1,7 +1,11 @@
 using Application.UseCases.Commands.GetSiteData;
 using Application.UseCases.Commands.GetSiteData.DTOs;
+using Application.UseCases.Commands.SaveUserSiteData;
+using Application.UseCases.Commands.SaveUserSiteData.DTOs;
 using Application.UseCases.Queries.DownloadResultSite;
 using Application.UseCases.Queries.DownloadResultSite.DTOs;
+using Application.UseCases.Queries.GetSavedUserSiteData.DTOs;
+using Application.UseCases.Queries.UploadSavedUserSiteData;
 using Application.UseCases.Results;
 using Application.UseCases.UseCases;
 using Microsoft.AspNetCore.Authorization;
@@ -13,22 +17,44 @@ namespace Application.Controllers;
 [ApiController]
 public class SiteDataController : ControllerBase
 {
-    private readonly ICommandHandler<GetSiteDataCommand, Result> _getDataHandler;
+    private readonly ICommandHandler<SetResultSiteDataCommand, Result> _setResultSiteDataHandler;
+    private readonly ICommandHandler<SaveUserSiteDataCommand, Result> _saveUserSiteDataHandler;
     private readonly IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> _downloadSiteHandler;
+    private readonly IQueryHandler<GetSavedUserSiteDataQuery, GetSavedUserSiteDataQueryResult> _getSavedUserSiteDataHandler;
     public SiteDataController(
-            ICommandHandler<GetSiteDataCommand, Result> getDataHandler,
-            IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> downloadSiteHandler
+            ICommandHandler<SetResultSiteDataCommand, Result> setResultDataHandler,
+            ICommandHandler<SaveUserSiteDataCommand, Result> saveUserSiteDataHandler,
+            IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> downloadSiteHandler,
+            IQueryHandler<GetSavedUserSiteDataQuery, GetSavedUserSiteDataQueryResult> getSavedUserSiteDataHandler
         )
     {
-        _getDataHandler = getDataHandler;
+        _setResultSiteDataHandler = setResultDataHandler;
+        _saveUserSiteDataHandler = saveUserSiteDataHandler;
         _downloadSiteHandler = downloadSiteHandler;
+        _getSavedUserSiteDataHandler = getSavedUserSiteDataHandler;
     }
 
     [Authorize]
-    [HttpPost("GetData")]
-    public async Task<IActionResult> GetData([FromBody] GetSiteDataRequestDto model)
+    [HttpPost("PostResultSiteData")]
+    public async Task<IActionResult> PostResultSiteData([FromBody] SetResultSiteDataRequestDto model)
     {
-        var result = await _getDataHandler.Handle(new GetSiteDataCommand(model));
+        var result = await _setResultSiteDataHandler.Handle(new SetResultSiteDataCommand(model));
+        return result.IsSuccess ? Ok(result) : BadRequest(result);
+    }
+
+    [Authorize]
+    [HttpPost("SaveUserSiteData")]
+    public async Task<IActionResult> SaveUserSiteData([FromBody] SaveUserSiteDataRequestDto model)
+    {
+        var result = await _saveUserSiteDataHandler.Handle(new SaveUserSiteDataCommand(model));
+        return result.IsSuccess ? Ok(result) : BadRequest(result);
+    }
+
+    [Authorize]
+    [HttpGet("GetSavedUserSiteData")]
+    public async Task<IActionResult> GetSavedUserSiteData([FromQuery] GetSavedUserSiteDataRequetsDto model)
+    {
+        var result = await _getSavedUserSiteDataHandler.Handle(new GetSavedUserSiteDataQuery(model));
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
 

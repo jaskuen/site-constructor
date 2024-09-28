@@ -1,19 +1,35 @@
 using System.Text.Json;
 using Domain.Models.ValueObjects.SiteData;
+using Microsoft.EntityFrameworkCore;
 using SiteConstructor.Domain.Repositories;
 
 namespace Infrastructure.Repositories;
 
-public class SiteDataRepository : ISiteDataRepository
+public class SiteDataRepository : BaseRepository<SiteData>, ISiteDataRepository
 {
     private SiteData _siteData = new();
-    public SiteData GetSiteData()
+
+    protected SiteDataRepository(DbSet<SiteData> entities)
+        : base(entities)
     {
-        return _siteData;
+    }
+    public SiteDataRepository(ApplicationDbContext dbContext)
+        : base(dbContext)
+    {
     }
     public void SetOrUpdateData(SiteData siteData)
     {
         _siteData = siteData;
+    }
+
+    public Task<SiteData?> GetSiteData(string userId)
+    {
+        return Table.FirstOrDefaultAsync(x => x.UserId == userId);
+    }
+
+    public void SaveUserSiteData(SiteData siteData)
+    {
+        throw new NotImplementedException();
     }
 
     public void CreateHugoDirectory()

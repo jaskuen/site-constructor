@@ -1,4 +1,7 @@
-<app-header />
+<app-header
+  [contentPageData]="contentPageData"
+  [designPageData]="designPageData"
+/>
 <div class="wrapper">
   <app-title [onClick]="handleClick"/>
   <app-site-creator

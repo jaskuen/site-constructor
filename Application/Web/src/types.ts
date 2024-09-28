@@ -61,10 +61,27 @@ type ContentPageData = {
   photosSrc: Image[],
 }
 
+type UserSiteData = ColorScheme & {
+  colorSchemeName: ColorSchemeName,
+  headersFont: FontType,
+  mainTextFont: FontType,
+  logoBackgroundColor: string,
+  removeLogoBackground: boolean,
+  // languages: SelectLanguageType[],
+  // mainLanguage: LanguageType,
+  header: string,
+  description: string,
+  vkLink: string,
+  telegramLink: string,
+  youtubeLink: string,
+  images: Image[],
+  userId: number,
+}
+
 type SiteConstructorData = {
   designPageData: DesignPageData,
   contentPageData: ContentPageData,
-  userId: string,
+  userId: number,
 }
 
 type AuthData = {
@@ -97,6 +114,14 @@ type GetSiteDataRequest = {
   siteData: SiteConstructorData,
 }
 
+type SaveUserSiteDataRequest = {
+  userSiteData: UserSiteData,
+}
+
+type GetSavedUserSiteDataRequest = {
+  userId: number,
+}
+
 type CheckLoginRequest = {
   login: string,
 }
@@ -118,9 +143,12 @@ export type {
   LoginResponse,
   Image,
   FontType,
+  UserSiteData,
   ApiResponse,
   DownloadSiteRequest,
   GetSiteDataRequest,
   CheckLoginRequest,
   CheckLoginResponse,
+  SaveUserSiteDataRequest,
+  GetSavedUserSiteDataRequest,
 }

@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ApiResponse, DownloadSiteRequest, GetSiteDataRequest, SiteConstructorData} from "../../../../types";
+import {
+  ApiResponse,
+  DownloadSiteRequest, GetSavedUserSiteDataRequest,
+  GetSiteDataRequest,
+  SaveUserSiteDataRequest,
+  SiteConstructorData, UserSiteData
+} from "../../../../types";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +20,22 @@ export class DataService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.http.post<SiteConstructorData>(this.apiUrl + "/GetData", data, {withCredentials: true, headers});
+    return this.http.post<SiteConstructorData>(this.apiUrl + "/PostResultSiteData", data, {withCredentials: true, headers});
+  }
+  saveUserData(data: SaveUserSiteDataRequest): Observable<SaveUserSiteDataRequest> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    })
+    return this.http.post<SaveUserSiteDataRequest>(this.apiUrl + "/SaveUserSiteData", data, {withCredentials: true, headers});
+  }
+  getSavedUserData(data: GetSavedUserSiteDataRequest): Observable<ApiResponse<UserSiteData>> {
+    let params = new HttpParams();
+    params = params.set("userId", data.userId)
+    return this.http.get<ApiResponse<UserSiteData>>(this.apiUrl + "/GetSavedUserSiteData", {
+      params,
+      withCredentials: true,
+      responseType: "json",
+    })
   }
   downloadSite(data: DownloadSiteRequest): Observable<Blob> {
     let params = new HttpParams();

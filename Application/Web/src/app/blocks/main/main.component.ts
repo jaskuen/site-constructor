@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SiteCreatorComponent} from "./site-creator/site-creator.component";
 import {TitleComponent} from "./title/title.component";
 import {HeaderComponent} from "./header/header.component";
@@ -9,7 +9,7 @@ import {
   ColorSchemeName,
   ContentPageData,
   DesignPageData,
-  DownloadSiteRequest,
+  DownloadSiteRequest, GetSavedUserSiteDataRequest, Image,
   SiteConstructorData
 } from "../../../types";
 import {ColorSchemes} from "../../../colorSchemes";
@@ -36,7 +36,7 @@ import {popup} from "../../components/popup";
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   constructor(private dataService: DataService) {}
   currentColorScheme: ColorScheme = ColorSchemes[0].colorScheme!;
   @Input() designPageData: DesignPageData = {
@@ -74,6 +74,47 @@ export class MainComponent {
   @Input() isPopoverOpened = false
   @Input() siteDownloadUrl: string = "";
   @Input() siteLoading: boolean = false;
+
+  ngOnInit() {
+    let userId = Number(localStorage.getItem("userId")!);
+    let getSavedUserDataRequest: GetSavedUserSiteDataRequest = {
+      userId: userId,
+    }
+    this.dataService.getSavedUserData(getSavedUserDataRequest)
+      .pipe(map(response => {
+        return response
+      }),
+      )
+      .subscribe({
+        next: (response) => {
+          let data = response.data
+          console.log(data)
+          if (data) {
+            this.designPageData.colorSchemeName = data.colorSchemeName;
+            this.designPageData.backgroundColors = data.backgroundColors;
+            this.designPageData.textColors = data.textColors;
+            this.designPageData.headersFont = data.headersFont;
+            this.designPageData.mainTextFont = data.mainTextFont;
+            this.designPageData.logoBackgroundColor = data.logoBackgroundColor;
+            this.designPageData.removeLogoBackground = data.removeLogoBackground;
+            this.designPageData.logoSrc = data.images ? data.images.filter(img => img.type === "logo") : [];
+            this.designPageData.faviconSrc = data.images ? data.images.filter(img => img.type === "favicon") : [];
+            this.contentPageData.header = data.header;
+            this.contentPageData.description = data.description;
+            this.contentPageData.vkLink = data.vkLink;
+            this.contentPageData.telegramLink = data.telegramLink;
+            this.contentPageData.youtubeLink = data.youtubeLink;
+            this.contentPageData.photosSrc = data.images ? data.images.filter(img => img.type === "main") : [];
+          }
+
+        },
+        error: (error) => {
+          console.log("Error loading data", error)
+        }
+        }
+      )
+  }
+
   handleClick = () => {
     if (this.contentPageData.header.trim() == "") {
       popup("Введите заголовок сайта")
@@ -84,7 +125,7 @@ export class MainComponent {
   generateSite = async (downloadSiteRequest: DownloadSiteRequest) => {
     this.siteLoading = true;
     const data: SiteConstructorData = {
-      userId: localStorage.getItem("userId")!,
+      userId: Number(localStorage.getItem("userId")!),
       contentPageData: this.contentPageData,
       designPageData: this.designPageData,
     }
