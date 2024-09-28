@@ -85,8 +85,8 @@ export class MainComponent {
     this.siteLoading = true;
     const data: SiteConstructorData = {
       userId: localStorage.getItem("userId")!,
-      ...this.contentPageData,
-      ...this.designPageData,
+      contentPageData: this.contentPageData,
+      designPageData: this.designPageData,
     }
     this.dataService.postData({siteData: data})
       .pipe(map(response => {

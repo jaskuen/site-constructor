@@ -14,30 +14,30 @@ const images = {
 document.addEventListener("DOMContentLoaded", async () => {
   const parsedData = JSON.parse(window.data)
     if (parsedData) {
-        languageChanger.languages = parsedData.Languages.filter(element => {
+        languageChanger.languages = parsedData.ContentPageData.Languages.filter(element => {
           return element.Selected
         })
-        images.main = parsedData.PhotosSrc
+        images.main = parsedData.ContentPageData.PhotosSrc
         if (images.main.length == 0) {
-            document.getElementsByClassName('wrapper-main')[0].style.background = parsedData.BackgroundColors.Additional
+            document.getElementsByClassName('wrapper-main')[0].style.background = parsedData.DesignPageData.BackgroundColors.Additional
         }
-        if (parsedData.LogoSrc.length > 0) {
-            images.logo = parsedData.LogoSrc[0].ImageFileBase64String
+        if (parsedData.DesignPageData.LogoSrc.length > 0) {
+            images.logo = parsedData.DesignPageData.LogoSrc[0].ImageFileBase64String
         }
-        if (parsedData.RemoveLogoBackground || parsedData.LogoSrc.length == 0) {
+        if (parsedData.DesignPageData.RemoveLogoBackground || parsedData.DesignPageData.LogoSrc.length == 0) {
           document.getElementsByClassName('site-logo')[0].style.background = "none"
         }
         languageChanger.value = parsedData.Languages[0].Code
         if (languageChanger.languages.length <= 1) {
           document.getElementById('language-changer').style.display = 'none'
         }
-        if (!parsedData.VkLink) {
+        if (!parsedData.ContentPageData.VkLink) {
           document.getElementById('link-vk').style.display = 'none'
         }
-        if (!parsedData.YoutubeLink) {
+        if (!parsedData.ContentPageData.YoutubeLink) {
           document.getElementById('link-youtube').style.display = 'none'
         }
-        if (!parsedData.TelegramLink) {
+        if (!parsedData.ContentPageData.TelegramLink) {
           document.getElementById('link-telegram').style.display = 'none'
         }
     }

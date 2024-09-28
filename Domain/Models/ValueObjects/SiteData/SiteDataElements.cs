@@ -35,3 +35,30 @@ public class Image
     public string ImageFileBase64String { get; set; }
 }
 
+public class DesignPageData
+{
+    public string Id { get; set; }
+    public string ColorSchemeName { get; set; }
+    public BackgroundColors BackgroundColors { get; set; }
+    public TextColors TextColors { get; set; }
+    public string HeadersFont { get; set; }
+    public string MainTextFont { get; set; }
+    public List<Image> LogoSrc { get; set; }
+    public string LogoBackgroundColor { get; set; }
+    public bool RemoveLogoBackground { get; set; }
+    public List<Image> FaviconSrc { get; set; }
+}
+
+public class ContentPageData
+{
+    public string Id { get; set; }
+    public List<SelectLanguage> Languages { get; set; }
+    public Language MainLanguage { get; set; }
+    public string Header { get; set; }
+    public string Description { get; set; }
+    public string VkLink { get; set; }
+    public string TelegramLink { get; set; }
+    public string YoutubeLink { get; set; }
+    public List<Image> PhotosSrc { get; set; }
+}
+
