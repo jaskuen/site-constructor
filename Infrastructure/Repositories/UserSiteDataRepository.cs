@@ -28,6 +28,7 @@ public class UserSiteDataRepository : BaseRepository<UserSiteData>, IUserSiteDat
             .Include(d => d.BackgroundColors)
             .Include(d => d.TextColors)
             .Include(d => d.Images)
+            .AsNoTracking()
             .FirstOrDefaultAsync(x => x.UserId == userId);
     }
 }

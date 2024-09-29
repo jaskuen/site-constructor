@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {
   ApiResponse,
-  DownloadSiteRequest, GetSavedUserSiteDataRequest,
+  DownloadSiteRequest, GetSavedUserSiteDataRequest, GetSavedUserSiteDataResponse,
   GetSiteDataRequest,
   SaveUserSiteDataRequest,
   SiteConstructorData, UserSiteData
@@ -28,10 +28,10 @@ export class DataService {
     })
     return this.http.post<SaveUserSiteDataRequest>(this.apiUrl + "/SaveUserSiteData", data, {withCredentials: true, headers});
   }
-  getSavedUserData(data: GetSavedUserSiteDataRequest): Observable<ApiResponse<UserSiteData>> {
+  getSavedUserData(data: GetSavedUserSiteDataRequest): Observable<ApiResponse<GetSavedUserSiteDataResponse>> {
     let params = new HttpParams();
     params = params.set("userId", data.userId)
-    return this.http.get<ApiResponse<UserSiteData>>(this.apiUrl + "/GetSavedUserSiteData", {
+    return this.http.get<ApiResponse<GetSavedUserSiteDataResponse>>(this.apiUrl + "/GetSavedUserSiteData", {
       params,
       withCredentials: true,
       responseType: "json",

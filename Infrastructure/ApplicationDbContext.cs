@@ -15,10 +15,6 @@ namespace Infrastructure
         public DbSet<Image> Images { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<UserSiteData>()
-            //    .HasMany(d => d.PhotosSrc)
-            //    .WithOne(p => p.UserSiteData)
-            //    .HasForeignKey(p => p.UserSiteDataId);
             modelBuilder.Entity<UserSiteData>()
                 .HasMany(d => d.Images)
                 .WithOne(f => f.UserSiteData)

@@ -31,26 +31,11 @@ public class SaveUserSiteDataCommandHandler : ICommandHandler<SaveUserSiteDataCo
         }
         var userSiteData = _userSiteDataRepository.Table.FirstOrDefault(d => d.UserId == command.RequestDto.UserSiteData.UserId);
 
-        if (userSiteData == null)
+        if (userSiteData != null)
         {
-            _userSiteDataRepository.Add(command.RequestDto.UserSiteData);
+            _userSiteDataRepository.Remove(userSiteData);
         }
-        else
-        {
-            userSiteData.ColorSchemeName = command.RequestDto.UserSiteData.ColorSchemeName;
-            userSiteData.BackgroundColors = command.RequestDto.UserSiteData.BackgroundColors;
-            userSiteData.TextColors = command.RequestDto.UserSiteData.TextColors;
-            userSiteData.HeadersFont = command.RequestDto.UserSiteData.HeadersFont;
-            userSiteData.MainTextFont = command.RequestDto.UserSiteData.MainTextFont;
-            userSiteData.LogoBackgroundColor = command.RequestDto.UserSiteData.LogoBackgroundColor;
-            userSiteData.RemoveLogoBackground = command.RequestDto.UserSiteData.RemoveLogoBackground;
-            userSiteData.Header = command.RequestDto.UserSiteData.Header;
-            userSiteData.Description = command.RequestDto.UserSiteData.Description;
-            userSiteData.VkLink = command.RequestDto.UserSiteData.VkLink;
-            userSiteData.TelegramLink = command.RequestDto.UserSiteData.TelegramLink;
-            userSiteData.YoutubeLink = command.RequestDto.UserSiteData.YoutubeLink;
-            userSiteData.Images = command.RequestDto.UserSiteData.Images;
-        }
+        _userSiteDataRepository.Add(command.RequestDto.UserSiteData);
 
         _unitOfWork.Commit();
 

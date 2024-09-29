@@ -33,9 +33,11 @@ type ColorScheme = {
   },
 }
 
+type Entity = {
+  id: number,
+}
+
 type Image = {
-  id: string,
-  userId: string,
   type: string,
   imageFileBase64String: string,
 }
@@ -122,6 +124,10 @@ type GetSavedUserSiteDataRequest = {
   userId: number,
 }
 
+type GetSavedUserSiteDataResponse = {
+  siteData: UserSiteData,
+}
+
 type CheckLoginRequest = {
   login: string,
 }
@@ -151,4 +157,5 @@ export type {
   CheckLoginResponse,
   SaveUserSiteDataRequest,
   GetSavedUserSiteDataRequest,
+  GetSavedUserSiteDataResponse,
 }

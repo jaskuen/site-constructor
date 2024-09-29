@@ -39,12 +39,11 @@ export class ImageLoaderComponent implements AfterViewInit {
   processFiles(files: FileList) {
     const userId = localStorage.getItem("userId")!;
     for (let i = 0; i < files.length; i++) {
+      const randNum = Math.round(Math.random() * 100000 + 1)
       const file = files[i]
       const reader = new FileReader()
       reader.onload = (e: any) => {
         const result: Image = {
-          id: v4(),
-          userId: userId,
           type: this.type,
           imageFileBase64String: e.target.result,
         }

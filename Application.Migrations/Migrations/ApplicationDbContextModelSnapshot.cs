@@ -38,7 +38,7 @@ namespace SiteConstructor.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LocalUsers");
+                    b.ToTable("LocalUsers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.UserSiteData.UserSiteData", b =>
@@ -94,7 +94,7 @@ namespace SiteConstructor.Migrations
 
                     b.HasIndex("TextColorsId");
 
-                    b.ToTable("UsersSiteData");
+                    b.ToTable("UsersSiteData", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.ValueObjects.SiteData.BackgroundColors", b =>
@@ -119,7 +119,7 @@ namespace SiteConstructor.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BackgroundColors");
+                    b.ToTable("BackgroundColors", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.ValueObjects.SiteData.Image", b =>
@@ -143,7 +143,7 @@ namespace SiteConstructor.Migrations
 
                     b.HasIndex("UserSiteDataId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.ValueObjects.SiteData.TextColors", b =>
@@ -168,7 +168,7 @@ namespace SiteConstructor.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TextColors");
+                    b.ToTable("TextColors", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.UserSiteData.UserSiteData", b =>

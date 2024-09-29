@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SiteCreatorComponent} from "./site-creator/site-creator.component";
 import {TitleComponent} from "./title/title.component";
 import {HeaderComponent} from "./header/header.component";
@@ -39,38 +39,8 @@ import {popup} from "../../components/popup";
 export class MainComponent implements OnInit {
   constructor(private dataService: DataService) {}
   currentColorScheme: ColorScheme = ColorSchemes[0].colorScheme!;
-  @Input() designPageData: DesignPageData = {
-    colorSchemeName: (ColorSchemes[0].text) as ColorSchemeName,
-    ...this.currentColorScheme,
-    headersFont: 'Franklin Gothic Medium',
-    mainTextFont: 'Franklin Gothic Medium',
-    logoSrc: [],
-    logoBackgroundColor: '',
-    removeLogoBackground: false,
-    faviconSrc: [],
-  };
-  @Input() contentPageData: ContentPageData = {
-    languages: [{
-      ...Russian,
-      selected: false,
-    }, {
-      ...English,
-      selected: false,
-    }, {
-      ...German,
-      selected: false,
-    }, {
-      ...Italian,
-      selected: false,
-    },],
-    mainLanguage: Russian,
-    header: "",
-    description: "",
-    vkLink: "",
-    telegramLink: "",
-    youtubeLink: "",
-    photosSrc: [],
-  }
+  designPageData!: DesignPageData;
+  contentPageData!: ContentPageData;
   @Input() isPopoverOpened = false
   @Input() siteDownloadUrl: string = "";
   @Input() siteLoading: boolean = false;
@@ -80,6 +50,39 @@ export class MainComponent implements OnInit {
     let getSavedUserDataRequest: GetSavedUserSiteDataRequest = {
       userId: userId,
     }
+    this.designPageData = {
+      colorSchemeName: (ColorSchemes[0].text) as ColorSchemeName,
+      ...this.currentColorScheme,
+      headersFont: 'Franklin Gothic Medium',
+      mainTextFont: 'Franklin Gothic Medium',
+      logoSrc: [],
+      logoBackgroundColor: '',
+      removeLogoBackground: false,
+      faviconSrc: [],
+    };
+
+    this.contentPageData = {
+      languages: [{
+        ...Russian,
+        selected: false,
+      }, {
+        ...English,
+        selected: false,
+      }, {
+        ...German,
+        selected: false,
+      }, {
+        ...Italian,
+        selected: false,
+      },],
+        mainLanguage: Russian,
+        header: "",
+        description: "",
+        vkLink: "",
+        telegramLink: "",
+        youtubeLink: "",
+        photosSrc: [],
+    }
     this.dataService.getSavedUserData(getSavedUserDataRequest)
       .pipe(map(response => {
         return response
@@ -87,23 +90,23 @@ export class MainComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          let data = response.data
+          let data = response.data.siteData
           console.log(data)
           if (data) {
-            this.designPageData.colorSchemeName = data.colorSchemeName;
-            this.designPageData.backgroundColors = data.backgroundColors;
-            this.designPageData.textColors = data.textColors;
-            this.designPageData.headersFont = data.headersFont;
-            this.designPageData.mainTextFont = data.mainTextFont;
-            this.designPageData.logoBackgroundColor = data.logoBackgroundColor;
-            this.designPageData.removeLogoBackground = data.removeLogoBackground;
+            this.designPageData.colorSchemeName = data.colorSchemeName ? data.colorSchemeName : "Оранжевая";
+            this.designPageData.backgroundColors = data.backgroundColors ? data.backgroundColors : ColorSchemes[0].colorScheme!.backgroundColors;
+            this.designPageData.textColors = data.textColors ? data.textColors : ColorSchemes[0].colorScheme!.textColors;
+            this.designPageData.headersFont = data.headersFont ? data.headersFont : "Open Sans";
+            this.designPageData.mainTextFont = data.mainTextFont ? data.mainTextFont : "Open Sans";
+            this.designPageData.logoBackgroundColor = data.logoBackgroundColor ? data.logoBackgroundColor : "";
+            this.designPageData.removeLogoBackground = data.removeLogoBackground ? data.removeLogoBackground : false;
             this.designPageData.logoSrc = data.images ? data.images.filter(img => img.type === "logo") : [];
             this.designPageData.faviconSrc = data.images ? data.images.filter(img => img.type === "favicon") : [];
-            this.contentPageData.header = data.header;
-            this.contentPageData.description = data.description;
-            this.contentPageData.vkLink = data.vkLink;
-            this.contentPageData.telegramLink = data.telegramLink;
-            this.contentPageData.youtubeLink = data.youtubeLink;
+            this.contentPageData.header = data.header ? data.header : "";
+            this.contentPageData.description = data.description ? data.description : "";
+            this.contentPageData.vkLink = data.vkLink ? data.vkLink : "";
+            this.contentPageData.telegramLink = data.telegramLink ? data.telegramLink : "";
+            this.contentPageData.youtubeLink = data.youtubeLink ? data.youtubeLink : "";
             this.contentPageData.photosSrc = data.images ? data.images.filter(img => img.type === "main") : [];
           }
 

@@ -1,18 +1,23 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Models.Entities;
 using Domain.Models.Entities.UserSiteData;
 
 namespace Domain.Models.ValueObjects.SiteData;
 
-public class BackgroundColors : Entity
+public class BackgroundColors
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
     public string Main { get; set; }
     public string Additional { get; set; }
     public string Translucent { get; set; }
     public string Navigation { get; set; }
 }
 
-public class TextColors : Entity
+public class TextColors
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
     public string Main { get; set; }
     public string Additional { get; set; }
     public string Translucent { get; set; }
