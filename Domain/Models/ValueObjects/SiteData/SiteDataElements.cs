@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Domain.Models.Entities;
 using Domain.Models.Entities.UserSiteData;
 
@@ -6,8 +7,13 @@ namespace Domain.Models.ValueObjects.SiteData;
 
 public class BackgroundColors
 {
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [JsonIgnore]
     public int Id { get; set; }
+    [JsonIgnore]
+    public int UserSiteDataId { get; set; }
+
+    [JsonIgnore]
+    public UserSiteData UserSiteData { get; set; }
     public string Main { get; set; }
     public string Additional { get; set; }
     public string Translucent { get; set; }
@@ -16,8 +22,13 @@ public class BackgroundColors
 
 public class TextColors
 {
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [JsonIgnore]
     public int Id { get; set; }
+    [JsonIgnore]
+    public int UserSiteDataId { get; set; }
+
+    [JsonIgnore]
+    public UserSiteData UserSiteData { get; set; }
     public string Main { get; set; }
     public string Additional { get; set; }
     public string Translucent { get; set; }

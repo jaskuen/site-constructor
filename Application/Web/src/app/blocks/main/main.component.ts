@@ -18,6 +18,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {map} from "rxjs";
 import {PopoverComponent} from "../../components/popover/popover.component";
 import {popup} from "../../components/popup";
+import {Colors} from "../../../colors";
 
 @Component({
   selector: 'app-main',
@@ -91,6 +92,9 @@ export class MainComponent implements OnInit {
       .subscribe({
         next: (response) => {
           let data = response.data.siteData
+          let logo = data.images ? data.images.filter(img => img.type === "logo") : []
+          let favicon = data.images ? data.images.filter(img => img.type === "favicon") : []
+          let images = data.images ? data.images.filter(img => img.type === "main") : []
           console.log(data)
           if (data) {
             this.designPageData.colorSchemeName = data.colorSchemeName ? data.colorSchemeName : "Оранжевая";
@@ -100,19 +104,31 @@ export class MainComponent implements OnInit {
             this.designPageData.mainTextFont = data.mainTextFont ? data.mainTextFont : "Open Sans";
             this.designPageData.logoBackgroundColor = data.logoBackgroundColor ? data.logoBackgroundColor : "";
             this.designPageData.removeLogoBackground = data.removeLogoBackground ? data.removeLogoBackground : false;
-            this.designPageData.logoSrc = data.images ? data.images.filter(img => img.type === "logo") : [];
-            this.designPageData.faviconSrc = data.images ? data.images.filter(img => img.type === "favicon") : [];
+            this.designPageData.logoSrc = logo.length > 0 ? [{
+              type: "logo",
+              imageFileBase64String: logo[0].imageFileBase64String
+            }] : [];
+            this.designPageData.faviconSrc = favicon.length > 0 ? [{
+              type: "logo",
+              imageFileBase64String: favicon[0].imageFileBase64String
+            }] : [];
             this.contentPageData.header = data.header ? data.header : "";
             this.contentPageData.description = data.description ? data.description : "";
             this.contentPageData.vkLink = data.vkLink ? data.vkLink : "";
             this.contentPageData.telegramLink = data.telegramLink ? data.telegramLink : "";
             this.contentPageData.youtubeLink = data.youtubeLink ? data.youtubeLink : "";
-            this.contentPageData.photosSrc = data.images ? data.images.filter(img => img.type === "main") : [];
+            this.contentPageData.photosSrc = images.length > 0 ? images.map(img => {
+              return {
+                type: "main",
+                imageFileBase64String: img.imageFileBase64String,
+              }
+            }) : [];
           }
-
+          popup("Данные загружены")
         },
         error: (error) => {
           console.log("Error loading data", error)
+          popup(error.error.error.reason)
         }
         }
       )

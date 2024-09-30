@@ -19,6 +19,17 @@ namespace Infrastructure
                 .HasMany(d => d.Images)
                 .WithOne(f => f.UserSiteData)
                 .HasForeignKey(f => f.UserSiteDataId);
+            modelBuilder.Entity<UserSiteData>()
+                .HasOne(d => d.BackgroundColors)
+                .WithOne(c => c.UserSiteData)
+                .HasForeignKey<BackgroundColors>(c => c.UserSiteDataId);
+            modelBuilder.Entity<UserSiteData>()
+                .HasOne(d => d.TextColors)
+                .WithOne(c => c.UserSiteData)
+                .HasForeignKey<TextColors>(c => c.UserSiteDataId);
+            modelBuilder.Entity<TextColors>()
+                .HasIndex(tc => tc.UserSiteDataId)
+                .IsUnique();
         }
     }
 }

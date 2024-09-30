@@ -4,6 +4,7 @@ import {AuthService} from "../../auth/api/auth.service";
 import {ContentPageData, DesignPageData, Image, SaveUserSiteDataRequest, UserSiteData} from "../../../../types";
 import {DataService} from "../api/data.service";
 import {map} from "rxjs";
+import {popup} from "../../../components/popup";
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ import {map} from "rxjs";
 export class HeaderComponent {
   @Input() contentPageData!: ContentPageData;
   @Input() designPageData!: DesignPageData;
+  @Input() disableSaveButton: boolean = false;
   constructor(private authService: AuthService, private dataService: DataService) {
   }
   username = window.localStorage.getItem("username");
@@ -33,6 +35,8 @@ export class HeaderComponent {
         images = [...images, this.contentPageData.photosSrc[i]]
       }
     }
+
+    console.log(images)
     let siteData: UserSiteData = {
       userId: Number(this.userId),
       colorSchemeName: this.designPageData.colorSchemeName,
@@ -52,6 +56,7 @@ export class HeaderComponent {
     let data: SaveUserSiteDataRequest = {
       userSiteData: siteData,
     }
+    this.disableSaveButton = true
     this.dataService.saveUserData(data)
         .pipe(map(response => {
           return response;
@@ -60,11 +65,13 @@ export class HeaderComponent {
       .subscribe({
         next: (response) => {
           console.log(response)
+          popup("Данные успешно сохранены")
         },
         error: (error) => {
           console.log("Error saving data", error)
         }
       })
+    this.disableSaveButton = false
   }
   handleLogoutClick = () => {
     this.authService.logout();

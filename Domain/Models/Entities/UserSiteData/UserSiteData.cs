@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Models.ValueObjects.SiteData;
 using Domain.Models.Entities.LocalUser;
+using System.Text.Json.Serialization;
 
 namespace Domain.Models.Entities.UserSiteData;
 

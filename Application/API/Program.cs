@@ -1,8 +1,10 @@
+using System.Text.Json.Serialization;
 using Application.Authentication;
 using Application.UseCases;
 using Application.UseCases.Authentication;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,11 @@ AuthConfigurator.AddAuthenticationServices(
     builder.Services,
     configuration.GetSection("Authentication").Get<AuthConfiguration>());
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
