@@ -10,6 +10,8 @@ type SelectOption = {
 
 type FontType = "Franklin Gothic Medium" | "Open Sans" | "Roboto" | "Arial" // enum
 type LanguageCode = "ru-RU" | "en-US" | "de-DE" | "it-IT"
+type PopupType = "none" | "success" | "error"
+
 type LanguageType = {
   code: LanguageCode,
   name: string,
@@ -140,6 +142,7 @@ export type {
   SelectLanguageType,
   SelectOption,
   LanguageType,
+  PopupType,
   DesignPageData,
   ContentPageData,
   SiteConstructorData,

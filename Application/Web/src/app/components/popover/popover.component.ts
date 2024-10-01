@@ -45,7 +45,7 @@ export class PopoverComponent {
   }
   handleClick = () => {
     if (this.siteName === "") {
-      popup("Введите название для архива")
+      popup("Введите название для архива", "none")
     } else {
       const downloadSiteRequest: DownloadSiteRequest = {
         userId: localStorage.getItem("userId")!,

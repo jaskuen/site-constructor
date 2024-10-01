@@ -65,10 +65,11 @@ export class HeaderComponent {
       .subscribe({
         next: (response) => {
           console.log(response)
-          popup("Данные успешно сохранены")
+          popup("Данные успешно сохранены", "success")
         },
         error: (error) => {
           console.log("Error saving data", error)
+          popup("Ошибка загрузки данных", "error")
         }
       })
     this.disableSaveButton = false

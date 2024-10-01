@@ -22,7 +22,7 @@ public class SiteDataRepository : BaseRepository<SiteData>, ISiteDataRepository
         _siteData = siteData;
     }
 
-    public Task<SiteData?> GetSiteData(string userId)
+    public Task<SiteData?> GetSiteData(int userId)
     {
         return Table.FirstOrDefaultAsync(x => x.UserId == userId);
     }

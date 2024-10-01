@@ -101,8 +101,18 @@ img, svg {
   transform: translate(-50%, 0);
   bottom: 80px;
   border: none;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  padding: 14px;
   z-index: 10000;
+}
+
+.popup-success {
+  background-color: $ACCENT11_LIGHT_3;
+}
+
+.popup-error {
+  color: $PRIMARY_DARK_8;
+  background-color: $ACCENT1_DANGER_LIGHT_4;
 }
 
 .secondary {

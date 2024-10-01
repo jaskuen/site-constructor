@@ -124,11 +124,11 @@ export class MainComponent implements OnInit {
               }
             }) : [];
           }
-          popup("Данные загружены")
+          popup("Данные загружены", "success")
         },
         error: (error) => {
           console.log("Error loading data", error)
-          popup(error.error.error.reason)
+          popup(error.error.error.reason, "error")
         }
         }
       )
@@ -136,7 +136,7 @@ export class MainComponent implements OnInit {
 
   handleClick = () => {
     if (this.contentPageData.header.trim() == "") {
-      popup("Введите заголовок сайта")
+      popup("Введите заголовок сайта", "none")
     } else {
       this.isPopoverOpened = true;
     }
@@ -167,13 +167,13 @@ export class MainComponent implements OnInit {
               },
               error: (error) => {
                 console.log("Error downloading site", error)
-                popup(error.error.error.reason)
+                popup(error.error.error.reason, "error")
               }
             })
         },
         error: (error) => {
           console.log("Error posting data", error)
-          popup(error.error.error.reason)
+          popup(error.error.error.reason, "error")
         }
       })
   }

@@ -69,7 +69,7 @@ export class LoginComponent {
       )
       .subscribe({
         next: (response) => {
-          popup("Вы успешно вошли!")
+          popup("Вы успешно вошли!", "success")
           console.log(response)
           localStorage.setItem("userId", response.data.userId.toString())
           this.cookieService.set("tasty-cookies", response.data.token)
@@ -81,10 +81,10 @@ export class LoginComponent {
           if (error && error.error && error.error.error) {
             const errorMessage = error.error.error.reason;
             if (errorMessage) {
-              popup("Ошибка входа: " + errorMessage)
+              popup("Ошибка входа: " + errorMessage, "error")
             }
           }
-          popup("Ошибка сервера")
+          popup("Ошибка сервера", "error")
           console.log("Error logging in", error)
         }
       })

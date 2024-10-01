@@ -91,7 +91,7 @@ export class RegisterComponent implements OnInit {
 
   handleRegisterButtonClick = async () => {
     if (this.authForm.controls.password.value !== this.authForm.controls.repeatPassword.value) {
-      popup("Пароли не совпадают!")
+      popup("Пароли не совпадают!", "error")
       return
     }
     const data: AuthData = {
@@ -106,13 +106,13 @@ export class RegisterComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          popup("Вы успешно зарегистрировались!")
+          popup("Вы успешно зарегистрировались!", "success")
           setTimeout(() => {
             this.router.navigate(["/login"])
           }, 1000)
         },
         error: (error) => {
-          popup("Этот логин уже занят!")
+          popup("Этот логин уже занят!", "error")
           // проверку на наличие логина в реальном времени (сменить input на form)
           console.log("Error logging in", error)
         }

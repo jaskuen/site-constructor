@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (parsedData.DesignPageData.RemoveLogoBackground || parsedData.DesignPageData.LogoSrc.length == 0) {
           document.getElementsByClassName('site-logo')[0].style.background = "none"
         }
-        languageChanger.value = parsedData.Languages[0].Code
+        languageChanger.value = parsedData.ContentPageData.Languages[0].Code
         if (languageChanger.languages.length <= 1) {
           document.getElementById('language-changer').style.display = 'none'
         }
