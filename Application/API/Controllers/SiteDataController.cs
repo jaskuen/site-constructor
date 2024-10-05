@@ -8,6 +8,8 @@ using Application.UseCases.Queries.GetSavedUserSiteData.DTOs;
 using Application.UseCases.Queries.UploadSavedUserSiteData;
 using Application.UseCases.Results;
 using Application.UseCases.UseCases;
+using Domain.Models.ValueObjects.GitHub;
+using Domain.Models.ValueObjects.GitHub.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -64,5 +66,14 @@ public class SiteDataController : ControllerBase
     {
         var result = await _downloadSiteHandler.Handle(new DownloadResultSiteQuery(model));
         return result.IsSuccess ? File(result.Data.Memory.ToArray(), result.Data.ContentType, result.Data.FileName) : BadRequest(result);
+    }
+
+    [HttpPost("HostResultSite")]
+    public async Task<IActionResult> HostResultSite([FromBody] CreateGithubRepositoryRequestDto model)
+    {
+
+        CreateGithubRepository creator = new CreateGithubRepository();
+        bool answer = await creator.CreateRepositoryAsync(model);
+        return answer ? Ok() : BadRequest();
     }
 }
