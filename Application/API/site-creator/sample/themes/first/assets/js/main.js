@@ -46,8 +46,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('language-changer').addEventListener('click', onLanguageClick)
     setImage("arrow", 0)
     if (images.main.length > 1) {
-        document.getElementById('arrowLeft').addEventListener('click', (e) => setImage(e, "arrow", -1))
-        document.getElementById('arrowRight').addEventListener('click', (e) => setImage(e, "arrow", 1))
+        document.getElementById('arrowLeft').addEventListener('click', (e) => {
+            e.stopPropagation()
+            setImage("arrow", -1)
+        })
+        document.getElementById('arrowRight').addEventListener('click', (e) => {
+            e.stopPropagation()
+            setImage("arrow", 1)
+        })
     } else {
         document.getElementById('arrowLeft').style.display = 'none'
         document.getElementById('arrowRight').style.display = 'none'
@@ -97,8 +103,7 @@ const changeLanguage = (languageId) => {
     select.remove()
 }
 
-const setImage = (event, type, number) => {
-    event.stopPropagation()
+const setImage = (type, number) => {
     const image = document.getElementById('main-image-img')
     if (images.main.length == 0 | ((images.current + number >= images.main.length | images.current + number < 0) && type === "arrow")) {
         return;

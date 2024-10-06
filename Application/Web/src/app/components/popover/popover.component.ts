@@ -65,6 +65,14 @@ export class PopoverComponent {
     this.closePopover()
   };
   handleHostClick = () => {
-
+    if (this.siteName === "") {
+      popup("Введите название для сайта", "none")
+    } else {
+      const hostSiteRequest: HostSiteRequest = {
+        userId: Number(localStorage.getItem("userId")!),
+        name: this.siteName,
+      }
+      this.hostSite(hostSiteRequest);
+    }
   }
 }

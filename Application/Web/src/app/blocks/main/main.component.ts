@@ -143,25 +143,41 @@ export class MainComponent implements OnInit {
     }
   }
   hostSite = async (hostSiteData: HostSiteRequest) => {
-    const data: HostSiteRequest = {
-      userId: Number(localStorage.getItem("userId")),
-      name: hostSiteData.name,
+    this.siteLoading = true;
+    const data: SiteConstructorData = {
+      userId: Number(localStorage.getItem("userId")!),
+      contentPageData: this.contentPageData,
+      designPageData: this.designPageData,
     }
-    this.dataService.hostSite(data)
+    this.dataService.postData({siteData: data})
       .pipe(map(response => {
-        return response;
-      }),
+          return response;
+        }),
       )
       .subscribe({
         next: (response) => {
-          popup("Сайт был успешно собран!", "success")
-          console.log(response)
+          this.dataService.hostSite(hostSiteData)
+            .pipe(map(response => {
+                return response;
+              }),
+            )
+            .subscribe({
+              next: (response) => {
+                popup("Сайт был успешно собран!", "success")
+                console.log(response)
+              },
+              error: (error) => {
+                console.log("Ошибка сборки сайта: ", error)
+                popup(error.error.error.reason, "error")
+              }
+            })
         },
         error: (error) => {
-          console.log("Ошибка сборки сайта: ", error)
+          console.log("Error posting data", error)
           popup(error.error.error.reason, "error")
         }
       })
+
   }
   generateSite = async (downloadSiteRequest: DownloadSiteRequest) => {
     this.siteLoading = true;
