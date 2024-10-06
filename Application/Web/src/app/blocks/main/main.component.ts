@@ -45,6 +45,7 @@ export class MainComponent implements OnInit {
   @Input() isPopoverOpened = false
   @Input() siteDownloadUrl: string = "";
   @Input() siteLoading: boolean = false;
+  @Input() toDownload!: boolean;
 
   ngOnInit() {
     let userId = Number(localStorage.getItem("userId")!);
@@ -135,7 +136,7 @@ export class MainComponent implements OnInit {
   }
 
   handleClick = () => {
-    if (this.contentPageData.header.trim() == "") {
+    if (this.contentPageData && this.contentPageData.header && this.contentPageData.header.trim() == "") {
       popup("Введите заголовок сайта", "none")
     } else {
       this.isPopoverOpened = true;

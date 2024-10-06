@@ -41,12 +41,12 @@ public class HostResultSiteCommandHandler : ICommandHandler<HostResultSiteComman
             return Result.Fail(new Error("Site with that name already exists"));
         }
 
-        _siteNameRepository.Add(new SiteName() 
-        { 
+        _siteNameRepository.Add(new SiteName()
+        {
             Name = command.RequestDto.Name,
             UserId = command.RequestDto.UserId,
         });
-        string hostingSiteFolderPath = 
+        string hostingSiteFolderPath =
             $"C:/Users/Jaskuen/Documents/GitHub/StaticData/site-constructor/HostingFolders/{command.RequestDto.UserId}/{command.RequestDto.Name}";
         if (!Directory.Exists(hostingSiteFolderPath))
         {

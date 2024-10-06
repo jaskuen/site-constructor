@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {TextInputComponent} from "../text-input/text-input.component";
 import {ButtonComponent} from "../button/button.component";
 import {NgIf, NgOptimizedImage} from "@angular/common";
@@ -29,14 +29,16 @@ export class PopoverComponent {
   @Output() isOpenedChange = new EventEmitter<boolean>();
   @Input() siteDownloadUrl: string = "";
   @Input() siteLoading: boolean = false;
+  @Input() download!: boolean;
+
   fileNameControl = new FormControl(this.siteName, [
-    Validators.required, Validators.pattern(/^[a-zA-Z0-9_-]+$/),
+    Validators.required, Validators.pattern(/^[а-яА-ЯёЁa-zA-Z0-9_-]+$/),
   ]);
   onInput(event: any) {
     const input = event.target.value;
     const allowedChars = /^[а-яА-ЯёЁa-zA-Z0-9_-]+$/;
     if (!allowedChars.test(input)) {
-      event.target.value = input.replace(/[^a-zA-Z0-9_-]/g, '');
+      event.target.value = input.replace(/[^а-яА-ЯёЁa-zA-Z0-9_-]/g, '');
     }
     this.siteName = event.target.value;
   }
@@ -44,7 +46,7 @@ export class PopoverComponent {
     this.isOpened = false;
     this.isOpenedChange.emit(false);
   }
-  handleClick = () => {
+  handleSaveClick = () => {
     if (this.siteName === "") {
       popup("Введите название для архива", "none")
     } else {
@@ -62,4 +64,7 @@ export class PopoverComponent {
     this.siteName = ""
     this.closePopover()
   };
+  handleHostClick = () => {
+
+  }
 }

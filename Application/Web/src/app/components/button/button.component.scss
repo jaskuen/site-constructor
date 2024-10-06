@@ -1,6 +1,7 @@
 @import "../../../colors";
 
 button {
+  transition: background 0.2s linear;
   background: $ACCENT2_CALL_TO_ACTION;
   color: $LIGHT;
   padding-block: 9px;
@@ -17,13 +18,16 @@ button {
 }
 
 button:hover {
+  transition: background 0.2s linear;
   background: $ACCENT2_CALL_TO_ACTION_DARK_1;
 }
 
 button:active {
+  transition: background 0.2s linear;
   background: $ACCENT2_CALL_TO_ACTION_DARK_2;
 }
 
 button:disabled {
+  transition: background 0.2s linear;
   background: $DARK_LIGHT_7;
 }

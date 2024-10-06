@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Application.UseCases.Commands.GetSiteData;
+﻿using Application.UseCases.Commands.GetSiteData;
 using Application.UseCases.Commands.HostResultSite;
 using Application.UseCases.Commands.SaveUserSiteData;
 using Application.UseCases.Queries.DownloadResultSite;

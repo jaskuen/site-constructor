@@ -3,7 +3,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using Domain.Models.ValueObjects.GitHub.DTOs;
 using Newtonsoft.Json;
-using Octokit.Internal;
 
 namespace Domain.Models.ValueObjects.GitHub;
 
@@ -135,6 +134,7 @@ public class GithubApi
     {
         try
         {
+            ChangeGithubToSiteConstructor(true);
             ProcessStartInfo psi = new ProcessStartInfo
             {
                 FileName = "git",
@@ -178,10 +178,27 @@ public class GithubApi
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
             process.WaitForExit();
+
+            ChangeGithubToSiteConstructor(false);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
+    }
+
+    private void ChangeGithubToSiteConstructor(bool isStart)
+    {
+        string pathToConfig = "C:/Users/Jaskuen/.ssh/config";
+        string config;
+        if (isStart)
+        {
+            config = File.ReadAllText("C:/Users/Jaskuen/.ssh/config_site_constructor");
+        }
+        else
+        {
+            config = File.ReadAllText("C:/Users/Jaskuen/.ssh/config_default");
+        }
+        File.WriteAllText(pathToConfig, config);
     }
 }

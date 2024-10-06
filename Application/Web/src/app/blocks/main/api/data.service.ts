@@ -20,18 +20,18 @@ export class DataService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.http.post<SiteConstructorData>(this.apiUrl + "/PostResultSiteData", data, {withCredentials: true, headers});
+    return this.http.post<SiteConstructorData>(this.apiUrl + "/post", data, {withCredentials: true, headers});
   }
   saveUserData(data: SaveUserSiteDataRequest): Observable<SaveUserSiteDataRequest> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     })
-    return this.http.post<SaveUserSiteDataRequest>(this.apiUrl + "/SaveUserSiteData", data, {withCredentials: true, headers});
+    return this.http.post<SaveUserSiteDataRequest>(this.apiUrl + "/save", data, {withCredentials: true, headers});
   }
   getSavedUserData(data: GetSavedUserSiteDataRequest): Observable<ApiResponse<GetSavedUserSiteDataResponse>> {
     let params = new HttpParams();
     params = params.set("userId", data.userId)
-    return this.http.get<ApiResponse<GetSavedUserSiteDataResponse>>(this.apiUrl + "/GetSavedUserSiteData", {
+    return this.http.get<ApiResponse<GetSavedUserSiteDataResponse>>(this.apiUrl + "/load", {
       params,
       withCredentials: true,
       responseType: "json",
@@ -41,7 +41,7 @@ export class DataService {
     let params = new HttpParams();
     params = params.set("userId", data.userId);
     params = params.set("fileName", data.fileName);
-    return this.http.get(this.apiUrl + "/DownloadResultSite", {
+    return this.http.get(this.apiUrl + "/download", {
       params,
       responseType: "blob",
       withCredentials: true,
@@ -51,6 +51,6 @@ export class DataService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.http.post<string>(this.apiUrl + "/HostResultSite", data, {withCredentials: true, headers});
+    return this.http.post<string>(this.apiUrl + "/host", data, {withCredentials: true, headers});
   }
 }

@@ -1,5 +1,5 @@
 <div class="overlay" *ngIf="isOpened" (mousedown)="closePopover()">
-  <div class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
+  <div [style.display]="download ? 'flex' : 'none'" class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
     <p>Название архива</p>
     <div class="wrapper-row no-gap site-name">
       <form>
@@ -7,12 +7,25 @@
       </form>
       <p>.zip</p>
     </div>
-    <app-button [onClick]="handleClick" text="Сгенерировать сайт"/>
+    <app-button [onClick]="handleSaveClick" text="Сгенерировать сайт"/>
     <p [style.display]="siteLoading ? 'block' : 'none'" >
       Ожидание сервера...
     </p>
     <a [style.z-index]="1000" id="download" [download]="siteDownloadUrl">
       <app-button [style.display]="siteDownloadUrl == '' ? 'none' : 'block'" text="Скачать" [onClick]="handleDownloadClick"/>
     </a>
+  </div>
+  <div [style.display]="!download ? 'flex' : 'none'" class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
+    <p>Название для вашего сайта</p>
+    <div class="wrapper-row no-gap site-name">
+      <p>https://cool-website.github.io/</p>
+      <form>
+        <input type="text" class="block" [formControl]="fileNameControl" (input)="onInput($event)">
+      </form>
+    </div>
+    <app-button [onClick]="handleHostClick" text="Выложить сайт"/>
+    <p [style.display]="siteLoading ? 'block' : 'none'" >
+      Ожидание сервера...
+    </p>
   </div>
 </div>

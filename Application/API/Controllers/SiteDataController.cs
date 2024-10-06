@@ -8,8 +8,6 @@ using Application.UseCases.Queries.GetSavedUserSiteData.DTOs;
 using Application.UseCases.Queries.UploadSavedUserSiteData;
 using Application.UseCases.Results;
 using Application.UseCases.UseCases;
-using Domain.Models.ValueObjects.GitHub;
-using Domain.Models.ValueObjects.GitHub.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,7 +38,7 @@ public class SiteDataController : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("PostResultSiteData")]
+    [HttpPost("post")]
     public async Task<IActionResult> PostResultSiteData([FromBody] SetResultSiteDataRequestDto model)
     {
         var result = await _setResultSiteDataHandler.Handle(new SetResultSiteDataCommand(model));
@@ -48,7 +46,7 @@ public class SiteDataController : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("SaveUserSiteData")]
+    [HttpPost("save")]
     public async Task<IActionResult> SaveUserSiteData([FromBody] SaveUserSiteDataRequestDto model)
     {
         var result = await _saveUserSiteDataHandler.Handle(new SaveUserSiteDataCommand(model));
@@ -56,7 +54,7 @@ public class SiteDataController : ControllerBase
     }
 
     [Authorize]
-    [HttpGet("GetSavedUserSiteData")]
+    [HttpGet("load")]
     public async Task<IActionResult> GetSavedUserSiteData([FromQuery] GetSavedUserSiteDataRequetsDto model)
     {
         var result = await _getSavedUserSiteDataHandler.Handle(new GetSavedUserSiteDataQuery(model));
@@ -64,15 +62,15 @@ public class SiteDataController : ControllerBase
     }
 
     [Authorize]
-    [HttpGet("DownloadResultSite")]
+    [HttpGet("download")]
     public async Task<IActionResult> DownloadResultSite([FromQuery] DownloadResultSiteRequestDto model)
     {
         var result = await _downloadSiteHandler.Handle(new DownloadResultSiteQuery(model));
         return result.IsSuccess ? File(result.Data.Memory.ToArray(), result.Data.ContentType, result.Data.FileName) : BadRequest(result);
     }
 
-    [Authorize]
-    [HttpPost("HostResultSite")]
+
+    [HttpPost("host")]
     public async Task<IActionResult> HostResultSite([FromBody] HostResultSiteRequestDto model)
     {
         var result = await _hostResultSiteHandler.Handle(new HostResultSiteCommand(model));

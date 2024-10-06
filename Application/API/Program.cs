@@ -4,7 +4,6 @@ using Application.UseCases;
 using Application.UseCases.Authentication;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 

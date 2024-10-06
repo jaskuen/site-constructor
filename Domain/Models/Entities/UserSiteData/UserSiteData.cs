@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Models.ValueObjects.SiteData;
-using Domain.Models.Entities.LocalUser;
-using System.Text.Json.Serialization;
+﻿using Domain.Models.ValueObjects.SiteData;
 
 namespace Domain.Models.Entities.UserSiteData;
 
