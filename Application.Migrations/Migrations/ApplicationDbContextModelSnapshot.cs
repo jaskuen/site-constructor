@@ -40,6 +40,25 @@ namespace SiteConstructor.Migrations
                     b.ToTable("LocalUsers");
                 });
 
+            modelBuilder.Entity("Domain.Models.Entities.SiteName.SiteName", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SiteNames");
+                });
+
             modelBuilder.Entity("Domain.Models.Entities.UserSiteData.UserSiteData", b =>
                 {
                     b.Property<int>("Id")

@@ -23,17 +23,20 @@ public class SiteDataController : ControllerBase
     private readonly ICommandHandler<SaveUserSiteDataCommand, Result> _saveUserSiteDataHandler;
     private readonly IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> _downloadSiteHandler;
     private readonly IQueryHandler<GetSavedUserSiteDataQuery, GetSavedUserSiteDataQueryResult> _getSavedUserSiteDataHandler;
+    private readonly ICommandHandler<HostResultSiteCommand, Result> _hostResultSiteHandler;
     public SiteDataController(
             ICommandHandler<SetResultSiteDataCommand, Result> setResultDataHandler,
             ICommandHandler<SaveUserSiteDataCommand, Result> saveUserSiteDataHandler,
             IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> downloadSiteHandler,
-            IQueryHandler<GetSavedUserSiteDataQuery, GetSavedUserSiteDataQueryResult> getSavedUserSiteDataHandler
+            IQueryHandler<GetSavedUserSiteDataQuery, GetSavedUserSiteDataQueryResult> getSavedUserSiteDataHandler,
+            ICommandHandler<HostResultSiteCommand, Result> hostResultSiteHandler
         )
     {
         _setResultSiteDataHandler = setResultDataHandler;
         _saveUserSiteDataHandler = saveUserSiteDataHandler;
         _downloadSiteHandler = downloadSiteHandler;
         _getSavedUserSiteDataHandler = getSavedUserSiteDataHandler;
+        _hostResultSiteHandler = hostResultSiteHandler;
     }
 
     [Authorize]
@@ -68,12 +71,11 @@ public class SiteDataController : ControllerBase
         return result.IsSuccess ? File(result.Data.Memory.ToArray(), result.Data.ContentType, result.Data.FileName) : BadRequest(result);
     }
 
+    [Authorize]
     [HttpPost("HostResultSite")]
-    public async Task<IActionResult> HostResultSite([FromBody] CreateGithubRepositoryRequestDto model)
+    public async Task<IActionResult> HostResultSite([FromBody] HostResultSiteRequestDto model)
     {
-
-        CreateGithubRepository creator = new CreateGithubRepository();
-        bool answer = await creator.CreateRepositoryAsync(model);
-        return answer ? Ok() : BadRequest();
+        var result = await _hostResultSiteHandler.Handle(new HostResultSiteCommand(model));
+        return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
 }

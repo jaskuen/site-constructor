@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {
   ApiResponse,
   DownloadSiteRequest, GetSavedUserSiteDataRequest, GetSavedUserSiteDataResponse,
-  GetSiteDataRequest,
+  GetSiteDataRequest, HostSiteRequest,
   SaveUserSiteDataRequest,
   SiteConstructorData, UserSiteData
 } from "../../../../types";
@@ -46,5 +46,11 @@ export class DataService {
       responseType: "blob",
       withCredentials: true,
     });
+  }
+  hostSite(data: HostSiteRequest): Observable<string> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<string>(this.apiUrl + "/HostResultSite", data, {withCredentials: true, headers});
   }
 }

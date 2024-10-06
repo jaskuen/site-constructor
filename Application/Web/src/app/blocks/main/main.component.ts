@@ -9,7 +9,7 @@ import {
   ColorSchemeName,
   ContentPageData,
   DesignPageData,
-  DownloadSiteRequest, GetSavedUserSiteDataRequest, Image,
+  DownloadSiteRequest, GetSavedUserSiteDataRequest, HostSiteRequest, Image,
   SiteConstructorData
 } from "../../../types";
 import {ColorSchemes} from "../../../colorSchemes";
@@ -140,6 +140,27 @@ export class MainComponent implements OnInit {
     } else {
       this.isPopoverOpened = true;
     }
+  }
+  hostSite = async (hostSiteData: HostSiteRequest) => {
+    const data: HostSiteRequest = {
+      userId: Number(localStorage.getItem("userId")),
+      name: hostSiteData.name,
+    }
+    this.dataService.hostSite(data)
+      .pipe(map(response => {
+        return response;
+      }),
+      )
+      .subscribe({
+        next: (response) => {
+          popup("Сайт был успешно собран!", "success")
+          console.log(response)
+        },
+        error: (error) => {
+          console.log("Ошибка сборки сайта: ", error)
+          popup(error.error.error.reason, "error")
+        }
+      })
   }
   generateSite = async (downloadSiteRequest: DownloadSiteRequest) => {
     this.siteLoading = true;

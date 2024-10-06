@@ -3,7 +3,7 @@ import {TextInputComponent} from "../text-input/text-input.component";
 import {ButtonComponent} from "../button/button.component";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {DownloadSiteRequest} from "../../../types";
+import {DownloadSiteRequest, HostSiteRequest} from "../../../types";
 import {saveAs} from "file-saver";
 import {popup} from "../popup";
 
@@ -23,6 +23,7 @@ import {popup} from "../popup";
 })
 export class PopoverComponent {
   @Input() generateSite(downloadSiteRequest: DownloadSiteRequest) {};
+  @Input() hostSite(hostSiteRequest: HostSiteRequest) {};
   @Input() siteName!: string;
   @Input() isOpened: boolean = false;
   @Output() isOpenedChange = new EventEmitter<boolean>();

@@ -123,7 +123,7 @@ public class SiteDataRepository : BaseRepository<SiteData>, ISiteDataRepository
         File.WriteAllText(jsonPath, JsonSerializer.Serialize(_siteData));
     }
 
-    private void CopyDirectory(string sourceDir, string destDir)
+    public void CopyDirectory(string sourceDir, string destDir)
     {
         DirectoryInfo dir = new DirectoryInfo(sourceDir);
         if (!dir.Exists)

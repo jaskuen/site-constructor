@@ -10,4 +10,5 @@ public interface ISiteDataRepository : IRepository<SiteData>
     public void SaveUserSiteData(SiteData siteData);
     public void CreateHugoDirectory();
     public void ApplyDataToHugo();
+    public void CopyDirectory(string sourceDir, string destDir);
 }

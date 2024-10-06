@@ -114,6 +114,11 @@ type DownloadSiteRequest = {
   fileName: string,
 }
 
+type HostSiteRequest = {
+  userId: number,
+  name: string,
+}
+
 type GetSiteDataRequest = {
   siteData: SiteConstructorData,
 }
@@ -155,6 +160,7 @@ export type {
   UserSiteData,
   ApiResponse,
   DownloadSiteRequest,
+  HostSiteRequest,
   GetSiteDataRequest,
   CheckLoginRequest,
   CheckLoginResponse,
