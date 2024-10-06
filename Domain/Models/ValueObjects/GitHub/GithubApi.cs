@@ -9,7 +9,7 @@ namespace Domain.Models.ValueObjects.GitHub;
 
 public class GithubApi
 {
-    private readonly string _token = "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";
+    private readonly string _token = Environment.GetEnvironmentVariable("WEBSITE_GITHUB_KEY");
     private readonly string _baseUrl = "https://api.github.com";
     private readonly string _repoOwner = "cool-website";
 
