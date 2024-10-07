@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import {SiteCreatorComponent} from "./site-creator/site-creator.component";
 import {TitleComponent} from "./title/title.component";
 import {HeaderComponent} from "./header/header.component";
@@ -8,8 +18,7 @@ import {
   ColorScheme,
   ColorSchemeName,
   ContentPageData,
-  DesignPageData,
-  DownloadSiteRequest, GetSavedUserSiteDataRequest, HostSiteRequest, Image,
+  DesignPageData, Image,
   SiteConstructorData
 } from "../../../types";
 import {ColorSchemes} from "../../../colorSchemes";
@@ -19,6 +28,9 @@ import {map} from "rxjs";
 import {PopoverComponent} from "../../components/popover/popover.component";
 import {popup} from "../../components/popup";
 import {Colors} from "../../../colors";
+import {DownloadSiteRequest, GetSavedUserSiteDataRequest, HostSiteRequest} from "./api/DTOs";
+import {parseLoadedData} from "./parseLoadedData";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-main',
@@ -30,6 +42,7 @@ import {Colors} from "../../../colors";
     FooterComponent,
     HttpClientModule,
     PopoverComponent,
+    NgIf,
   ],
   providers: [
     DataService,
@@ -37,53 +50,20 @@ import {Colors} from "../../../colors";
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent implements OnInit {
-  constructor(private dataService: DataService) {}
+export class MainComponent implements AfterViewInit {
+  constructor(private dataService: DataService, private cdr: ChangeDetectorRef) {}
   currentColorScheme: ColorScheme = ColorSchemes[0].colorScheme!;
-  designPageData!: DesignPageData;
-  contentPageData!: ContentPageData;
+  @Input() designPageData!: DesignPageData;
+  @Input() contentPageData!: ContentPageData;
   @Input() isPopoverOpened = false
   @Input() siteDownloadUrl: string = "";
   @Input() siteLoading: boolean = false;
   @Input() toDownload!: boolean;
 
-  ngOnInit() {
+  ngAfterViewInit() {
     let userId = Number(localStorage.getItem("userId")!);
     let getSavedUserDataRequest: GetSavedUserSiteDataRequest = {
       userId: userId,
-    }
-    this.designPageData = {
-      colorSchemeName: (ColorSchemes[0].text) as ColorSchemeName,
-      ...this.currentColorScheme,
-      headersFont: 'Franklin Gothic Medium',
-      mainTextFont: 'Franklin Gothic Medium',
-      logoSrc: [],
-      logoBackgroundColor: '',
-      removeLogoBackground: false,
-      faviconSrc: [],
-    };
-
-    this.contentPageData = {
-      languages: [{
-        ...Russian,
-        selected: false,
-      }, {
-        ...English,
-        selected: false,
-      }, {
-        ...German,
-        selected: false,
-      }, {
-        ...Italian,
-        selected: false,
-      },],
-        mainLanguage: Russian,
-        header: "",
-        description: "",
-        vkLink: "",
-        telegramLink: "",
-        youtubeLink: "",
-        photosSrc: [],
     }
     this.dataService.getSavedUserData(getSavedUserDataRequest)
       .pipe(map(response => {
@@ -92,39 +72,10 @@ export class MainComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          let data = response.data.siteData
-          let logo = data.images ? data.images.filter(img => img.type === "logo") : []
-          let favicon = data.images ? data.images.filter(img => img.type === "favicon") : []
-          let images = data.images ? data.images.filter(img => img.type === "main") : []
-          console.log(data)
-          if (data) {
-            this.designPageData.colorSchemeName = data.colorSchemeName ? data.colorSchemeName : "Оранжевая";
-            this.designPageData.backgroundColors = data.backgroundColors ? data.backgroundColors : ColorSchemes[0].colorScheme!.backgroundColors;
-            this.designPageData.textColors = data.textColors ? data.textColors : ColorSchemes[0].colorScheme!.textColors;
-            this.designPageData.headersFont = data.headersFont ? data.headersFont : "Open Sans";
-            this.designPageData.mainTextFont = data.mainTextFont ? data.mainTextFont : "Open Sans";
-            this.designPageData.logoBackgroundColor = data.logoBackgroundColor ? data.logoBackgroundColor : "";
-            this.designPageData.removeLogoBackground = data.removeLogoBackground ? data.removeLogoBackground : false;
-            this.designPageData.logoSrc = logo.length > 0 ? [{
-              type: "logo",
-              imageFileBase64String: logo[0].imageFileBase64String
-            }] : [];
-            this.designPageData.faviconSrc = favicon.length > 0 ? [{
-              type: "logo",
-              imageFileBase64String: favicon[0].imageFileBase64String
-            }] : [];
-            this.contentPageData.header = data.header ? data.header : "";
-            this.contentPageData.description = data.description ? data.description : "";
-            this.contentPageData.vkLink = data.vkLink ? data.vkLink : "";
-            this.contentPageData.telegramLink = data.telegramLink ? data.telegramLink : "";
-            this.contentPageData.youtubeLink = data.youtubeLink ? data.youtubeLink : "";
-            this.contentPageData.photosSrc = images.length > 0 ? images.map(img => {
-              return {
-                type: "main",
-                imageFileBase64String: img.imageFileBase64String,
-              }
-            }) : [];
-          }
+          const parsedData = parseLoadedData(response.data.siteData)
+          this.designPageData = {...parsedData.designPageData};
+          this.contentPageData = {...parsedData.contentPageData};
+          this.cdr.detectChanges()
           popup("Данные загружены", "success")
         },
         error: (error) => {
@@ -163,6 +114,7 @@ export class MainComponent implements OnInit {
             )
             .subscribe({
               next: (response) => {
+                this.siteLoading = false;
                 popup("Сайт был успешно собран!", "success")
                 console.log(response)
               },
@@ -177,7 +129,6 @@ export class MainComponent implements OnInit {
           popup(error.error.error.reason, "error")
         }
       })
-
   }
   generateSite = async (downloadSiteRequest: DownloadSiteRequest) => {
     this.siteLoading = true;
@@ -195,12 +146,12 @@ export class MainComponent implements OnInit {
         next: (response) => {
           this.dataService.downloadSite(downloadSiteRequest)
             .pipe(map(response => {
-                this.siteLoading = false;
                 return response;
             }),
             )
             .subscribe({
               next: (response) => {
+                this.siteLoading = false;
                 this.siteDownloadUrl = window.URL.createObjectURL(response);
               },
               error: (error) => {

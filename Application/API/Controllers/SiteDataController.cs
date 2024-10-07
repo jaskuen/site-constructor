@@ -22,12 +22,14 @@ public class SiteDataController : ControllerBase
     private readonly IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> _downloadSiteHandler;
     private readonly IQueryHandler<GetSavedUserSiteDataQuery, GetSavedUserSiteDataQueryResult> _getSavedUserSiteDataHandler;
     private readonly ICommandHandler<HostResultSiteCommand, Result> _hostResultSiteHandler;
+    private readonly IQueryHandler<CheckHostNameQuery, CheckHostNameQueryResult> _checkHostNameQueryHandler;
     public SiteDataController(
             ICommandHandler<SetResultSiteDataCommand, Result> setResultDataHandler,
             ICommandHandler<SaveUserSiteDataCommand, Result> saveUserSiteDataHandler,
             IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult> downloadSiteHandler,
             IQueryHandler<GetSavedUserSiteDataQuery, GetSavedUserSiteDataQueryResult> getSavedUserSiteDataHandler,
-            ICommandHandler<HostResultSiteCommand, Result> hostResultSiteHandler
+            ICommandHandler<HostResultSiteCommand, Result> hostResultSiteHandler,
+            IQueryHandler<CheckHostNameQuery, CheckHostNameQueryResult> checkHostNameQueryHandler
         )
     {
         _setResultSiteDataHandler = setResultDataHandler;
@@ -35,6 +37,7 @@ public class SiteDataController : ControllerBase
         _downloadSiteHandler = downloadSiteHandler;
         _getSavedUserSiteDataHandler = getSavedUserSiteDataHandler;
         _hostResultSiteHandler = hostResultSiteHandler;
+        _checkHostNameQueryHandler = checkHostNameQueryHandler;
     }
 
     [Authorize]
@@ -69,11 +72,19 @@ public class SiteDataController : ControllerBase
         return result.IsSuccess ? File(result.Data.Memory.ToArray(), result.Data.ContentType, result.Data.FileName) : BadRequest(result);
     }
 
-
+    [Authorize]
     [HttpPost("host")]
     public async Task<IActionResult> HostResultSite([FromBody] HostResultSiteRequestDto model)
     {
         var result = await _hostResultSiteHandler.Handle(new HostResultSiteCommand(model));
+        return result.IsSuccess ? Ok(result) : BadRequest(result);
+    }
+
+    [Authorize]
+    [HttpGet("checkHost")]
+    public async Task<IActionResult> CheckHostName([FromQuery] CheckHostNameRequestDto model)
+    {
+        var result = await _checkHostNameQueryHandler.Handle(new CheckHostNameQuery(model));
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
 }

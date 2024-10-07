@@ -4,6 +4,7 @@
     {{ $content := $data.ContentPageData }}
     {{ $design  := $data.DesignPageData  }}
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{{ $data.Header }}</title>
     {{ $styles := resources.Get "./css/main.css" }}
     <link rel="stylesheet" id="favicon" href="{{ $styles.Permalink }}">

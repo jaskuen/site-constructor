@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CookieService} from "ngx-cookie-service";
-import {ApiResponse, AuthData, CheckLoginRequest, CheckLoginResponse, LoginResponse} from "../../../../types";
+import {AuthData, CheckLoginRequest, CheckLoginResponse, LoginResponse} from "./DTOs";
+import {ApiResponse} from "../../main/api/DTOs";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AuthService {
   public logout() {
     this.cookieService.delete("tasty-cookies", "/");
     localStorage.removeItem("userId");
+    localStorage.removeItem("username");
   }
 
   public checkLogin(data: CheckLoginRequest): Observable<ApiResponse<CheckLoginResponse>> {

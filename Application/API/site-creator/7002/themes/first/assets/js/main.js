@@ -46,14 +46,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('language-changer').addEventListener('click', onLanguageClick)
     setImage("arrow", 0)
     if (images.main.length > 1) {
-        document.getElementById('arrowLeft').addEventListener('click', (e) => {
-            e.stopPropagation()
-            setImage("arrow", -1)
-        })
-        document.getElementById('arrowRight').addEventListener('click', (e) => {
-            e.stopPropagation()
-            setImage("arrow", 1)
-        })
+        document.getElementById('arrowLeft').addEventListener('click', () => setImage("arrow", -1))
+        document.getElementById('arrowRight').addEventListener('click', () => setImage("arrow", 1))
     } else {
         document.getElementById('arrowLeft').style.display = 'none'
         document.getElementById('arrowRight').style.display = 'none'

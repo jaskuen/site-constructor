@@ -2,8 +2,8 @@
   <div [style.display]="download ? 'flex' : 'none'" class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
     <p>Название архива</p>
     <div class="wrapper-row no-gap site-name">
-      <form>
-        <input type="text" class="block" [formControl]="fileNameControl" (input)="onInput($event)">
+      <form [formGroup]="fileNameForm">
+        <input type="text" class="block" formControlName="fileName" (input)="onInput($event)">
       </form>
       <p>.zip</p>
     </div>
@@ -19,11 +19,11 @@
     <p>Название для вашего сайта</p>
     <div class="wrapper-row no-gap site-name">
       <p>https://cool-website.github.io/</p>
-      <form>
-        <input type="text" class="block" [formControl]="fileNameControl" (input)="onInput($event)">
+      <form [formGroup]="siteNameForm">
+        <input type="text" class="block" formControlName="siteName" (input)="onInput($event)">
       </form>
     </div>
-    <app-button [onClick]="handleHostClick" text="Выложить сайт"/>
+    <app-button [onClick]="handleHostClick" [disabled]="!isSiteHostNameAvailable" text="Выложить сайт"/>
     <p [style.display]="siteLoading ? 'block' : 'none'" >
       Ожидание сервера...
     </p>

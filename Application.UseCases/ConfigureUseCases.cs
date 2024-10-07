@@ -12,6 +12,7 @@ public static class ConfigureUseCases
 {
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
+        services.AddScoped<IQueryHandler<CheckHostNameQuery, CheckHostNameQueryResult>, CheckHostNameQueryHandler>();
         services.AddScoped<IQueryHandler<DownloadResultSiteQuery, DownloadResultSiteQueryResult>, DownloadResultSiteQueryHandler>();
         services.AddScoped<ICommandHandler<SetResultSiteDataCommand, Result>, SetResultSiteDataCommandHandler>();
         services.AddScoped<ICommandHandler<HostResultSiteCommand, Result>, HostResultSiteCommandHandler>();

@@ -88,61 +88,6 @@ type SiteConstructorData = {
   userId: number,
 }
 
-type AuthData = {
-  login: string,
-  password: string,
-}
-
-type LoginResponse = {
-  userId: number,
-  token: string,
-  expireDate: Date,
-}
-
-type Error = {
-  reason: string,
-}
-
-type ApiResponse<T> = {
-  isSuccess: boolean,
-  error?: Error,
-  data: T,
-}
-
-type DownloadSiteRequest = {
-  userId: string,
-  fileName: string,
-}
-
-type HostSiteRequest = {
-  userId: number,
-  name: string,
-}
-
-type GetSiteDataRequest = {
-  siteData: SiteConstructorData,
-}
-
-type SaveUserSiteDataRequest = {
-  userSiteData: UserSiteData,
-}
-
-type GetSavedUserSiteDataRequest = {
-  userId: number,
-}
-
-type GetSavedUserSiteDataResponse = {
-  siteData: UserSiteData,
-}
-
-type CheckLoginRequest = {
-  login: string,
-}
-
-type CheckLoginResponse = {
-  exists: boolean,
-}
-
 export type {
   SelectLanguageType,
   SelectOption,
@@ -153,18 +98,7 @@ export type {
   SiteConstructorData,
   ColorSchemeName,
   ColorScheme,
-  AuthData,
-  LoginResponse,
   Image,
   FontType,
   UserSiteData,
-  ApiResponse,
-  DownloadSiteRequest,
-  HostSiteRequest,
-  GetSiteDataRequest,
-  CheckLoginRequest,
-  CheckLoginResponse,
-  SaveUserSiteDataRequest,
-  GetSavedUserSiteDataRequest,
-  GetSavedUserSiteDataResponse,
 }

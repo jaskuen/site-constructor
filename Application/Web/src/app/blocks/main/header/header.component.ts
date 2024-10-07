@@ -1,10 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {ButtonComponent} from "../../../components/button/button.component";
 import {AuthService} from "../../auth/api/auth.service";
-import {ContentPageData, DesignPageData, Image, SaveUserSiteDataRequest, UserSiteData} from "../../../../types";
+import {ContentPageData, DesignPageData, Image, UserSiteData} from "../../../../types";
 import {DataService} from "../api/data.service";
 import {map} from "rxjs";
 import {popup} from "../../../components/popup";
+import {SaveUserSiteDataRequest} from "../api/DTOs";
 
 @Component({
   selector: 'app-header',

@@ -2,7 +2,6 @@ import {Component, Input, signal} from '@angular/core';
 import {TextInputComponent} from "../../../components/text-input/text-input.component";
 import {ButtonComponent} from "../../../components/button/button.component";
 import {Router, RouterLink} from "@angular/router";
-import {AuthData} from "../../../../types";
 import {map} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
 import {popup} from "../../../components/popup";
@@ -17,6 +16,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
 import {stringify} from "uuid";
 import {CookieService} from "ngx-cookie-service";
+import {AuthData} from "../api/DTOs";
 
 @Component({
   selector: 'app-login',
@@ -72,6 +72,7 @@ export class LoginComponent {
           popup("Вы успешно вошли!", "success")
           console.log(response)
           localStorage.setItem("userId", response.data.userId.toString())
+          localStorage.setItem("username", response.data.username.toString())
           this.cookieService.set("tasty-cookies", response.data.token)
           setTimeout(() => {
             window.location.reload()

@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {
-  ApiResponse,
-  DownloadSiteRequest, GetSavedUserSiteDataRequest, GetSavedUserSiteDataResponse,
-  GetSiteDataRequest, HostSiteRequest,
-  SaveUserSiteDataRequest,
   SiteConstructorData, UserSiteData
 } from "../../../../types";
+import {
+  ApiResponse, CheckHostNameRequest, CheckHostNameResult,
+  DownloadSiteRequest,
+  GetSavedUserSiteDataRequest, GetSavedUserSiteDataResponse,
+  GetSiteDataRequest, HostSiteRequest,
+  SaveUserSiteDataRequest
+} from "./DTOs";
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +55,14 @@ export class DataService {
       'Content-Type': 'application/json',
     });
     return this.http.post<string>(this.apiUrl + "/host", data, {withCredentials: true, headers});
+  }
+  isHostNameAvailable(data: CheckHostNameRequest): Observable<ApiResponse<CheckHostNameResult>> {
+    let params = new HttpParams();
+    params = params.set("siteHostName", data.siteHostName);
+    return this.http.get<ApiResponse<CheckHostNameResult>>(this.apiUrl + "/checkHost", {
+      params,
+      responseType: "json",
+      withCredentials: true,
+    });
   }
 }
