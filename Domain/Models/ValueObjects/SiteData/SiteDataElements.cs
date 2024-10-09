@@ -6,12 +6,8 @@ namespace Domain.Models.ValueObjects.SiteData;
 
 public class BackgroundColors
 {
-    [JsonIgnore]
     public int Id { get; set; }
-    [JsonIgnore]
     public int UserSiteDataId { get; set; }
-
-    [JsonIgnore]
     public UserSiteData UserSiteData { get; set; }
     public string Main { get; set; }
     public string Additional { get; set; }
@@ -21,12 +17,8 @@ public class BackgroundColors
 
 public class TextColors
 {
-    [JsonIgnore]
     public int Id { get; set; }
-    [JsonIgnore]
     public int UserSiteDataId { get; set; }
-
-    [JsonIgnore]
     public UserSiteData UserSiteData { get; set; }
     public string Main { get; set; }
     public string Additional { get; set; }

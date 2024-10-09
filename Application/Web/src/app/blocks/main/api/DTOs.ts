@@ -1,4 +1,4 @@
-import {SiteConstructorData, UserSiteData} from "../../../../types";
+import {ColorSchemeName, FontType, Image, SiteConstructorData, UserSiteData} from "../../../../types";
 
 type Error = {
   reason: string,
@@ -33,7 +33,18 @@ type GetSiteDataRequest = {
 }
 
 type SaveUserSiteDataRequest = {
-  userSiteData: UserSiteData,
+  colorSchemeName: ColorSchemeName,
+  headersFont: FontType,
+  mainTextFont: FontType,
+  logoBackgroundColor: string,
+  removeLogoBackground: boolean,
+  header: string,
+  description: string,
+  vkLink: string,
+  telegramLink: string,
+  youtubeLink: string,
+  images: Image[],
+  userId: number,
 }
 
 type GetSavedUserSiteDataRequest = {

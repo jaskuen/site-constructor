@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Authentication;
 
-[Route("api/UserAuth")]
+[Route("api/userAuth")]
 [ApiController]
 public class AuthController : ControllerBase
 {

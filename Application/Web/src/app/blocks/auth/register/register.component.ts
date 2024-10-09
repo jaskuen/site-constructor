@@ -104,7 +104,6 @@ export class RegisterComponent implements OnInit {
       login: this.authForm.controls.username.value!,
       password: this.authForm.controls.password.value!,
     }
-    console.log(data)
     this.authService.register(data)
       .pipe(map(response => {
           return response;
@@ -119,8 +118,6 @@ export class RegisterComponent implements OnInit {
         },
         error: (error) => {
           popup("Этот логин уже занят!", "error")
-          // проверку на наличие логина в реальном времени (сменить input на form)
-          console.log("Error logging in", error)
         }
       })
   }

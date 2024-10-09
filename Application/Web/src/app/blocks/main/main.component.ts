@@ -1,13 +1,13 @@
 import {
   AfterViewChecked,
-  AfterViewInit,
+  AfterViewInit, ApplicationRef,
   ChangeDetectorRef,
   Component,
   DoCheck,
   EventEmitter,
-  Input,
+  Input, OnChanges,
   OnInit,
-  Output
+  Output, SimpleChanges
 } from '@angular/core';
 import {SiteCreatorComponent} from "./site-creator/site-creator.component";
 import {TitleComponent} from "./title/title.component";
@@ -50,17 +50,47 @@ import {NgIf} from "@angular/common";
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent implements AfterViewInit {
-  constructor(private dataService: DataService, private cdr: ChangeDetectorRef) {}
+export class MainComponent implements OnInit {
+  constructor(private dataService: DataService) {}
   currentColorScheme: ColorScheme = ColorSchemes[0].colorScheme!;
-  @Input() designPageData!: DesignPageData;
-  @Input() contentPageData!: ContentPageData;
+  @Input() designPageData: DesignPageData = {
+    colorSchemeName: (ColorSchemes[0].text) as ColorSchemeName,
+    ...this.currentColorScheme,
+    headersFont: 'Franklin Gothic Medium',
+    mainTextFont: 'Franklin Gothic Medium',
+    logoSrc: [],
+    logoBackgroundColor: '',
+    removeLogoBackground: false,
+    faviconSrc: [],
+  };
+  @Input() contentPageData: ContentPageData = {
+    languages: [{
+      ...Russian,
+      selected: false,
+    }, {
+      ...English,
+      selected: false,
+    }, {
+      ...German,
+      selected: false,
+    }, {
+      ...Italian,
+      selected: false,
+    },],
+    mainLanguage: Russian,
+    header: "",
+    description: "",
+    vkLink: "",
+    telegramLink: "",
+    youtubeLink: "",
+    photosSrc: [],
+  };
   @Input() isPopoverOpened = false
   @Input() siteDownloadUrl: string = "";
   @Input() siteLoading: boolean = false;
   @Input() toDownload!: boolean;
 
-  ngAfterViewInit() {
+  ngOnInit() {
     let userId = Number(localStorage.getItem("userId")!);
     let getSavedUserDataRequest: GetSavedUserSiteDataRequest = {
       userId: userId,
@@ -73,13 +103,11 @@ export class MainComponent implements AfterViewInit {
       .subscribe({
         next: (response) => {
           const parsedData = parseLoadedData(response.data.siteData)
-          this.designPageData = {...parsedData.designPageData};
-          this.contentPageData = {...parsedData.contentPageData};
-          this.cdr.detectChanges()
+          this.designPageData = parsedData.designPageData;
+          this.contentPageData = parsedData.contentPageData;
           popup("Данные загружены", "success")
         },
         error: (error) => {
-          console.log("Error loading data", error)
           popup(error.error.error.reason, "error")
         }
         }
@@ -116,16 +144,13 @@ export class MainComponent implements AfterViewInit {
               next: (response) => {
                 this.siteLoading = false;
                 popup("Сайт был успешно собран!", "success")
-                console.log(response)
               },
               error: (error) => {
-                console.log("Ошибка сборки сайта: ", error)
                 popup(error.error.error.reason, "error")
               }
             })
         },
         error: (error) => {
-          console.log("Error posting data", error)
           popup(error.error.error.reason, "error")
         }
       })
@@ -155,13 +180,11 @@ export class MainComponent implements AfterViewInit {
                 this.siteDownloadUrl = window.URL.createObjectURL(response);
               },
               error: (error) => {
-                console.log("Error downloading site", error)
                 popup(error.error.error.reason, "error")
               }
             })
         },
         error: (error) => {
-          console.log("Error posting data", error)
           popup(error.error.error.reason, "error")
         }
       })

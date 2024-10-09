@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers;
 
-[Route("api/SiteDataAPI")]
+[Route("api/siteData")]
 [ApiController]
 public class SiteDataController : ControllerBase
 {

@@ -61,7 +61,6 @@ export class LoginComponent {
       login: this.authForm.controls.username.value!,
       password: this.authForm.controls.password.value!,
     }
-    console.log(data)
     this.authService.login(data)
       .pipe(map(response => {
           return response;
@@ -70,7 +69,6 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           popup("Вы успешно вошли!", "success")
-          console.log(response)
           localStorage.setItem("userId", response.data.userId.toString())
           localStorage.setItem("username", response.data.username.toString())
           this.cookieService.set("tasty-cookies", response.data.token)
@@ -86,7 +84,6 @@ export class LoginComponent {
             }
           }
           popup("Ошибка сервера", "error")
-          console.log("Error logging in", error)
         }
       })
   }

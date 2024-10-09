@@ -1,9 +1,9 @@
-<div class="overlay" *ngIf="isOpened" (mousedown)="closePopover()">
-  <div [style.display]="download ? 'flex' : 'none'" class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
+<div class="overlay" (mousedown)="closePopover()">
+  <div *ngIf="download" class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
     <p>Название архива</p>
     <div class="wrapper-row no-gap site-name">
       <form [formGroup]="fileNameForm">
-        <input type="text" class="block" formControlName="fileName" (input)="onInput($event)">
+        <input type="text" class="block" formControlName="fileName" (input)="onInput($event, 'fileName')">
       </form>
       <p>.zip</p>
     </div>
@@ -15,12 +15,12 @@
       <app-button [style.display]="siteDownloadUrl == '' ? 'none' : 'block'" text="Скачать" [onClick]="handleDownloadClick"/>
     </a>
   </div>
-  <div [style.display]="!download ? 'flex' : 'none'" class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
+  <div *ngIf="!download" class="block wrapper-column gap10 popover" (mousedown)="$event.stopPropagation()">
     <p>Название для вашего сайта</p>
     <div class="wrapper-row no-gap site-name">
       <p>https://cool-website.github.io/</p>
       <form [formGroup]="siteNameForm">
-        <input type="text" class="block" formControlName="siteName" (input)="onInput($event)">
+        <input type="text" class="block" formControlName="siteName" (input)="onInput($event, 'siteName')">
       </form>
     </div>
     <app-button [onClick]="handleHostClick" [disabled]="!isSiteHostNameAvailable" text="Выложить сайт"/>

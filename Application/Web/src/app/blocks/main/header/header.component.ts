@@ -37,7 +37,6 @@ export class HeaderComponent {
       }
     }
 
-    console.log(images)
     let siteData: UserSiteData = {
       userId: Number(this.userId),
       colorSchemeName: this.designPageData.colorSchemeName,
@@ -54,22 +53,17 @@ export class HeaderComponent {
       youtubeLink: this.contentPageData.youtubeLink,
       images: images,
     }
-    let data: SaveUserSiteDataRequest = {
-      userSiteData: siteData,
-    }
     this.disableSaveButton = true
-    this.dataService.saveUserData(data)
+    this.dataService.saveUserData(siteData)
         .pipe(map(response => {
           return response;
         }),
       )
       .subscribe({
         next: (response) => {
-          console.log(response)
           popup("Данные успешно сохранены", "success")
         },
         error: (error) => {
-          console.log("Error saving data", error)
           popup("Ошибка загрузки данных", "error")
         }
       })

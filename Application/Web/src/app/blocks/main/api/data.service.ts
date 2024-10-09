@@ -16,7 +16,7 @@ import {
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl: string = "https://localhost:7299/api/SiteDataAPI";
+  private apiUrl: string = "https://localhost:7299/api/siteData";
 
   constructor(private http: HttpClient) {}
   postData(data: GetSiteDataRequest): Observable<SiteConstructorData> {

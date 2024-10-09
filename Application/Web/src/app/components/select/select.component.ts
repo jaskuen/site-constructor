@@ -25,7 +25,6 @@ export class SelectComponent {
   onValueChange = (event: Event): void => {
     let newOption = this.options.find(option => option.text === (event.target as HTMLSelectElement).value)!;
     this.value = newOption.text;
-    console.log(this.value)
     this.valueChange.emit(this.value);
   }
 }

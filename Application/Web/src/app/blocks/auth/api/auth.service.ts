@@ -9,7 +9,7 @@ import {ApiResponse} from "../../main/api/DTOs";
   providedIn: 'root'
 })
 export class AuthService {
-  private _apiUrl: string = "https://localhost:7299/api/UserAuth";
+  private _apiUrl: string = "https://localhost:7299/api/userAuth";
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 

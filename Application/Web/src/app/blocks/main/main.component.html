@@ -12,6 +12,7 @@
   </div>
   <app-footer />
   <app-popover
+    [style.display]="isPopoverOpened ? 'block' : 'none'"
     [(isOpened)]="isPopoverOpened"
     [generateSite]="generateSite"
     [hostSite]="hostSite"

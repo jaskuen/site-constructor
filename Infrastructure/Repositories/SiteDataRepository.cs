@@ -27,11 +27,6 @@ public class SiteDataRepository : BaseRepository<SiteData>, ISiteDataRepository
         return Table.FirstOrDefaultAsync(x => x.UserId == userId);
     }
 
-    public void SaveUserSiteData(SiteData siteData)
-    {
-        throw new NotImplementedException();
-    }
-
     public void CreateHugoDirectory()
     {
         string hugoSamplePath = "./site-creator/sample";
