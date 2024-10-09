@@ -10,7 +10,7 @@ public class Result
         return new Result { Error = null, };
     }
 
-    public static Result Fail( Error error )
+    public static Result Fail(Error error)
     {
         return new Result { Error = error, };
     }

@@ -21,7 +21,6 @@ import {DataService} from "./blocks/main/api/data.service";
 export class AppComponent {
   constructor(private dataService: DataService, private router: Router, private cookieService: CookieService) {
     const token = this.cookieService.get("tasty-cookies")
-    console.log(token)
     if (token == "") {
       this.router.navigate(["/login"])
     } else {

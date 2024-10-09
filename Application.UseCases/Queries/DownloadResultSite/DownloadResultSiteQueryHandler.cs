@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Compression;
-using System.Linq;
-using System.Net.Mime;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO.Compression;
 using Application.UseCases.Queries.DownloadResultSite.DTOs;
 using Application.UseCases.Results;
 using Application.UseCases.UseCases;
@@ -24,7 +17,7 @@ public class DownloadResultSiteQueryHandler : IQueryHandler<DownloadResultSiteQu
         _siteDataRepository = siteDataRepository;
     }
 
-    public async Task<DownloadResultSiteQueryResult> Handle( DownloadResultSiteQuery query)
+    public async Task<DownloadResultSiteQueryResult> Handle(DownloadResultSiteQuery query)
     {
         Error? validationError = Validate(query);
         if (validationError != null)

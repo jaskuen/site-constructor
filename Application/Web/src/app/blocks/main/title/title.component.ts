@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ButtonComponent} from "../../../components/button/button.component";
 
 @Component({
@@ -11,5 +11,12 @@ import {ButtonComponent} from "../../../components/button/button.component";
   styleUrl: './title.component.scss'
 })
 export class TitleComponent {
+  @Input() download!: boolean;
+  @Output() downloadChange = new EventEmitter();
   @Input() onClick() {};
+  handleClick(download: boolean) {
+    this.onClick()
+    this.download = download
+    this.downloadChange.emit(this.download);
+  }
 }

@@ -12,6 +12,8 @@ public static class DependencyInjection
     {
         services.AddScoped<ISiteDataRepository, SiteDataRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserSiteDataRepository, UserSiteDataRepository>();
+        services.AddScoped<ISiteNameRepository, SiteNameRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }

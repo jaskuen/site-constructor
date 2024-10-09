@@ -4,16 +4,16 @@ using SiteConstructor.Domain.Repositories;
 
 namespace Application.UseCases.Commands.GetSiteData;
 
-public class GetSiteDataCommandHandler : ICommandHandler<GetSiteDataCommand, Result>
+public class SetResultSiteDataCommandHandler : ICommandHandler<SetResultSiteDataCommand, Result>
 {
     private readonly ISiteDataRepository _siteDataRepository;
 
-    public GetSiteDataCommandHandler(ISiteDataRepository siteDataRepository)
+    public SetResultSiteDataCommandHandler(ISiteDataRepository siteDataRepository)
     {
         _siteDataRepository = siteDataRepository;
     }
 
-    public async Task<Result> Handle(GetSiteDataCommand command)
+    public async Task<Result> Handle(SetResultSiteDataCommand command)
     {
         Error? validationError = Validate(command);
         if (validationError != null)
@@ -26,11 +26,9 @@ public class GetSiteDataCommandHandler : ICommandHandler<GetSiteDataCommand, Res
         _siteDataRepository.ApplyDataToHugo();
 
         return Result.Ok();
-
-
     }
 
-    private Error? Validate(GetSiteDataCommand command)
+    private Error? Validate(SetResultSiteDataCommand command)
     {
         if (command.RequestDto == null)
         {
