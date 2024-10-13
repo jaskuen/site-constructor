@@ -22,15 +22,7 @@ namespace Domain.Models.ValueObjects.SiteData
                 using (Process process = new Process())
                 {
                     process.StartInfo = processStartInfo;
-
-                    process.OutputDataReceived += (sender, e) => Console.WriteLine(e.Data);
-                    process.ErrorDataReceived += (sender, e) => Console.WriteLine("ERROR: " + e.Data);
-
                     process.Start();
-
-                    process.BeginOutputReadLine();
-                    process.BeginErrorReadLine();
-
                     process.WaitForExit();
 
                     if (process.ExitCode != 0)

@@ -2,7 +2,6 @@ import {Component, Input, signal} from '@angular/core';
 import {TextInputComponent} from "../../../components/text-input/text-input.component";
 import {ButtonComponent} from "../../../components/button/button.component";
 import {Router, RouterLink} from "@angular/router";
-import {AuthData} from "../../../../types";
 import {map} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
 import {popup} from "../../../components/popup";
@@ -17,6 +16,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
 import {stringify} from "uuid";
 import {CookieService} from "ngx-cookie-service";
+import {AuthData} from "../api/DTOs";
 
 @Component({
   selector: 'app-login',
@@ -61,7 +61,6 @@ export class LoginComponent {
       login: this.authForm.controls.username.value!,
       password: this.authForm.controls.password.value!,
     }
-    console.log(data)
     this.authService.login(data)
       .pipe(map(response => {
           return response;
@@ -69,9 +68,9 @@ export class LoginComponent {
       )
       .subscribe({
         next: (response) => {
-          popup("Вы успешно вошли!")
-          console.log(response)
+          popup("Вы успешно вошли!", "success")
           localStorage.setItem("userId", response.data.userId.toString())
+          localStorage.setItem("username", response.data.username.toString())
           this.cookieService.set("tasty-cookies", response.data.token)
           setTimeout(() => {
             window.location.reload()
@@ -81,11 +80,10 @@ export class LoginComponent {
           if (error && error.error && error.error.error) {
             const errorMessage = error.error.error.reason;
             if (errorMessage) {
-              popup("Ошибка входа: " + errorMessage)
+              popup("Ошибка входа: " + errorMessage, "error")
             }
           }
-          popup("Ошибка сервера")
-          console.log("Error logging in", error)
+          popup("Ошибка сервера", "error")
         }
       })
   }

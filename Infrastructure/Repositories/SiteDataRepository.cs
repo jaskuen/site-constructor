@@ -1,19 +1,34 @@
 using System.Text.Json;
 using Domain.Models.ValueObjects.SiteData;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SiteConstructor.Domain.Repositories;
 
 namespace Infrastructure.Repositories;
 
-public class SiteDataRepository : ISiteDataRepository
+public class SiteDataRepository : BaseRepository<SiteData>, ISiteDataRepository
 {
     private SiteData _siteData = new();
-    public SiteData GetSiteData()
+    private readonly ILogger<SiteDataRepository> _logger;
+
+    protected SiteDataRepository(DbSet<SiteData> entities, ILogger<SiteDataRepository> logger)
+        : base(entities)
     {
-        return _siteData;
+        _logger = logger;
+    }
+    public SiteDataRepository(ApplicationDbContext dbContext, ILogger<SiteDataRepository> logger)
+        : base(dbContext)
+    {
+        _logger = logger;
     }
     public void SetOrUpdateData(SiteData siteData)
     {
         _siteData = siteData;
+    }
+
+    public Task<SiteData?> GetSiteData(int userId)
+    {
+        return Table.FirstOrDefaultAsync(x => x.UserId == userId);
     }
 
     public void CreateHugoDirectory()
@@ -53,7 +68,7 @@ public class SiteDataRepository : ISiteDataRepository
         }
         else
         {
-            Console.WriteLine("Папка не существует.");
+            _logger.LogError("Папка не существует.");
         }
 
         static string GetFileExtension(string base64String)
@@ -100,14 +115,14 @@ public class SiteDataRepository : ISiteDataRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            _logger.LogError(e.Message);
         }
 
         string jsonPath = $"./site-creator/{_siteData.UserId}/static/data/data.json";
         File.WriteAllText(jsonPath, JsonSerializer.Serialize(_siteData));
     }
 
-    private void CopyDirectory(string sourceDir, string destDir)
+    public void CopyDirectory(string sourceDir, string destDir)
     {
         DirectoryInfo dir = new DirectoryInfo(sourceDir);
         if (!dir.Exists)

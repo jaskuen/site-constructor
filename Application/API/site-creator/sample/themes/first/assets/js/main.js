@@ -97,6 +97,15 @@ const changeLanguage = (languageId) => {
     select.remove()
 }
 
+const createImages = () => {
+    const imageBlock = document.getElementById('main-image')
+    for (let i = 0; i < images.main.length; i++) {
+        const image = document.createElement("img")
+        image.id = `image-${i}`
+        image.src = images.main[i].ImageFileBase64String
+    } 
+}
+
 const setImage = (type, number) => {
     const image = document.getElementById('main-image-img')
     if (images.main.length == 0 | ((images.current + number >= images.main.length | images.current + number < 0) && type === "arrow")) {

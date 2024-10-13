@@ -1,15 +1,24 @@
-<app-header />
-<div class="wrapper">
-  <app-title [onClick]="handleClick"/>
-  <app-site-creator
-    [(contentPageData)]="contentPageData"
-    [(designPageData)]="designPageData"
+<div *ngIf="contentPageData && designPageData" >
+  <app-header
+    [contentPageData]="contentPageData"
+    [designPageData]="designPageData"
+  />
+  <div class="wrapper">
+    <app-title [onClick]="handleClick" [(download)]="toDownload" />
+    <app-site-creator
+      [(contentPageData)]="contentPageData"
+      [(designPageData)]="designPageData"
+    />
+  </div>
+  <app-footer />
+  <app-popover
+    [style.display]="isPopoverOpened ? 'block' : 'none'"
+    [(isOpened)]="isPopoverOpened"
+    [generateSite]="generateSite"
+    [hostSite]="hostSite"
+    [siteDownloadUrl]="siteDownloadUrl"
+    [siteLoading]="siteLoading"
+    [download]="toDownload"
   />
 </div>
-<app-footer />
-<app-popover
-  [(isOpened)]="isPopoverOpened"
-  [generateSite]="generateSite"
-  [siteDownloadUrl]="siteDownloadUrl"
-  [siteLoading]="siteLoading"
-/>
+

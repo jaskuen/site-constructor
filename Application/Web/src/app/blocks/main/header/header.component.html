@@ -1,6 +1,13 @@
 <header>
   <app-button
-    text="Выйти из аккаунта"
-    [onClick]="handleClick"
+    class="save-button"
+    text="Сохранить"
+    [onClick]="handleSaveClick"
+    [disabled]="disableSaveButton"
   ></app-button>
+  <div class="user wrapper-row no-gap">
+    <svg class="user-icon" />
+    <p class="username">Привет, {{username}}!</p>
+    <svg class="logout logout-icon" (click)="handleLogoutClick()"/>
+  </div>
 </header>

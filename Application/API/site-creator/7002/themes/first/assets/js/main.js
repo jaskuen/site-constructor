@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (parsedData.DesignPageData.RemoveLogoBackground || parsedData.DesignPageData.LogoSrc.length == 0) {
           document.getElementsByClassName('site-logo')[0].style.background = "none"
         }
-        languageChanger.value = parsedData.Languages[0].Code
+        languageChanger.value = parsedData.ContentPageData.Languages[0].Code
         if (languageChanger.languages.length <= 1) {
           document.getElementById('language-changer').style.display = 'none'
         }
@@ -95,6 +95,15 @@ const changeLanguage = (languageId) => {
     languageChanger.opened = false
     const select = document.getElementById('language-select');
     select.remove()
+}
+
+const createImages = () => {
+    const imageBlock = document.getElementById('main-image')
+    for (let i = 0; i < images.main.length; i++) {
+        const image = document.createElement("img")
+        image.id = `image-${i}`
+        image.src = images.main[i].ImageFileBase64String
+    } 
 }
 
 const setImage = (type, number) => {

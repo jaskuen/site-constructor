@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ApplicationRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {SelectComponent} from "../../../../components/select/select.component";
 import {
   ColorScheme,
@@ -35,11 +35,14 @@ import {NgIf} from "@angular/common";
   styleUrls: ['./design.component.scss', '../../../../../colors.scss']
 })
 
-export class DesignComponent implements OnInit{
+export class DesignComponent implements OnInit {
   @Input() pageData!: DesignPageData;
   @Input() contentPageData!: ContentPageData;
   @Input() sitePreviewData!: ColorScheme;
   @Output() pageDataChange: EventEmitter<DesignPageData> = new EventEmitter()
+
+  constructor(private appRef: ApplicationRef) {
+  }
 
   selectFontOptions: SelectOption[] = [{
     text: 'Franklin Gothic Medium',
