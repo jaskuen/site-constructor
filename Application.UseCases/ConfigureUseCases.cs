@@ -1,7 +1,7 @@
-﻿using Application.UseCases.Commands.GetSiteData;
-using Application.UseCases.Commands.HostResultSite;
-using Application.UseCases.Commands.SaveUserSiteData;
-using Application.UseCases.Queries.DownloadResultSite;
+﻿using Application.UseCases.Content.Commands.HostResultSite;
+using Application.UseCases.Content.Commands.SetResultSiteData;
+using Application.UseCases.Content.Queries.CheckHostName;
+using Application.UseCases.Content.Queries.DownloadResultSite;
 using Application.UseCases.Results;
 using Application.UseCases.UseCases;
 using Microsoft.Extensions.DependencyInjection;

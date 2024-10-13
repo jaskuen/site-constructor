@@ -1,8 +1,8 @@
 using Application.UseCases.Authentication.Commands.Register;
 using Application.UseCases.Authentication.Queries.CheckLogin;
 using Application.UseCases.Authentication.Queries.Login;
-using Application.UseCases.Commands.SaveUserSiteData;
-using Application.UseCases.Queries.UploadSavedUserSiteData;
+using Application.UseCases.Content.Commands.SaveUserSiteData;
+using Application.UseCases.Content.Queries.GetSavedUserSiteData;
 using Application.UseCases.Results;
 using Application.UseCases.UseCases;
 using Microsoft.Extensions.DependencyInjection;

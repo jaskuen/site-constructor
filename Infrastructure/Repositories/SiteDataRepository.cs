@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Domain.Models.ValueObjects.SiteData;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SiteConstructor.Domain.Repositories;
 
 namespace Infrastructure.Repositories;
@@ -8,14 +9,17 @@ namespace Infrastructure.Repositories;
 public class SiteDataRepository : BaseRepository<SiteData>, ISiteDataRepository
 {
     private SiteData _siteData = new();
+    private readonly ILogger<SiteDataRepository> _logger;
 
-    protected SiteDataRepository(DbSet<SiteData> entities)
+    protected SiteDataRepository(DbSet<SiteData> entities, ILogger<SiteDataRepository> logger)
         : base(entities)
     {
+        _logger = logger;
     }
-    public SiteDataRepository(ApplicationDbContext dbContext)
+    public SiteDataRepository(ApplicationDbContext dbContext, ILogger<SiteDataRepository> logger)
         : base(dbContext)
     {
+        _logger = logger;
     }
     public void SetOrUpdateData(SiteData siteData)
     {
@@ -64,7 +68,7 @@ public class SiteDataRepository : BaseRepository<SiteData>, ISiteDataRepository
         }
         else
         {
-            Console.WriteLine("Папка не существует.");
+            _logger.LogError("Папка не существует.");
         }
 
         static string GetFileExtension(string base64String)
@@ -111,7 +115,7 @@ public class SiteDataRepository : BaseRepository<SiteData>, ISiteDataRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            _logger.LogError(e.Message);
         }
 
         string jsonPath = $"./site-creator/{_siteData.UserId}/static/data/data.json";

@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using Domain.Models.Entities;
 using Domain.Models.Entities.UserSiteData;
 
