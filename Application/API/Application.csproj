@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="site-creator\sample\themes\first\static\" />
     <Folder Include="HostingFolders\" />
   </ItemGroup>
 
