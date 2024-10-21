@@ -9,6 +9,7 @@
 # User-specific files
 *.rsuser
 *.suo
+*.bin
 *.user
 *.userosscache
 *.sln.docstates
@@ -486,3 +487,5 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 /.vs
+/Application/API/site-creator/*
+!/Application/API/site-creator/sample
