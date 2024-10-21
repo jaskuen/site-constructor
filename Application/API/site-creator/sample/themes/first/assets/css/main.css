@@ -12,6 +12,7 @@
 
 body {
     margin: 0 auto;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -216,8 +217,9 @@ svg {
 }
 
 .container .checkmark:after {
-    top: 6px;
-    left: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 8px;
     height: 8px;
     border-radius: 50%;
