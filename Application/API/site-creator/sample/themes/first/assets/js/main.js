@@ -19,8 +19,6 @@ let endX = 0;
 let slides = document.querySelectorAll('.slide');
 let totalSlides = slides.length;
 
-var currentSlide = 0;
-
 document.addEventListener("DOMContentLoaded", async () => {
     const parsedData = JSON.parse(window.data)
     if (parsedData) {
@@ -59,14 +57,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         document.querySelector('.prev').addEventListener('click', function (event) {
             event.preventDefault(); // Отменяем стандартное поведение ссылки
-            currentSlide = (currentSlide > 0) ? currentSlide - 1 : 0;
-            showSlide(currentSlide);
+            images.current = (images.current > 0) ? images.current - 1 : 0;
+            showSlide(images.current);
         });
 
         document.querySelector('.next').addEventListener('click', function (event) {
             event.preventDefault(); // Отменяем стандартное поведение ссылки
-            currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : totalSlides - 1;
-            showSlide(currentSlide);
+            images.current = (images.current < totalSlides - 1) ? images.current + 1 : totalSlides - 1;
+            showSlide(images.current);
         });
         document.getElementById('arrowLeft').addEventListener('click', () => {
             document.querySelector('.prev').click()
@@ -106,7 +104,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const showSlide = (index, type) => {
     const slidesContainer = document.querySelector('.main-image');
-    console.log(images.current * slidesContainer.offsetWidth + index)
     if (type == "swipe") {
         slidesContainer.style.transform = `translateX(${-(images.current * slidesContainer.offsetWidth) + index}px)`;
     } else {
