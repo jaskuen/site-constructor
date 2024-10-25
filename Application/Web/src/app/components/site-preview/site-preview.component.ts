@@ -24,7 +24,8 @@ export class SitePreviewComponent implements AfterViewInit {
   current: number = 0;
 
   changePhoto(delta: number) {
-    if (this.current + delta >= 0 && this.current + delta < this.imagesSrc.length) {
+    console.log('aaa', delta, this.current);
+    if (this.current > 0 && delta == -1 || this.current < this.imagesSrc.length - 1 && delta == 1) {
       this.current += delta
     }
   }
@@ -35,7 +36,7 @@ export class SitePreviewComponent implements AfterViewInit {
     if (arrowLeft && arrowRight) {
       if (this.imagesSrc && this.imagesSrc.length > 1) {
         arrowLeft.addEventListener('click', () => this.changePhoto(-1))
-        arrowLeft.addEventListener('click', () => this.changePhoto(1))
+        arrowRight.addEventListener('click', () => this.changePhoto(1))
       } else {
         arrowLeft.style.display = 'none'
         arrowRight.style.display = 'none'

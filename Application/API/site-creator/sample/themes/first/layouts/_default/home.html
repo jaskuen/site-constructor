@@ -4,9 +4,11 @@
     {{ $content := $data.ContentPageData }}
     {{ $design  := $data.DesignPageData  }}
     <meta charset="UTF-8" />
-    <title>{{ $data.Header }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{{ $content.Header }}</title>
     {{ $styles := resources.Get "./css/main.css" }}
-    <link rel="stylesheet" id="favicon" href="{{ $styles.Permalink }}">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="{{ $styles.Permalink }}">
     <style>
         :root {
             --backgroundColors-main: {{ $design.BackgroundColors.Main | safeCSS }};
@@ -82,34 +84,42 @@
     <body>
         <div class="wrapper-main">
             <div class="site-logo">
-                <img id="site-logo" />
+                <div class="site-logo-wrapper">
+                    <img id="site-logo" />
+                </div>
             </div>
-            <div class="language-change" id="language-changer" >
+            <div class="language-change" id="language-changer">
                 <p id="language-change-value"></p>
                 <svg class="arrowDown" width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.6">
                         <path d="M19.8688 9.00012L12.0797 16.0415L4.19763 8.91602L5.00001 8.18382L12.0797 14.5935L19.0665 8.26798L19.8688 9.00012Z" fill="none" />
                     </g>
                 </svg>
-                <div id="language-select-wrapper" class="language-select-wrapper" ></div>
+                <div id="language-select-wrapper" class="language-select-wrapper"></div>
             </div>
             <div class="arrowLeft" id="arrowLeft">
+                <a href="#" class="prev"></a>
                 <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 15L1 8L8 1" stroke-width="1.4"/>
+                    <path d="M8 15L1 8L8 1" stroke-width="1.4" />
                 </svg>
             </div>
             <div class="arrowRight" id="arrowRight">
+                <a href="#" class="next"></a>
                 <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L8 8L1 15" stroke-width="1.4"/>
+                    <path d="M1 1L8 8L1 15" stroke-width="1.4" />
                 </svg>
-            </div>
-            <div class="image-list" id="image-list">
             </div>
             <div class="header">
                 <h1>{{$content.Header}}</h1>
             </div>
-            <div class="main-image" id="main-image">
-                <img id="main-image-img" />
+            <div class="slider">
+                <div class="main-image">
+                    {{ range $i, $img := $content.PhotosSrc }}
+                    <img id="image-{{$i}}" src="{{$img.ImageFileBase64String}}" class="slide" />
+                    {{ end }}
+                </div>
+            </div>
+            <div class="image-list">
             </div>
         </div>
         <div class="info">

@@ -4,7 +4,7 @@ public class Error
 {
     public string Reason { get; set; }
 
-    public Error( string reason )
+    public Error(string reason)
     {
         Reason = reason;
     }

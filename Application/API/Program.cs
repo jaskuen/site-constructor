@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Application.Authentication;
 using Application.UseCases;
 using Application.UseCases.Authentication;
@@ -18,10 +19,15 @@ AuthConfigurator.AddAuthenticationServices(
     builder.Services,
     configuration.GetSection("Authentication").Get<AuthConfiguration>());
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlServerOptions => sqlServerOptions.MigrationsAssembly("Application")));
+        sqlServerOptions => sqlServerOptions.MigrationsAssembly("Application.Migrations")));
 
 builder.Services.AddCors(options =>
 {

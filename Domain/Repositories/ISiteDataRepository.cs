@@ -1,11 +1,13 @@
 ﻿using Domain.Models.ValueObjects.SiteData;
+using Domain.Repositories;
 
 namespace SiteConstructor.Domain.Repositories;
 
-public interface ISiteDataRepository
+public interface ISiteDataRepository : IRepository<SiteData>
 {
-    public SiteData GetSiteData();
+    public Task<SiteData?> GetSiteData(int userId);
     public void SetOrUpdateData(SiteData siteData);
     public void CreateHugoDirectory();
     public void ApplyDataToHugo();
+    public void CopyDirectory(string sourceDir, string destDir);
 }

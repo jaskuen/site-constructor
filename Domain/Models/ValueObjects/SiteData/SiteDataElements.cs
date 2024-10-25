@@ -1,7 +1,13 @@
+using Domain.Models.Entities;
+using Domain.Models.Entities.UserSiteData;
+
 namespace Domain.Models.ValueObjects.SiteData;
 
 public class BackgroundColors
 {
+    public int Id { get; set; }
+    public int UserSiteDataId { get; set; }
+    public UserSiteData UserSiteData { get; set; }
     public string Main { get; set; }
     public string Additional { get; set; }
     public string Translucent { get; set; }
@@ -10,6 +16,9 @@ public class BackgroundColors
 
 public class TextColors
 {
+    public int Id { get; set; }
+    public int UserSiteDataId { get; set; }
+    public UserSiteData UserSiteData { get; set; }
     public string Main { get; set; }
     public string Additional { get; set; }
     public string Translucent { get; set; }
@@ -27,17 +36,16 @@ public class SelectLanguage : Language
     public bool Selected { get; set; }
 }
 
-public class Image
+public class Image : Entity
 {
-    public string Id { get; set; }
-    public string UserId { get; set; }
+    public int UserSiteDataId { get; set; }
     public string Type { get; set; }
     public string ImageFileBase64String { get; set; }
+    public UserSiteData UserSiteData { get; set; }
 }
 
 public class DesignPageData
 {
-    public string Id { get; set; }
     public string ColorSchemeName { get; set; }
     public BackgroundColors BackgroundColors { get; set; }
     public TextColors TextColors { get; set; }
@@ -51,7 +59,6 @@ public class DesignPageData
 
 public class ContentPageData
 {
-    public string Id { get; set; }
     public List<SelectLanguage> Languages { get; set; }
     public Language MainLanguage { get; set; }
     public string Header { get; set; }

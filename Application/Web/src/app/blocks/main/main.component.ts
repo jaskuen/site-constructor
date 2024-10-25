@@ -1,4 +1,14 @@
-import {Component, Input} from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit, ApplicationRef,
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+  EventEmitter,
+  Input, OnChanges,
+  OnInit,
+  Output, SimpleChanges
+} from '@angular/core';
 import {SiteCreatorComponent} from "./site-creator/site-creator.component";
 import {TitleComponent} from "./title/title.component";
 import {HeaderComponent} from "./header/header.component";
@@ -8,8 +18,7 @@ import {
   ColorScheme,
   ColorSchemeName,
   ContentPageData,
-  DesignPageData,
-  DownloadSiteRequest,
+  DesignPageData, Image,
   SiteConstructorData
 } from "../../../types";
 import {ColorSchemes} from "../../../colorSchemes";
@@ -18,6 +27,10 @@ import {HttpClientModule} from "@angular/common/http";
 import {map} from "rxjs";
 import {PopoverComponent} from "../../components/popover/popover.component";
 import {popup} from "../../components/popup";
+import {Colors} from "../../../colors";
+import {DownloadSiteRequest, GetSavedUserSiteDataRequest, HostSiteRequest} from "./api/DTOs";
+import {parseLoadedData} from "./parseLoadedData";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-main',
@@ -29,6 +42,7 @@ import {popup} from "../../components/popup";
     FooterComponent,
     HttpClientModule,
     PopoverComponent,
+    NgIf,
   ],
   providers: [
     DataService,
@@ -36,7 +50,7 @@ import {popup} from "../../components/popup";
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   constructor(private dataService: DataService) {}
   currentColorScheme: ColorScheme = ColorSchemes[0].colorScheme!;
   @Input() designPageData: DesignPageData = {
@@ -70,21 +84,81 @@ export class MainComponent {
     telegramLink: "",
     youtubeLink: "",
     photosSrc: [],
-  }
+  };
   @Input() isPopoverOpened = false
   @Input() siteDownloadUrl: string = "";
   @Input() siteLoading: boolean = false;
+  @Input() toDownload!: boolean;
+
+  ngOnInit() {
+    let userId = Number(localStorage.getItem("userId")!);
+    let getSavedUserDataRequest: GetSavedUserSiteDataRequest = {
+      userId: userId,
+    }
+    this.dataService.getSavedUserData(getSavedUserDataRequest)
+      .pipe(map(response => {
+        return response
+      }),
+      )
+      .subscribe({
+        next: (response) => {
+          const parsedData = parseLoadedData(response.data.siteData)
+          this.designPageData = parsedData.designPageData;
+          this.contentPageData = parsedData.contentPageData;
+          popup("Данные загружены", "success")
+        },
+        error: (error) => {
+          popup(error.error.error.reason, "error")
+        }
+        }
+      )
+  }
+
   handleClick = () => {
-    if (this.contentPageData.header.trim() == "") {
-      popup("Введите заголовок сайта")
+    if (this.contentPageData && this.contentPageData.header && this.contentPageData.header.trim() == "") {
+      popup("Введите заголовок сайта", "none")
     } else {
       this.isPopoverOpened = true;
     }
   }
+  hostSite = async (hostSiteData: HostSiteRequest) => {
+    this.siteLoading = true;
+    const data: SiteConstructorData = {
+      userId: Number(localStorage.getItem("userId")!),
+      contentPageData: this.contentPageData,
+      designPageData: this.designPageData,
+    }
+    this.dataService.postData({siteData: data})
+      .pipe(map(response => {
+          return response;
+        }),
+      )
+      .subscribe({
+        next: (response) => {
+          this.dataService.hostSite(hostSiteData)
+            .pipe(map(response => {
+                return response;
+              }),
+            )
+            .subscribe({
+              next: (response) => {
+                this.siteLoading = false;
+                popup("Сайт был успешно собран!", "success")
+              },
+              error: (error) => {
+                popup(error.error.error.reason, "error")
+              }
+            })
+        },
+        error: (error) => {
+          popup(error.error.error.reason, "error")
+        }
+      })
+  }
   generateSite = async (downloadSiteRequest: DownloadSiteRequest) => {
     this.siteLoading = true;
     const data: SiteConstructorData = {
-      userId: localStorage.getItem("userId")!,
+      userId: Number(localStorage.getItem("userId")!),
       contentPageData: this.contentPageData,
       designPageData: this.designPageData,
     }
@@ -97,23 +171,21 @@ export class MainComponent {
         next: (response) => {
           this.dataService.downloadSite(downloadSiteRequest)
             .pipe(map(response => {
-                this.siteLoading = false;
                 return response;
             }),
             )
             .subscribe({
               next: (response) => {
+                this.siteLoading = false;
                 this.siteDownloadUrl = window.URL.createObjectURL(response);
               },
               error: (error) => {
-                console.log("Error downloading site", error)
-                popup(error.error.error.reason)
+                popup(error.error.error.reason, "error")
               }
             })
         },
         error: (error) => {
-          console.log("Error posting data", error)
-          popup(error.error.error.reason)
+          popup(error.error.error.reason, "error")
         }
       })
   }
