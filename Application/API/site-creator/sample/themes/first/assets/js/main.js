@@ -15,7 +15,7 @@ const images = {
 
 let startX = 0;
 let endX = 0;
-
+const swipeLimit = 50;
 let slides = document.querySelectorAll('.slide');
 let totalSlides = slides.length;
 
@@ -58,12 +58,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.querySelector('.prev').addEventListener('click', function (event) {
             event.preventDefault(); // Отменяем стандартное поведение ссылки
             images.current = (images.current > 0) ? images.current - 1 : 0;
+            console.log(images.current)
             showSlide(images.current);
         });
 
         document.querySelector('.next').addEventListener('click', function (event) {
             event.preventDefault(); // Отменяем стандартное поведение ссылки
             images.current = (images.current < totalSlides - 1) ? images.current + 1 : totalSlides - 1;
+            console.log(images.current)
             showSlide(images.current);
         });
         document.getElementById('arrowLeft').addEventListener('click', () => {
@@ -77,6 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         slidesContainer.addEventListener('touchstart', (event) => {
             startX = event.touches[0].clientX; // Сохраняем начальную позицию касания
+            endX = startX;
         });
 
         slidesContainer.addEventListener('touchmove', (event) => {
@@ -87,12 +90,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         slidesContainer.addEventListener('touchend', () => {
-            if (startX > endX + 50) { // Если свайп влево
+            if (startX > endX + swipeLimit) { // Если свайп влево
                 images.current = (images.current < images.main.length - 1) ? images.current + 1 : images.current;
-            } else if (startX + 50 < endX) { // Если свайп вправо
+                showSlide(images.current);
+            } else if (startX + swipeLimit < endX) { // Если свайп вправо
                 images.current = (images.current > 0) ? images.current - 1 : images.current;
+                showSlide(images.current);
+            } else {
+                showSlide(0, "swipe")
             }
-            showSlide(images.current);
         });
     } else {
         document.getElementById('arrowLeft').style.display = 'none'
